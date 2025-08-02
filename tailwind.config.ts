@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
+				display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -68,21 +73,48 @@ export default {
 				'gradient-secondary': 'var(--gradient-secondary)', 
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-mesh': 'var(--gradient-mesh)',
 			},
 			boxShadow: {
 				'glow': 'var(--shadow-glow)',
-				'card': 'var(--shadow-card)',
+				'accent': 'var(--shadow-accent)',
+				'premium': 'var(--shadow-premium)',
 			},
 			transitionTimingFunction: {
+				'spring': 'var(--transition-spring)',
 				'smooth': 'var(--transition-smooth)',
 				'bounce': 'var(--transition-bounce)',
 			},
-			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+			animation: {
+				'float': 'float 6s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite alternate',
+				'slide-up': 'slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+				'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+				'scale-in': 'scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			keyframes: {
+				float: {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-20px)' },
+				},
+				glow: {
+					'0%': { boxShadow: '0 0 30px hsl(280 100% 70% / 0.3)' },
+					'100%': { boxShadow: '0 0 60px hsl(280 100% 70% / 0.6)' },
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(30px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.95)' },
+					'100%': { opacity: '1', transform: 'scale(1)' },
+				},
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -100,9 +132,10 @@ export default {
 					}
 				}
 			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
 			}
 		}
 	},
