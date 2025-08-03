@@ -32,10 +32,10 @@ const Hero = () => {
               </h1>
             </div>
             
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              A multidisciplinary product manager with 6+ years of experience building products that 
-              drive engagement, streamline operations, and improve business outcomes.
-            </p>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                A former Software Developer turned Product Manager with 4+ years of experience building 
+                high-quality, cohesive, and scalable products at Sciplay.
+              </p>
             
             {/* Clean CTA */}
             <div className="pt-8">
@@ -48,7 +48,7 @@ const Hero = () => {
             {/* Clean metrics */}
             <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
-                { value: "6+", label: "Years Experience" },
+                { value: "4+", label: "Years Experience" },
                 { value: "25%", label: "Engagement Increase" },
                 { value: "CSPO", label: "Certified" }
               ].map((metric, index) => (
