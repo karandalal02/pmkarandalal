@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
-import karanProfile from "@/assets/karan-profile.jpg";
 
 const Hero = () => {
   return (
@@ -10,9 +9,9 @@ const Hero = () => {
           {/* Clean Profile Section */}
           <div className="mb-16">
             <img
-              src={karanProfile}
+              src="/lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png"
               alt="Karan Dalal"
-              className="w-32 h-32 rounded-full object-cover mx-auto mb-8 shadow-premium"
+              className="w-32 h-32 rounded-lg object-cover mx-auto mb-8 shadow-premium"
             />
           </div>
           
@@ -33,7 +32,7 @@ const Hero = () => {
             </div>
             
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                A former Software Developer turned Product Manager with 4+ years of experience building 
+                A former Software Developer turned Product Manager with 6 years of experience (2 years as developer, 4 in product roles) building 
                 high-quality, cohesive, and scalable products at Sciplay.
               </p>
             
@@ -46,10 +45,9 @@ const Hero = () => {
             </div>
             
             {/* Clean metrics */}
-            <div className="pt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto">
               {[
-                { value: "4+", label: "Years Experience" },
-                { value: "25%", label: "Engagement Increase" },
+                { value: "6", label: "Years Experience" },
                 { value: "CSPO", label: "Certified" }
               ].map((metric, index) => (
                 <div key={index} className="text-center">
