@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Calendar, Sparkles } from "lucide-react";
+import { Menu, X, Calendar, Sparkles, ArrowRight } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,47 +33,37 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/70 backdrop-blur-2xl border-b border-border/20"
+          ? "bg-background/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Ultra-modern logo */}
-          <div className="group cursor-pointer">
-            <div className="font-display font-black text-2xl">
-              <span className="bg-gradient-primary bg-clip-text text-transparent group-hover:animate-pulse">
-                Karan
-              </span>
-              <span className="text-accent">.</span>
-            </div>
-            <div className="text-xs font-mono text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-              Senior PM
-            </div>
+        <div className="flex items-center justify-between h-16">
+          {/* Clean logo */}
+          <div className="font-display font-bold text-xl text-foreground">
+            karandalal.
           </div>
 
-          {/* Modern desktop navigation */}
+          {/* Clean desktop navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="relative text-foreground/80 hover:text-foreground transition-all duration-300 font-medium group"
+                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
               >
                 {item.label}
-                <div className="absolute bottom-0 left-0 w-0 h-px bg-gradient-primary group-hover:w-full transition-all duration-300" />
               </button>
             ))}
           </div>
 
-          {/* Ultra-modern CTA Button */}
+          {/* Clean CTA Button */}
           <div className="hidden md:block">
-            <Button variant="premium" size="sm" className="group font-semibold px-6">
-              <Calendar className="mr-2 h-4 w-4" />
-              Book Session
-              <Sparkles className="ml-2 h-3 w-3 opacity-70" />
+            <Button variant="outline" size="sm" className="font-medium">
+              Let's Talk
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
 
