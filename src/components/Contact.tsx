@@ -1,7 +1,58 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import { Mail, Linkedin, Phone, Send, MapPin } from "lucide-react";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
+
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>();
+
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      await emailjs.send(
+        'service_4tusjb9',
+        'template_rb1vtfn',
+        {
+          from_name: `${data.firstName} ${data.lastName}`,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+        },
+        'n41BLAZBSDBtUmg8X'
+      );
+      
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      reset();
+    } catch (error) {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
       {/* Gradient Background */}
@@ -93,66 +144,95 @@ const Contact = () => {
                 Send me a message
               </h3>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <Label className="text-sm font-medium text-foreground mb-2">
                       First Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    </Label>
+                    <Input
+                      {...register("firstName", { required: "First name is required" })}
+                      className="h-12"
                       placeholder="John"
                     />
+                    {errors.firstName && (
+                      <p className="text-sm text-destructive mt-1">{errors.firstName.message}</p>
+                    )}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <Label className="text-sm font-medium text-foreground mb-2">
                       Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    </Label>
+                    <Input
+                      {...register("lastName", { required: "Last name is required" })}
+                      className="h-12"
                       placeholder="Doe"
                     />
+                    {errors.lastName && (
+                      <p className="text-sm text-destructive mt-1">{errors.lastName.message}</p>
+                    )}
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <Label className="text-sm font-medium text-foreground mb-2">
                     Email
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     type="email"
-                    className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    {...register("email", { 
+                      required: "Email is required",
+                      pattern: {
+                        value: /^\S+@\S+$/i,
+                        message: "Invalid email address"
+                      }
+                    })}
+                    className="h-12"
                     placeholder="john@example.com"
                   />
+                  {errors.email && (
+                    <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
+                  )}
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <Label className="text-sm font-medium text-foreground mb-2">
                     Subject
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  </Label>
+                  <Input
+                    {...register("subject", { required: "Subject is required" })}
+                    className="h-12"
                     placeholder="Let's discuss your project"
                   />
+                  {errors.subject && (
+                    <p className="text-sm text-destructive mt-1">{errors.subject.message}</p>
+                  )}
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <Label className="text-sm font-medium text-foreground mb-2">
                     Message
-                  </label>
+                  </Label>
                   <textarea
+                    {...register("message", { required: "Message is required" })}
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg bg-input border border-border text-foreground placeholder-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                     placeholder="Tell me about your project, goals, or how I can help you..."
                   />
+                  {errors.message && (
+                    <p className="text-sm text-destructive mt-1">{errors.message.message}</p>
+                  )}
                 </div>
                 
-                <Button variant="hero" size="lg" className="w-full group">
+                <Button 
+                  type="submit" 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full group" 
+                  disabled={isSubmitting}
+                >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <div className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     ✨
                   </div>
