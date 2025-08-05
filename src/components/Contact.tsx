@@ -86,20 +86,7 @@ const Contact = () => {
               {/* Contact Methods */}
               <div className="space-y-6">
                 <a
-                  href="mailto:karan@example.com"
-                  className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
-                >
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Mail className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Email</div>
-                    <div className="text-muted-foreground">karan@example.com</div>
-                  </div>
-                </a>
-                
-                <a
-                  href="https://linkedin.com/in/karandalal"
+                  href="https://linkedin.com/in/dalal-karan/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
@@ -109,20 +96,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">LinkedIn</div>
-                    <div className="text-muted-foreground">linkedin.com/in/karandalal</div>
-                  </div>
-                </a>
-                
-                <a
-                  href="tel:+1234567890"
-                  className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
-                >
-                  <div className="p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                    <Phone className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Phone</div>
-                    <div className="text-muted-foreground">+1 (234) 567-8900</div>
+                    <div className="text-muted-foreground">linkedin.com/in/dalal-karan/</div>
                   </div>
                 </a>
                 
@@ -132,7 +106,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground">Location</div>
-                    <div className="text-muted-foreground">Boston, MA</div>
+                    <div className="text-muted-foreground">Austin, TX</div>
                   </div>
                 </div>
               </div>
