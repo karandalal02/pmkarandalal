@@ -3,39 +3,39 @@ import { Calendar, MapPin, Building } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      company: "Design Studio",
-      role: "Senior Product Manager",
-      period: "2021 - Present",
-      location: "Remote",
-      description: "Leading product strategy and development for innovative design tools, driving user engagement and business growth through data-driven decisions.",
+      company: "SciPlay",
+      role: "Product Manager",
+      period: "Jan 2024 - Present",
+      location: "Austin, TX",
+      description: "Driving player engagement and monetization in mobile gaming for Goldfish Casino Games team. Building engaging live ops features and data-backed monetization strategies working with design, analytics, and engineering teams.",
       achievements: [
-        "Increased user engagement by 40% through feature optimization",
-        "Led cross-functional team of 12+ members",
-        "Launched 3 major product features driving $2M ARR"
+        "Launched features like Goldies Grand Match, Shockwave, DTC, and piggy bank",
+        "Ran multiple AB tests on battle pass, Goldies Match, and quest system",
+        "Consistently moved engagement KPIs and revenue metrics through data-driven decisions"
       ]
     },
     {
-      company: "Team5",
-      role: "UI Designer",
-      period: "2018 - 2021", 
-      location: "San Francisco, CA",
-      description: "Designed user interfaces and experiences for B2B travel solutions, focusing on user research and iterative design processes.",
+      company: "Kayak",
+      role: "Product Manager (Intern)",
+      period: "2023",
+      location: "Boston, MA",
+      description: "Focused on solving onboarding friction for new users of Kayak for Business B2B travel management platform. Worked across UX, engineering, and analytics to identify key drop-off points and redesign the onboarding flow.",
       achievements: [
-        "Redesigned core user flows increasing conversion by 25%",
-        "Established design system used across 5+ products",
-        "Mentored junior designers and conducted design reviews"
+        "Achieved 25% lift in weekly engagement in the first two weeks",
+        "Ran MVP tests with over 95% user feedback response rate",
+        "Led user research and onboarding flow redesign initiatives"
       ]
     },
     {
-      company: "WP ThemeX",
-      role: "Jr UI Designer",
-      period: "2016 - 2018",
-      location: "New York, NY", 
-      description: "Developed WordPress themes and UI components, gaining foundational experience in user-centered design principles.",
+      company: "Newgen Software",
+      role: "Technical Product Manager",
+      period: "July 2017 - July 2021",
+      location: "Mumbai, India",
+      description: "Transitioned from engineering to product management, leading internal and external automation products for banking and finance sector clients. Customized Document Management System and built business process management system.",
       achievements: [
-        "Created 15+ premium WordPress themes",
-        "Collaborated with development teams on implementation",
-        "Improved theme performance and accessibility standards"
+        "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
+        "Cut application processing time by 1.5x for banking operations",
+        "Built automation tools for loan applications, account opening, and trade functions"
       ]
     }
   ];
