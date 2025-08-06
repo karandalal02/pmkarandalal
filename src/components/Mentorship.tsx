@@ -5,27 +5,27 @@ const Mentorship = () => {
   const services = [
     {
       icon: MessageCircle,
-      title: "Career Transition Guidance",
+      title: "Breaking into Product Management",
       description: "Navigate your journey from developer to product manager with personalized roadmaps and actionable insights.",
-      duration: "60 min session"
+      duration: "30 min session"
     },
     {
       icon: Video,
       title: "Mock Interviews",
       description: "Practice product management interviews with real-world scenarios and receive detailed feedback.",
-      duration: "45 min session"
+      duration: "60 min session"
     },
     {
       icon: CheckCircle,
-      title: "Resume & Portfolio Review", 
-      description: "Get expert feedback on your PM resume and portfolio to stand out in the competitive market.",
+      title: "Product Management Interview Preparation", 
+      description: "Get expert preparation for PM interviews with frameworks, case studies, and practical guidance.",
       duration: "30 min session"
     },
     {
       icon: Calendar,
       title: "Ongoing Mentorship",
       description: "Regular check-ins and continuous support throughout your product management journey.",
-      duration: "Monthly sessions"
+      duration: "30 min session"
     }
   ];
 

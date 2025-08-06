@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Phone, Send, MapPin } from "lucide-react";
+import { Mail, Linkedin, Send, MapPin, Instagram } from "lucide-react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
@@ -100,15 +100,40 @@ const Contact = () => {
                   </div>
                 </a>
                 
-                <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
-                  <div className="p-3 rounded-lg bg-green-500/10">
-                    <MapPin className="h-6 w-6 text-green-500" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground">Location</div>
-                    <div className="text-muted-foreground">Austin, TX</div>
-                  </div>
-                </div>
+                 <a
+                   href="https://www.instagram.com/guy_with_ear_to_ear_smile/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
+                 >
+                   <div className="p-3 rounded-lg bg-pink-500/10 group-hover:bg-pink-500/20 transition-colors">
+                     <Instagram className="h-6 w-6 text-pink-500" />
+                   </div>
+                   <div>
+                     <div className="font-semibold text-foreground">Instagram</div>
+                     <div className="text-muted-foreground">@guy_with_ear_to_ear_smile</div>
+                   </div>
+                 </a>
+                 
+                 <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
+                   <div className="p-3 rounded-lg bg-green-500/10">
+                     <MapPin className="h-6 w-6 text-green-500" />
+                   </div>
+                   <div>
+                     <div className="font-semibold text-foreground">Location</div>
+                     <div className="text-muted-foreground">Austin, TX</div>
+                   </div>
+                 </div>
+                 
+                 <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
+                   <div className="p-3 rounded-lg bg-purple-500/10">
+                     <Mail className="h-6 w-6 text-purple-500" />
+                   </div>
+                   <div>
+                     <div className="font-semibold text-foreground">Email</div>
+                     <div className="text-muted-foreground">karandalal10@gmail.com</div>
+                   </div>
+                 </div>
               </div>
             </div>
             
