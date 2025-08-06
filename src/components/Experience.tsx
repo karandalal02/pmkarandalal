@@ -12,7 +12,8 @@ const Experience = () => {
         "Launched features like Goldies Grand Match, Shockwave, DTC, and piggy bank",
         "Ran multiple AB tests on battle pass, Goldies Match, and quest system",
         "Consistently moved engagement KPIs and revenue metrics through data-driven decisions"
-      ]
+      ],
+      logo: "🎮"
     },
     {
       company: "Kayak",
@@ -24,7 +25,8 @@ const Experience = () => {
         "Achieved 25% lift in weekly engagement in the first two weeks",
         "Ran MVP tests with over 95% user feedback response rate",
         "Led user research and onboarding flow redesign initiatives"
-      ]
+      ],
+      logo: "✈️"
     },
     {
       company: "Newgen Software",
@@ -36,7 +38,21 @@ const Experience = () => {
         "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
         "Cut application processing time by 1.5x for banking operations",
         "Built automation tools for loan applications, account opening, and trade functions"
-      ]
+      ],
+      logo: "🏦"
+    },
+    {
+      company: "Testbook.com",
+      role: "Product Marketing Intern",
+      period: "Jan 2016 - April 2016",
+      location: "Pune, India",
+      description: "My first exposure to the user side of products. I organized a beta focus group and onboarded 400+ users onto the platform, helping validate early product-market fit. This experience made me curious about how people discover, use, and stick with products — the seed that grew into my product career.",
+      achievements: [
+        "Organized beta focus group for platform validation",
+        "Successfully onboarded 400+ users during beta phase",
+        "Contributed to early product-market fit validation efforts"
+      ],
+      logo: "📚"
     }
   ];
 
@@ -70,9 +86,12 @@ const Experience = () => {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <div>
                       <h3 className="text-2xl font-bold text-foreground mb-1">{exp.role}</h3>
-                      <div className="flex items-center gap-2 text-primary font-semibold">
-                        <Building className="h-4 w-4" />
-                        {exp.company}
+                      <div className="flex items-center gap-3 text-primary font-semibold">
+                        <div className="text-2xl">{exp.logo}</div>
+                        <div className="flex items-center gap-2">
+                          <Building className="h-4 w-4" />
+                          {exp.company}
+                        </div>
                       </div>
                     </div>
                     
