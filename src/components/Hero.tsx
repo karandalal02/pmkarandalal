@@ -36,13 +36,6 @@ const Hero = () => {
                 high-quality, cohesive, and scalable products at Sciplay.
               </p>
             
-            {/* Clean CTA */}
-            <div className="pt-8">
-              <Button variant="default" size="lg" className="group">
-                Let's Talk
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </div>
             
             {/* Clean metrics */}
             <div className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto">

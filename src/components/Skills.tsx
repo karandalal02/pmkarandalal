@@ -12,19 +12,19 @@ const Skills = () => {
       title: "Technical Skills", 
       icon: Code,
       color: "from-blue-500 to-cyan-500",
-      skills: ["SQL", "Python", "React", "API Design", "System Architecture"]
+      skills: ["SQL", "PL/SQL", "JAVA", "JSP", "Jscript", "Python"]
     },
     {
       title: "Design & UX",
       icon: Palette, 
       color: "from-orange-500 to-red-500",
-      skills: ["Figma", "User Journey Mapping", "Wireframing", "Prototyping", "Design Systems"]
+      skills: ["Figma", "User Journey Mapping", "Wireframing", "Prototyping", "XD", "Lightroom"]
     },
     {
       title: "Analytics",
       icon: BarChart,
       color: "from-green-500 to-emerald-500", 
-      skills: ["Google Analytics", "Mixpanel", "Amplitude", "Data Visualization", "KPI Tracking"]
+      skills: ["Google Analytics", "Tableau", "Snowflake", "KPI Tracking"]
     },
     {
       title: "Leadership",
@@ -32,20 +32,13 @@ const Skills = () => {
       color: "from-indigo-500 to-purple-500",
       skills: ["Team Management", "Stakeholder Communication", "Agile/Scrum", "Mentoring", "Cross-functional Collaboration"]
     },
-    {
-      title: "Growth",
-      icon: Zap,
-      color: "from-yellow-500 to-orange-500", 
-      skills: ["Growth Hacking", "Conversion Optimization", "User Acquisition", "Retention Strategies", "Product Marketing"]
-    }
   ];
 
   const techStack = [
     { name: "Figma", color: "bg-purple-500" },
-    { name: "Sketch", color: "bg-orange-500" },
     { name: "Adobe XD", color: "bg-pink-500" },
-    { name: "Framer", color: "bg-blue-500" },
-    { name: "Webflow", color: "bg-cyan-500" },
+    { name: "Tableau", color: "bg-blue-500" },
+    { name: "Snowflake", color: "bg-cyan-500" },
     { name: "Notion", color: "bg-gray-500" },
     { name: "Slack", color: "bg-green-500" },
     { name: "Jira", color: "bg-indigo-500" }

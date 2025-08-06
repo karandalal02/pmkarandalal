@@ -18,8 +18,10 @@ const Navigation = () => {
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+    { label: "Mentorship", href: "#mentorship" },
     { label: "Contact", href: "#contact" }
   ];
 
@@ -59,13 +61,6 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Clean CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="outline" size="sm" className="font-medium">
-              Let's Talk
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
 
           {/* Modern mobile menu button */}
           <button

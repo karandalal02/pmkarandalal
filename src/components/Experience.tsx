@@ -13,7 +13,7 @@ const Experience = () => {
         "Ran multiple AB tests on battle pass, Goldies Match, and quest system",
         "Consistently moved engagement KPIs and revenue metrics through data-driven decisions"
       ],
-      logo: "🎮"
+      logo: "/lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png"
     },
     {
       company: "Kayak",
@@ -26,7 +26,7 @@ const Experience = () => {
         "Ran MVP tests with over 95% user feedback response rate",
         "Led user research and onboarding flow redesign initiatives"
       ],
-      logo: "✈️"
+      logo: "/lovable-uploads/d59ff3d4-175f-4eb4-b241-236769939845.png"
     },
     {
       company: "Newgen Software",
@@ -39,7 +39,7 @@ const Experience = () => {
         "Cut application processing time by 1.5x for banking operations",
         "Built automation tools for loan applications, account opening, and trade functions"
       ],
-      logo: "🏦"
+      logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png"
     },
     {
       company: "Testbook.com",
@@ -52,7 +52,7 @@ const Experience = () => {
         "Successfully onboarded 400+ users during beta phase",
         "Contributed to early product-market fit validation efforts"
       ],
-      logo: "📚"
+      logo: "/lovable-uploads/7e826c7d-06b7-4ebd-8c0e-fc55a1c5f23c.png"
     }
   ];
 
@@ -87,7 +87,7 @@ const Experience = () => {
                     <div>
                       <h3 className="text-2xl font-bold text-foreground mb-1">{exp.role}</h3>
                       <div className="flex items-center gap-3 text-primary font-semibold">
-                        <div className="text-2xl">{exp.logo}</div>
+                        <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
                         <div className="flex items-center gap-2">
                           <Building className="h-4 w-4" />
                           {exp.company}

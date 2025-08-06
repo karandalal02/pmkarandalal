@@ -133,47 +133,6 @@ const Projects = () => {
           })}
         </div>
         
-        {/* Modern additional highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {[
-            {
-              title: "APMC Platform",
-              description: "Enhanced agricultural marketplace efficiency through digital transformation initiatives",
-              icon: "🌾"
-            },
-            {
-              title: "Business Process Optimization", 
-              description: "Streamlined enterprise workflows, reducing operational overhead by 30%",
-              icon: "⚡"
-            }
-          ].map((highlight, index) => (
-            <div
-              key={index}
-              className="group p-8 rounded-3xl bg-card/30 backdrop-blur-md border border-border/30 hover:border-primary/40 transition-all duration-500 hover:scale-105"
-            >
-              <div className="flex items-start gap-4">
-                <div className="text-3xl">{highlight.icon}</div>
-                <div className="space-y-2">
-                  <h3 className="font-display font-bold text-foreground group-hover:text-primary transition-colors">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {highlight.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Modern CTA */}
-        <div className="text-center">
-          <Button variant="premium" size="lg" className="group text-lg px-10 py-6">
-            <ExternalLink className="mr-2 h-5 w-5" />
-            View All Projects
-            <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </Button>
-        </div>
       </div>
     </section>
   );
