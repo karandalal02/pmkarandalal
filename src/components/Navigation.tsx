@@ -72,7 +72,12 @@ const Navigation = () => {
                   {item.label}
                 </button>)}
               <div className="pt-6 border-t border-border/30">
-                <Button variant="premium" size="sm" className="w-full">
+                <Button 
+                  variant="premium" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => window.open('https://topmate.io/karan_dalal', '_blank')}
+                >
                   <Calendar className="mr-2 h-4 w-4" />
                   Book Session
                   <Sparkles className="ml-2 h-3 w-3 opacity-70" />
