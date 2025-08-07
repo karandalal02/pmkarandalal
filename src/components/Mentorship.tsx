@@ -102,7 +102,12 @@ const Mentorship = () => {
               Join hundreds of successful mentees who've made the transition to product management 
               with personalized guidance and proven strategies.
             </p>
-            <Button variant="hero" size="lg" className="group">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="group"
+              onClick={() => window.open('https://topmate.io/karan_dalal', '_blank')}
+            >
               <Calendar className="mr-2 h-5 w-5" />
               Book Session on Topmate
               <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
