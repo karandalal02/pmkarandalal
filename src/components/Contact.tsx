@@ -86,7 +86,22 @@ const Contact = () => {
               {/* Contact Methods */}
               <div className="space-y-6">
                 <a
-                  href="https://linkedin.com/in/dalal-karan/"
+                  href="https://topmate.io/karan_dalal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
+                >
+                  <div className="p-3 rounded-lg bg-orange-500/10 group-hover:bg-orange-500/20 transition-colors">
+                    <Send className="h-6 w-6 text-orange-500" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-foreground">Book Session</div>
+                    <div className="text-muted-foreground">Schedule a 1-on-1 call</div>
+                  </div>
+                </a>
+                
+                <a
+                  href="https://www.linkedin.com/in/dalal-karan/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
@@ -125,15 +140,18 @@ const Contact = () => {
                    </div>
                  </div>
                  
-                 <div className="flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50">
-                   <div className="p-3 rounded-lg bg-purple-500/10">
+                 <a
+                   href="mailto:karandalal10@gmail.com"
+                   className="group flex items-center gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-300 hover:scale-105"
+                 >
+                   <div className="p-3 rounded-lg bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors">
                      <Mail className="h-6 w-6 text-purple-500" />
                    </div>
                    <div>
                      <div className="font-semibold text-foreground">Email</div>
                      <div className="text-muted-foreground">karandalal10@gmail.com</div>
                    </div>
-                 </div>
+                 </a>
               </div>
             </div>
             

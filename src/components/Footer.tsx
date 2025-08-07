@@ -39,17 +39,17 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-4">Connect</h3>
               <div className="space-y-3">
-                <a href="mailto:karan@example.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
+                <a href="mailto:karandalal10@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
                   <Mail className="h-4 w-4 group-hover:text-primary transition-colors" />
-                  karan@example.com
+                  karandalal10@gmail.com
                 </a>
-                <a href="https://linkedin.com/in/karandalal" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
+                <a href="https://www.linkedin.com/in/dalal-karan/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
                   <Linkedin className="h-4 w-4 group-hover:text-blue-500 transition-colors" />
                   LinkedIn Profile
                 </a>
-                <a href="tel:+1234567890" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
+                <a href="tel:+18572505101" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors group">
                   <Phone className="h-4 w-4 group-hover:text-accent transition-colors" />
-                  +1 (234) 567-8900
+                  +1 857 250 5101
                 </a>
               </div>
             </div>
