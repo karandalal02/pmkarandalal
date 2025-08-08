@@ -30,18 +30,29 @@ const Experience = () => {
     },
     {
       company: "Newgen Software",
-      role: "Technical Product Manager (Promoted from Software Engineer)",
-      period: "July 2017 - July 2021",
       location: "Mumbai, India",
-      description: "Progressed from Software Engineer to Technical Product Manager, leading automation products for banking and finance. Built services and utilities that enhanced critical process flows and transitioned into product leadership customizing DMS and building BPM systems.",
-      achievements: [
-        "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
-        "Cut application processing time by 1.5x for banking operations",
-        "Built automation tools for loan applications, account opening, and trade functions",
-        "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency.",
-        "Partnered with the Product team to conduct qualitative and quantitative user behavior research to identify key user actions and facilitate effective data collection for informed decision-making"
-      ],
-      logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png"
+      logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png",
+      roles: [
+        {
+          role: "Technical Product Manager",
+          period: "July 2019 - July 2021",
+          description: "Transitioned from engineering to product management, leading internal and external automation products for banking and finance sector clients. Customized Document Management System and built business process management system.",
+          achievements: [
+            "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
+            "Cut application processing time by 1.5x for banking operations",
+            "Built automation tools for loan applications, account opening, and trade functions"
+          ]
+        },
+        {
+          role: "Software Engineer",
+          period: "July 2017 - July 2019",
+          description: "Developed web services and utilities to enhance critical process flows across banking automation products.",
+          achievements: [
+            "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency.",
+            "Partnered with the Product team to conduct qualitative and quantitative user behavior research to identify key user actions and facilitate effective data collection for informed decision-making"
+          ]
+        }
+      ]
     },
     {
       company: "Testbook.com",
@@ -84,48 +95,99 @@ const Experience = () => {
                 <div className="absolute -left-[72px] top-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-glow hidden md:block" />
                 
                 <div className="group p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:bg-card/70 transition-all duration-500 hover:scale-105 hover:shadow-glow">
-                  {/* Company & Role */}
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-foreground mb-1">{exp.role}</h3>
-                      <div className="flex items-center gap-3 text-primary font-semibold">
-                        <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
-                        <div className="flex items-center gap-2">
-                          <Building className="h-4 w-4" />
-                          {exp.company}
+                  {"roles" in exp ? (
+                    <>
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground mb-1">{exp.company}</h3>
+                          <div className="flex items-center gap-3 text-primary font-semibold">
+                            <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
+                            <div className="flex items-center gap-2">
+                              <Building className="h-4 w-4" />
+                              {exp.company}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 text-muted-foreground mt-2 md:mt-0">
+                          <MapPin className="h-4 w-4" />
+                          {exp.location}
                         </div>
                       </div>
-                    </div>
-                    
-                    <div className="flex flex-col md:items-end gap-2 mt-2 md:mt-0">
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        {exp.period}
-                      </div>
-                      <div className="flex items-center gap-2 text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        {exp.location}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Description */}
-                  <p className="text-foreground/80 mb-6 leading-relaxed">
-                    {exp.description}
-                  </p>
-                  
-                  {/* Achievements */}
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-muted-foreground">{achievement}</span>
-                        </li>
+
+                      {exp.roles.map((role, ri) => (
+                        <article key={ri} className={ri === 0 ? "" : "pt-6 border-t border-border/50"}>
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h4 className="text-lg font-semibold text-foreground">{role.role}</h4>
+                            <div className="flex items-center gap-2 text-muted-foreground">
+                              <Calendar className="h-4 w-4" />
+                              {role.period}
+                            </div>
+                          </div>
+                          {role.description && (
+                            <p className="text-foreground/80 mb-4 leading-relaxed">{role.description}</p>
+                          )}
+                          {role.achievements?.length ? (
+                            <div>
+                              <h5 className="font-semibold text-foreground mb-3">Key Achievements</h5>
+                              <ul className="space-y-2">
+                                {role.achievements.map((achievement: string, i: number) => (
+                                  <li key={i} className="flex items-start gap-3">
+                                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                                    <span className="text-muted-foreground">{achievement}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ) : null}
+                        </article>
                       ))}
-                    </ul>
-                  </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Company & Role */}
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                          <h3 className="text-2xl font-bold text-foreground mb-1">{exp.role}</h3>
+                          <div className="flex items-center gap-3 text-primary font-semibold">
+                            <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
+                            <div className="flex items-center gap-2">
+                              <Building className="h-4 w-4" />
+                              {exp.company}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex flex-col md:items-end gap-2 mt-2 md:mt-0">
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <Calendar className="h-4 w-4" />
+                            {exp.period}
+                          </div>
+                          <div className="flex items-center gap-2 text-muted-foreground">
+                            <MapPin className="h-4 w-4" />
+                            {exp.location}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Description */}
+                      <p className="text-foreground/80 mb-6 leading-relaxed">
+                        {exp.description}
+                      </p>
+                      
+                      {/* Achievements */}
+                      <div>
+                        <h4 className="font-semibold text-foreground mb-3">Key Achievements</h4>
+                        <ul className="space-y-2">
+                          {exp.achievements.map((achievement, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                              <span className="text-muted-foreground">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))}
