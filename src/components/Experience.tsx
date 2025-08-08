@@ -30,24 +30,14 @@ const Experience = () => {
     },
     {
       company: "Newgen Software",
-      role: "Technical Product Manager",
-      period: "July 2019 - July 2021",
+      role: "Technical Product Manager (Promoted from Software Engineer)",
+      period: "July 2017 - July 2021",
       location: "Mumbai, India",
-      description: "Transitioned from engineering to product management, leading internal and external automation products for banking and finance sector clients. Customized Document Management System and built business process management system.",
+      description: "Progressed from Software Engineer to Technical Product Manager, leading automation products for banking and finance. Built services and utilities that enhanced critical process flows and transitioned into product leadership customizing DMS and building BPM systems.",
       achievements: [
         "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
         "Cut application processing time by 1.5x for banking operations",
-        "Built automation tools for loan applications, account opening, and trade functions"
-      ],
-      logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png"
-    },
-    {
-      company: "Newgen Software",
-      role: "Software Engineer",
-      period: "July 2017 - July 2019",
-      location: "Mumbai, India",
-      description: "Developed web services and utilities to enhance critical process flows across banking automation products.",
-      achievements: [
+        "Built automation tools for loan applications, account opening, and trade functions",
         "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency.",
         "Partnered with the Product team to conduct qualitative and quantitative user behavior research to identify key user actions and facilitate effective data collection for informed decision-making"
       ],
