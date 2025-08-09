@@ -18,7 +18,7 @@ const Experience = () => {
     {
       company: "Kayak",
       role: "Product Manager (Intern)",
-      period: "2023",
+      period: "Jun 2022 - Dec 2022",
       location: "Boston, MA",
       description: "Focused on solving onboarding friction for new users of Kayak for Business B2B travel management platform. Worked across UX, engineering, and analytics to identify key drop-off points and redesign the onboarding flow.",
       achievements: [
