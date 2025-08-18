@@ -4,27 +4,28 @@ const Experience = () => {
   const experiences = [
     {
       company: "SciPlay",
-      role: "Product Manager",
+      role: "Product Manager, Goldfish Casino",
       period: "Jan 2024 - Present",
       location: "Austin, TX",
       description: "Driving player engagement and monetization in mobile gaming for Goldfish Casino Games team. Building engaging live ops features and data-backed monetization strategies working with design, analytics, and engineering teams.",
       achievements: [
-        "Launched features like Goldies Grand Match, Shockwave, DTC, and piggy bank",
-        "Ran multiple AB tests on battle pass, Goldies Match, and quest system",
-        "Consistently moved engagement KPIs and revenue metrics through data-driven decisions"
+        "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving lift in core engagement KPIs and increase in revenue",
+        "Launched Shockwave, a live ops event incentivizing high-value rewards for players, resulting in increase in hourly engagement KPIs",
+        "Partnered with analytics team to lead tuning experiments on battlepass system, consistently boosting engagement KPIs across multiple seasons",
+        "Collaborated with design team to implement in-game DTC marketing strategy, increasing revenue share"
       ],
       logo: "/lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png"
     },
     {
       company: "Kayak",
-      role: "Product Manager (Intern)",
+      role: "Product Manager, Kayak for business",
       period: "Jun 2022 - Dec 2022",
       location: "Boston, MA",
-      description: "Focused on solving onboarding friction for new users of Kayak for Business B2B travel management platform. Worked across UX, engineering, and analytics to identify key drop-off points and redesign the onboarding flow.",
+      description: "Led redesign of the onboarding flow using Agile, UI/UX collaboration, and customer feedback. Worked across UX, engineering, and analytics to identify key drop-off points and redesign the onboarding flow.",
       achievements: [
-        "Achieved 25% lift in weekly engagement in the first two weeks",
-        "Ran MVP tests with over 95% user feedback response rate",
-        "Led user research and onboarding flow redesign initiatives"
+        "Led redesign of onboarding flow resulting in increase in weekly user engagement",
+        "Analyzed user behavior via FullStory and Snowflake to identify root causes of churn, directly informing onboarding and product improvements",
+        "Conducted UX research and MVP testing (95% survey engagement) to validate onboarding updates and prioritize key features like dynamic home and centralized payments"
       ],
       logo: "/lovable-uploads/d59ff3d4-175f-4eb4-b241-236769939845.png"
     },
@@ -34,21 +35,20 @@ const Experience = () => {
       logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png",
       roles: [
         {
-          role: "Technical Product Manager",
+          role: "Technical Product Manager, Intelligent Process Automation",
           period: "July 2019 - July 2021",
-          description: "Transitioned from engineering to product management, leading internal and external automation products for banking and finance sector clients. Customized Document Management System and built business process management system.",
+          description: "Led cross-functional teams to customize the Document Management System based on customer interviews, streamlining data and improving application processing time. Launched business process flows and partnered with dev/database teams.",
           achievements: [
-            "Led cross-functional teams delivering solutions that streamlined over 40TB of data",
-            "Cut application processing time by 1.5x for banking operations",
-            "Built automation tools for loan applications, account opening, and trade functions"
+            "Led cross-functional teams to customize the Document Management System based on customer interviews, streamlining 40TB of data and improving application processing time by 1.5×",
+            "Launched business process flows and partnered with dev/database teams to build document processing features, improving efficiency by 40% in the theft detection pipeline"
           ]
         },
         {
-          role: "Software Engineer",
+          role: "Software Engineer, Intelligent Process Automation",
           period: "July 2017 - July 2019",
           description: "Developed web services and utilities to enhance critical process flows across banking automation products.",
           achievements: [
-            "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency.",
+            "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency",
             "Partnered with the Product team to conduct qualitative and quantitative user behavior research to identify key user actions and facilitate effective data collection for informed decision-making"
           ]
         }

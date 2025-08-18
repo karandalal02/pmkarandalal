@@ -4,25 +4,27 @@ const Education = () => {
   const education = [
     {
       school: "Northeastern University",
-      degree: "M.S. in Engineering Management",
+      degree: "MS in Engineering Management (Product management), GPA: 3.8",
       location: "Boston, MA",
       date: "Dec 2023",
       logo: "/lovable-uploads/fa409393-d99a-48f2-8ca6-19388e2c1dcd.png",
-      description: "I pursued a cross-disciplinary curriculum that bridged engineering, product strategy, and business innovation. My coursework focused on digital product design, business model innovation, and project management — all directly contributing to how I approach product leadership today.",
+      description: "I pursued a cross-disciplinary curriculum that bridged engineering, product strategy, and business innovation. Relevant Courses: Digital Product Design, Business Model Design, Engineering Project Management — all directly contributing to how I approach product leadership today.",
       achievements: [
-        "Founding member of the Aspiring Product Managers Club (APMC)",
-        "Co-led Protothon, a product hackathon with over 80 participating teams",
-        "Teaching Assistant for Engineering Probability and Statistics, supporting over 40 students each semester"
+        "Founding member of the Aspiring Product Managers Club (APMC), shaping the club's vision",
+        "Co-organized the first two seasons of Protothon, a product hackathon with 80+ participating teams, and mentored 20+ students aspiring to enter product management",
+        "Teaching Assistant for Engineering Probability and Statistics; supported course planning and assisted 40+ students per semester by addressing queries and feedback"
       ]
     },
     {
       school: "Pune University",
-      degree: "B.Tech in Computer Engineering",
+      degree: "B.Tech in Computer Engineering, GPA: 3.7",
       location: "Pune, India",
       date: "May 2017",
       logo: "/lovable-uploads/99508ba8-47ec-4f8e-b7c9-60cce91e0199.png",
-      description: "My undergraduate degree gave me a strong foundation in systems thinking, problem solving, and data-driven development. Courses in data structures, system design, and databases helped shape the technical lens I bring to product management today.",
-      achievements: []
+      description: "My undergraduate degree gave me a strong foundation in systems thinking, problem solving, and data-driven development. Relevant Courses: Data Structure, Database Management, Computer Graphics, Data Mining Techniques helped shape the technical lens I bring to product management today.",
+      achievements: [
+        "Product Marketing Intern at Testbook.com - Introduced 400+ new customers by organizing a focus group and conducting beta testing"
+      ]
     }
   ];
 

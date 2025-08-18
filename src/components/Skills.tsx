@@ -6,13 +6,13 @@ const Skills = () => {
       title: "Product Strategy",
       icon: Target,
       color: "from-purple-500 to-pink-500",
-      skills: ["Product Roadmapping", "Market Research", "Competitive Analysis", "User Research", "A/B Testing"]
+      skills: ["Gap Analysis", "A/B Testing", "Product Strategy", "Stakeholder Management", "Scrum Master", "Product Roadmapping", "Market Research", "Competitive Analysis", "User Research"]
     },
     {
       title: "Technical Skills", 
       icon: Code,
       color: "from-blue-500 to-cyan-500",
-      skills: ["SQL", "PL/SQL", "JAVA", "JSP", "Jscript", "Python"]
+      skills: ["SQL", "PL/SQL", "Java", "JSP", "JavaScript", "Python"]
     },
     {
       title: "Design & UX",
@@ -35,13 +35,14 @@ const Skills = () => {
   ];
 
   const techStack = [
-    { name: "Figma", color: "bg-purple-500" },
-    { name: "Adobe XD", color: "bg-pink-500" },
     { name: "Tableau", color: "bg-blue-500" },
     { name: "Snowflake", color: "bg-cyan-500" },
-    { name: "Notion", color: "bg-gray-500" },
-    { name: "Slack", color: "bg-green-500" },
-    { name: "Jira", color: "bg-indigo-500" }
+    { name: "Jira", color: "bg-indigo-500" },
+    { name: "Trello", color: "bg-blue-600" },
+    { name: "Miro", color: "bg-yellow-500" },
+    { name: "Figma", color: "bg-purple-500" },
+    { name: "Adobe XD", color: "bg-pink-500" },
+    { name: "Notion", color: "bg-gray-500" }
   ];
 
   return (
