@@ -4,17 +4,31 @@ const Experience = () => {
   const experiences = [
     {
       company: "SciPlay",
-      role: "Product Manager, Goldfish Casino",
-      period: "Jan 2024 - Present",
       location: "Austin, TX",
-      description: "Driving player engagement and monetization in mobile gaming for Goldfish Casino Games team. Building engaging live ops features and data-backed monetization strategies working with design, analytics, and engineering teams.",
-      achievements: [
-        "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving lift in core engagement KPIs and increase in revenue",
-        "Launched Shockwave, a live ops event incentivizing high-value rewards for players, resulting in increase in hourly engagement KPIs",
-        "Partnered with analytics team to lead tuning experiments on battlepass system, consistently boosting engagement KPIs across multiple seasons",
-        "Collaborated with design team to implement in-game DTC marketing strategy, increasing revenue share"
-      ],
-      logo: "/lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png"
+      logo: "/lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png",
+      roles: [
+        {
+          role: "Product Manager, Bingo Showdown (Mobile F2P)",
+          period: "Aug 2025 - Present",
+          description: "Driving retention, monetization, and LiveOps innovation on Bingo Showdown by partnering with analytics, design, and engineering to ship data-backed features.",
+          achievements: [
+            "Partnered with analytics to identify new user pain points and drive an experimentation roadmap, improving D7 retention by 2% and ARPI by 1.5%",
+            "Designed and launched Task Train, a meta feature focused on strengthening the game's core loop, driving a 4% increase in overall engagement",
+            "Built a dynamic theming system for LiveOps events, enabling in-game visual refreshes using existing art assets and increasing time on app by 2% on event days"
+          ]
+        },
+        {
+          role: "Product Manager, Goldfish Casino (Mobile F2P)",
+          period: "Jan 2024 - Aug 2025",
+          description: "Drove player engagement and monetization for Goldfish Casino, building engaging live ops features and data-backed monetization strategies with design, analytics, and engineering teams.",
+          achievements: [
+            "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving a 5% lift in core engagement KPIs and a 3% increase in revenue",
+            "Launched Shockwave, a live ops event that incentivized high-value rewards for players, resulting in a 7% increase in hourly engagement KPIs",
+            "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system, consistently boosting engagement KPIs by 8% across 10 seasons",
+            "Collaborated with the design team to implement an in-game DTC marketing strategy, increasing revenue share by 1.5%"
+          ]
+        }
+      ]
     },
     {
       company: "Kayak",
