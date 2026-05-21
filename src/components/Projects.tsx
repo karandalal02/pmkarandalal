@@ -13,7 +13,8 @@ const Projects = () => {
       result: "+5% engagement KPIs, +3% revenue increase",
       icon: Target,
       gradient: "from-purple-500 via-pink-500 to-red-500",
-      accent: "purple"
+      accent: "purple",
+      href: "/goldies-grand-match"
     },
     {
       title: "Shockwave Live Ops Event",
