@@ -25,7 +25,8 @@ const Projects = () => {
       result: "+7% increase in hourly engagement KPIs",
       icon: Zap,
       gradient: "from-blue-500 via-cyan-500 to-teal-500",
-      accent: "cyan"
+      accent: "cyan",
+      href: "/shockwave"
     },
     {
       title: "Onboarding Flow Redesign",
