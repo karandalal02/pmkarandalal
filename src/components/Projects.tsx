@@ -1,5 +1,6 @@
 import { ArrowUpRight, Target, TrendingUp, Users, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const projects = [
