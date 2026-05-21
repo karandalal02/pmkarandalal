@@ -133,7 +133,7 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Wrapper>
             );
           })}
         </div>
