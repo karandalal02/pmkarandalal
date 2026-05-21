@@ -68,10 +68,13 @@ const Projects = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
+            const Wrapper: any = project.href ? Link : "div";
+            const wrapperProps: any = project.href ? { to: project.href } : {};
             return (
-              <div
+              <Wrapper
                 key={index}
-                className="group relative bg-card/40 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-700 hover:scale-105 hover:shadow-premium"
+                {...wrapperProps}
+                className={`group relative bg-card/40 backdrop-blur-xl border border-border/30 rounded-3xl overflow-hidden hover:border-primary/40 transition-all duration-700 hover:scale-105 hover:shadow-premium ${project.href ? "cursor-pointer block" : ""}`}
               >
                 {/* Animated background gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-all duration-700`} />
