@@ -286,20 +286,9 @@ const GoldiesGrandMatch = () => {
               className="w-full h-auto bg-black"
             />
           </div>
-          <p className="text-sm text-muted-foreground italic mb-12">
+          <p className="text-sm text-muted-foreground italic">
             Goldies Grand Match — feature walkthrough.
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {[1, 2, 3, 4].map((n) => (
-              <div
-                key={n}
-                className="aspect-[4/3] border-2 border-dashed border-border rounded-3xl bg-card flex items-center justify-center text-muted-foreground text-sm"
-              >
-                Add screenshot here
-              </div>
-            ))}
-          </div>
         </Section>
 
         {/* REFLECTION */}
