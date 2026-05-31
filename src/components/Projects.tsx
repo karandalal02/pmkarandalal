@@ -29,15 +29,16 @@ const Projects = () => {
       href: "/shockwave"
     },
     {
-      title: "Onboarding Flow Redesign",
-      company: "Kayak",
-      role: "Product Manager", 
-      problem: "New business users were dropping off before completing onboarding — unclear value and friction points.",
-      solution: "Conducted FullStory + Snowflake analysis, user interviews, and usability testing to redesign the onboarding experience. Built and tested MVP flows with 30+ users.",
-      result: "+25% weekly user engagement, validated feature roadmap",
-      icon: Users,
-      gradient: "from-orange-500 via-amber-500 to-yellow-500",
-      accent: "amber"
+      title: "AI Job Search System",
+      company: "Personal Project",
+      role: "Designer & Builder",
+      problem: "A job search generates data across Gmail, LinkedIn, and Notion — reconstructing context every morning created cognitive overhead at the worst possible time.",
+      solution: "A personal AI system that automates morning job search prioritisation using Gmail, Notion, and Claude. Synthesises inputs into a single prioritised action list for the day.",
+      result: "30 min saved daily, 0 missed follow-ups, under 2 min manual input",
+      icon: Sparkles,
+      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+      accent: "emerald",
+      href: "/ai-job-search-system"
     }
   ];
 
