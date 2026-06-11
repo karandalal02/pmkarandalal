@@ -19,22 +19,23 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <div className="inline-block px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium">
-                👋 Hello! I'm Karan.
+                Senior Product Manager — Mobile F2P Gaming
               </div>
               
               <h1 className="text-5xl lg:text-7xl font-display font-black leading-tight text-foreground">
-                Designing digital
+                Live ops, monetization,
                 <br />
-                product with emphasis
-                <br />
-                on <span className="text-muted-foreground">user experience</span>
+                and <span className="text-muted-foreground">player engagement</span>
               </h1>
             </div>
             
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                A former Software Developer turned Product Manager with 6 years of experience (2 years as developer, 4 in product roles) building 
-                high-quality, cohesive, and scalable products at Sciplay.
-              </p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              Currently driving growth at SciPlay for Bingo Showdown and Goldfish Casino. I ship data‑driven features that grow engagement and revenue — and I validate every bet with experimentation.
+            </p>
+            
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              I bridge engineering, product, and UX to build experiences players actually want to return to. From dynamic live‑ops theming and meta systems to monetization and retention, I run experiments, read the data, and focus on impact. B.Tech in Computer Engineering, MS in Engineering Management.
+            </p>
             
             
             {/* Clean metrics */}
