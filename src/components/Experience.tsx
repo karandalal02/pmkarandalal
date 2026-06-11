@@ -12,7 +12,7 @@ const Experience = () => {
           period: "Aug 2025 - Present",
           description: "Driving retention, monetization, and LiveOps innovation on Bingo Showdown by partnering with analytics, design, and engineering to ship data-backed features.",
           achievements: [
-            "Partnered with analytics to identify new user pain points and drive an experimentation roadmap, improving D7 retention by 2% and ARPI by 1.5%",
+            "Partnered with analytics to identify new user pain points and drive an experimentation roadmap for new install cohorts, improving D7 retention by 2% and average revenue per install (ARPI) by 1.5%",
             "Designed and launched Task Train, a meta feature focused on strengthening the game's core loop, driving a 4% increase in overall engagement",
             "Built a dynamic theming system for LiveOps events, enabling in-game visual refreshes using existing art assets and increasing time on app by 2% on event days"
           ]
@@ -24,7 +24,7 @@ const Experience = () => {
           achievements: [
             "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving a 5% lift in core engagement KPIs and a 3% increase in revenue",
             "Launched Shockwave, a live ops event that incentivized high-value rewards for players, resulting in a 7% increase in hourly engagement KPIs",
-            "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system, consistently boosting engagement KPIs by 8% across 10 seasons",
+            "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system across 10 seasons; average engagement with the new design finished 8% higher than the pre-experiment baseline",
             "Collaborated with the design team to implement an in-game DTC marketing strategy, increasing revenue share by 1.5%"
           ]
         }
