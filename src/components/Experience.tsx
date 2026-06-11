@@ -24,7 +24,7 @@ const Experience = () => {
           achievements: [
             "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving a 5% lift in core engagement KPIs and a 3% increase in revenue",
             "Launched Shockwave, a live ops event that incentivized high-value rewards for players, resulting in a 7% increase in hourly engagement KPIs",
-            "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system, consistently boosting engagement KPIs by 8% across 10 seasons",
+            "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system across 10 seasons; average engagement with the new design finished 8% higher than the pre-experiment baseline",
             "Collaborated with the design team to implement an in-game DTC marketing strategy, increasing revenue share by 1.5%"
           ]
         }
