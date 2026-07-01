@@ -32,7 +32,7 @@ const Hero = () => {
             </div>
             
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                A former Software Developer turned Product Manager with 6 years of experience (2 years as developer, 4 in product roles) building 
+                A former Software Developer turned Product Manager with 7 years of experience (2 years as developer, 5 in product roles) building 
                 high-quality, cohesive, and scalable products at Sciplay.
               </p>
             
@@ -40,7 +40,7 @@ const Hero = () => {
             {/* Clean metrics */}
             <div className="pt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-xl mx-auto">
               {[
-                { value: "6", label: "Years Experience" },
+                { value: "7", label: "Years Experience" },
                 { value: "CSPO", label: "Certified" }
               ].map((metric, index) => (
                 <div key={index} className="text-center">
