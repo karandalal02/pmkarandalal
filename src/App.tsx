@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import GoldiesGrandMatch from "./pages/GoldiesGrandMatch";
 import Shockwave from "./pages/Shockwave";
 import AiJobSearchSystem from "./pages/AiJobSearchSystem";
+import TvTime2 from "./pages/TvTime2";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/goldies-grand-match" element={<GoldiesGrandMatch />} />
           <Route path="/shockwave" element={<Shockwave />} />
           <Route path="/ai-job-search-system" element={<AiJobSearchSystem />} />
+          <Route path="/tv-time-2-0" element={<TvTime2 />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
