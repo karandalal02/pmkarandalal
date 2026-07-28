@@ -80,7 +80,7 @@ const Projects = () => {
         </div>
         
         {/* Modern project grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             const Wrapper: any = project.href ? Link : "div";
