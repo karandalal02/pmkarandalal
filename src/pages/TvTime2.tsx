@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Linkedin, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
+import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
 
 const tags = [
   "Personal Project",
