@@ -1,6 +1,7 @@
 import { ArrowUpRight, Target, TrendingUp, Users, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
 
 const Projects = () => {
   const projects = [
