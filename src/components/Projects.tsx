@@ -39,8 +39,21 @@ const Projects = () => {
       gradient: "from-emerald-500 via-teal-500 to-cyan-500",
       accent: "emerald",
       href: "/ai-job-search-system"
+    },
+    {
+      title: "TV Time 2.0",
+      company: "Personal Project",
+      role: "Claude Code · TMDB · Google Drive · Vercel",
+      problem: "A minimal personal show and movie tracker built after TV Time shut down on July 15 2026 — no social layer, no complexity, just pure tracking with a release calendar view.",
+      solution: "Search anything from TMDB, mark episodes watched in one click, and see a weekly release calendar. Watch history lives in your own Google Drive — no servers, no subscription.",
+      result: "Live — try it",
+      icon: Users,
+      gradient: "from-amber-500 via-orange-500 to-rose-500",
+      accent: "amber",
+      href: "/tv-time-2-0"
     }
   ];
+
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
@@ -67,7 +80,7 @@ const Projects = () => {
         </div>
         
         {/* Modern project grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-5xl mx-auto">
           {projects.map((project, index) => {
             const IconComponent = project.icon;
             const Wrapper: any = project.href ? Link : "div";
