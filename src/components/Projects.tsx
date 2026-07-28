@@ -99,10 +99,20 @@ const Projects = () => {
                 <div className="relative p-8">
                   {/* Modern icon design */}
                   <div className="relative mb-8">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-50`} />
-                    <div className={`relative inline-flex p-4 rounded-2xl bg-gradient-to-r ${project.gradient}`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} icon`}
+                        className="relative w-16 h-16 rounded-2xl shadow-lg object-cover"
+                      />
+                    ) : (
+                      <>
+                        <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-50`} />
+                        <div className={`relative inline-flex p-4 rounded-2xl bg-gradient-to-r ${project.gradient}`}>
+                          <IconComponent className="h-8 w-8 text-white" />
+                        </div>
+                      </>
+                    )}
                   </div>
                   
                   {/* Company badge */}
