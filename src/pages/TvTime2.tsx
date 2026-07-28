@@ -88,7 +88,12 @@ const TvTime2 = () => {
             <Sparkles className="inline w-3.5 h-3.5 mr-2" />
             Case Study
           </div>
-          <h1 className="text-5xl lg:text-7xl font-display font-black leading-tight mb-6">
+          <h1 className="text-5xl lg:text-7xl font-display font-black leading-tight mb-6 flex items-center gap-4">
+            <img
+              src={tvtimeIcon.url}
+              alt="TV Time 2.0 icon"
+              className="w-14 h-14 lg:w-20 lg:h-20 rounded-2xl shadow-lg object-cover"
+            />
             TV Time 2.0
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed mb-8 max-w-3xl">
@@ -153,13 +158,12 @@ const TvTime2 = () => {
           </p>
         </Section>
 
-        <Section title="Making It Work for Others" eyebrow="What Is Next">
-          <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
-            Right now the app uses my own Google Drive for storage, which means only I can use it. The next version gives each user their own Google Drive connection so their data is theirs, stored where they control it. No shared database, no privacy concerns, no single point of failure.
-          </p>
-          <p className="text-muted-foreground leading-relaxed max-w-3xl">
-            The goal is not to rebuild TV Time. The goal is to solve the one thing TV Time did well — letting you know where you are and what is coming next — without any of the complexity that made TV Time expensive to run.
-          </p>
+        <Section title="User feedback collection" eyebrow="What Is Next">
+          <ul className="text-muted-foreground leading-relaxed max-w-3xl space-y-3 list-disc pl-5">
+            <li>Gather user feedback</li>
+            <li>Understand user problems and make improvements</li>
+            <li>Minor tweaks to make it more intuitive</li>
+          </ul>
         </Section>
 
         <section className="mt-24 mb-12 text-center">
