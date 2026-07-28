@@ -1,6 +1,7 @@
 import { ArrowUpRight, Target, TrendingUp, Users, Zap, Sparkles, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
 
 const Projects = () => {
   const projects = [
@@ -48,6 +49,7 @@ const Projects = () => {
       solution: "Search anything from TMDB, mark episodes watched in one click, and see a weekly release calendar. Watch history lives in your own Google Drive — no servers, no subscription.",
       result: "Live — try it",
       icon: Users,
+      image: tvtimeIcon.url,
       gradient: "from-amber-500 via-orange-500 to-rose-500",
       accent: "amber",
       href: "/tv-time-2-0"
@@ -97,10 +99,20 @@ const Projects = () => {
                 <div className="relative p-8">
                   {/* Modern icon design */}
                   <div className="relative mb-8">
-                    <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-50`} />
-                    <div className={`relative inline-flex p-4 rounded-2xl bg-gradient-to-r ${project.gradient}`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} icon`}
+                        className="relative w-16 h-16 rounded-2xl shadow-lg object-cover"
+                      />
+                    ) : (
+                      <>
+                        <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} rounded-2xl blur-xl opacity-50`} />
+                        <div className={`relative inline-flex p-4 rounded-2xl bg-gradient-to-r ${project.gradient}`}>
+                          <IconComponent className="h-8 w-8 text-white" />
+                        </div>
+                      </>
+                    )}
                   </div>
                   
                   {/* Company badge */}
