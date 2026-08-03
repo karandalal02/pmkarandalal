@@ -217,33 +217,19 @@ const AiJobSearchSystem = () => {
         <Section title="What It Looks Like" eyebrow="Example Output">
           <div className="bg-muted/50 border border-border rounded-3xl p-6 md:p-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <figure>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                  <img
-                    src={morningBriefImg}
-                    alt="Morning Brief view of the AI Job Search System showing the Run Brief action"
-                    className="w-full h-auto"
-                  />
-                </div>
-                <figcaption className="text-sm text-muted-foreground mt-3 text-center">
-                  Morning Brief — one-click scan of Gmail and Notion to load the day's action list.
-                </figcaption>
-              </figure>
-              <figure>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                  <img
-                    src={contactsImg}
-                    alt="Contacts view of the AI Job Search System showing manual contact entry"
-                    className="w-full h-auto"
-                  />
-                </div>
-                <figcaption className="text-sm text-muted-foreground mt-3 text-center">
-                  Contacts — outreach list auto-populated via the Morning Brief, with minimal manual add.
-                </figcaption>
-              </figure>
+              {screenshots.map((s) => (
+                <figure key={s.caption}>
+                  <div className="bg-card border border-border rounded-2xl overflow-hidden">
+                    <img src={s.src} alt={s.alt} className="w-full h-auto" />
+                  </div>
+                  <figcaption className="text-sm text-muted-foreground mt-3 text-center">
+                    {s.caption}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
             <p className="text-xs text-muted-foreground italic mt-6 text-center">
-              Names, email addresses, and company details have been anonymised.
+              Names, email addresses, and company details have been anonymised in some sections.
             </p>
           </div>
         </Section>
