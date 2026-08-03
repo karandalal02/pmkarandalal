@@ -196,7 +196,7 @@ const AiJobSearchSystem = () => {
         {/* WHAT I BUILT */}
         <Section title="A Morning Brief, Not Another Dashboard" eyebrow="What I Built">
           <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
-            The system has three components working together:
+            The system has five components working together:
           </p>
           <ol className="relative border-l-2 border-border pl-8 space-y-10">
             {components.map((step, i) => (
