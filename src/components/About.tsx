@@ -68,7 +68,7 @@ const About = () => {
                 <div>
                   <h3 className="font-semibold text-foreground mb-2">Product Leadership</h3>
                   <p className="text-sm text-muted-foreground">
-                    6+ years driving product strategy and user engagement
+                    7 years driving product strategy and user engagement
                   </p>
                 </div>
               </div>
