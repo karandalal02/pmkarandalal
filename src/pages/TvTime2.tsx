@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Linkedin, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
 import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
+import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
+import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
+import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
+
+const screenshots = [
+  { src: shot1.url, caption: "Watch Next — up next episodes and shows yet to start" },
+  { src: shot2.url, caption: "Movies — a simple to-watch list with runtime and year" },
+  { src: shot3.url, caption: "Stats — episodes, hours watched, and shows tracked" },
+];
 
 const tags = [
   "Personal Project",
@@ -142,7 +151,26 @@ const TvTime2 = () => {
           </div>
         </Section>
 
+        <Section title="Inside the App" eyebrow="Screenshots">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {screenshots.map((s) => (
+              <figure key={s.src} className="bg-card border border-border rounded-3xl p-4">
+                <img
+                  src={s.src}
+                  alt={s.caption}
+                  loading="lazy"
+                  className="w-full rounded-2xl border border-border object-cover"
+                />
+                <figcaption className="text-sm text-muted-foreground mt-4 leading-relaxed">
+                  {s.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Section>
+
         <Section title="Tech Stack" eyebrow="How It Is Built">
+
           <div className="flex flex-wrap gap-2 mb-8">
             {stack.map((t) => (
               <span
