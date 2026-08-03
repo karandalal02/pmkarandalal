@@ -2,15 +2,36 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
-import morningBriefImg from "@/assets/ai-job-search-morning-brief.png";
-import contactsImg from "@/assets/ai-job-search-contacts.png";
+import shot1 from "@/assets/screenshot_1_clean.png.asset.json";
+import shot2 from "@/assets/screenshot_2_redacted.png.asset.json";
+import shot3 from "@/assets/screenshot_3_clean.png.asset.json";
 
 const tags = ["AI", "Automation", "Claude API", "Product Thinking"];
 
 const stats = [
-  { value: "30 min", label: "Saved every morning on context reconstruction" },
-  { value: "0", label: "Missed follow-ups since system launched" },
-  { value: "< 2 min", label: "Daily manual input required" },
+  { value: "30 min", label: "Saved every morning" },
+  { value: "0", label: "Missed follow-ups since launch" },
+  { value: "5", label: "Integrations running simultaneously" },
+  { value: "4", label: "Data sources synthesised into one brief" },
+];
+
+const screenshots = [
+  {
+    src: shot1.url,
+    alt: "Tool calls running across Gmail, Calendar, and Notion",
+    caption: "Tool calls running across Gmail, Calendar, and Notion",
+  },
+  {
+    src: shot2.url,
+    alt: "New activity flagged since yesterday including rejections and inbound recruiter outreach",
+    caption:
+      "New activity flagged since yesterday including rejections and inbound recruiter outreach",
+  },
+  {
+    src: shot3.url,
+    alt: "Missing debrief notes flagged with specific interviews named",
+    caption: "Missing debrief notes flagged with specific interviews named",
+  },
 ];
 
 const components = [
@@ -19,12 +40,20 @@ const components = [
     body: "Claude connects to Gmail via MCP and scans the inbox for job-search related activity. It reads LinkedIn notification emails to track connection requests, accepted connections, and messages — no manual LinkedIn input needed. It also identifies recruiter responses, application status updates, calendar invites, and anything else requiring action. Each item is tagged with a suggested action and urgency level.",
   },
   {
-    title: "Notion Contact Tracker",
-    body: "A lightweight Notion page updated in under 2 minutes at the end of each day. Tracks warm contacts — people reached out to directly via cold email or referral — with last contact date and current status. Claude reads this every morning and flags anyone overdue for follow-up.",
+    title: "Google Calendar Check",
+    body: "Scans today and the next 48 hours for any scheduled interviews or important events. Flags anything that needs prep or confirmation before the day starts.",
+  },
+  {
+    title: "Notion Pipeline Tracker",
+    body: "Tracks all active leads, their current stage, and last contact date. Flags anyone overdue for follow-up based on time elapsed.",
+  },
+  {
+    title: "Granola Interview Notes",
+    body: "When an interview happens, Granola captures the transcript automatically. The morning after, the system surfaces key takeaways, open action items, and any follow-ups due from that conversation — so nothing falls through the cracks after a busy interview day.",
   },
   {
     title: "Morning Brief Output",
-    body: "Claude synthesises both inputs and outputs a prioritised action list for today only. Structured as: Urgent (do now) and Do Today. Each item includes what needs to happen and why it is prioritised today specifically.",
+    body: "Claude synthesises all four inputs and outputs a prioritised action list. Format: URGENT, DO TODAY, FOLLOW-UPS DUE, ACTIVE PIPELINE STATUS, WEEKLY PACE.",
   },
 ];
 
@@ -38,10 +67,11 @@ const designDecisions = [
     body: "Adding another interface to check every morning defeats the purpose. The output is a plain text brief — readable in 60 seconds, actionable immediately. No login, no navigation, no charts.",
   },
   {
-    title: "Minimum Viable Input",
-    body: "The constraint: if maintaining the system costs more time than it saves, it is not worth building. LinkedIn state is inferred from Gmail notifications. The only manual input is cold email tracking — under 2 minutes a day.",
+    title: "Granola Over Manual Notes",
+    body: "Interview transcripts used to be the hardest part to capture consistently. Integrating Granola meant the notes happen automatically — no manual entry, no forgotten follow-ups after a long day of back-to-back interviews.",
   },
 ];
+
 
 const AiJobSearchSystem = () => {
   const [showSticky, setShowSticky] = useState(false);
