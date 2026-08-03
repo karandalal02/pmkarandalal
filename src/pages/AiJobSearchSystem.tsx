@@ -147,12 +147,12 @@ const AiJobSearchSystem = () => {
         {/* CONTEXT */}
         <Section title="The Setup" eyebrow="Context">
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
-            I built this during an active job search, starting from scratch and iterating as the search evolved. The system is ongoing — each week of searching reveals new friction points and new ways to improve it.
+            I built this during an active job search, starting from scratch and iterating as the search evolved. It has grown significantly since the initial version — what began as a Gmail and Notion connection now spans five integrations, with each new component added in response to a real gap in the search.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <MetaCard label="My Role" value="Designer and Builder" />
-            <MetaCard label="Tools" value="Claude API, Gmail MCP, Notion MCP, Python" />
-            <MetaCard label="Timeline" value="Built and iterating — ongoing" />
+            <MetaCard label="Tools" value="Claude API, Gmail MCP, Google Calendar MCP, Notion MCP, Granola, Python" />
+            <MetaCard label="Timeline" value="Built and expanded continuously — grown from 2 to 5 integrations and still ongoing" />
           </div>
         </Section>
 
