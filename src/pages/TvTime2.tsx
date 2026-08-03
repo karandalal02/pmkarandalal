@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Linkedin, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
 import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
+import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
+import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
+import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
+
+const screenshots = [
+  { src: shot1.url, caption: "Watch Next — up next episodes and shows yet to start" },
+  { src: shot2.url, caption: "Movies — a simple to-watch list with runtime and year" },
+  { src: shot3.url, caption: "Stats — episodes, hours watched, and shows tracked" },
+];
 
 const tags = [
   "Personal Project",
