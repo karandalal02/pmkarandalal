@@ -293,11 +293,15 @@ const AiJobSearchSystem = () => {
 
         {/* REFLECTION */}
         <Section title="What Is Next" eyebrow="Reflection">
-          <div className="bg-card border border-border rounded-3xl p-8 max-w-3xl">
+          <div className="bg-card border border-border rounded-3xl p-8 max-w-3xl space-y-5">
             <p className="text-muted-foreground leading-relaxed">
-              The immediate next improvement is integrating Utori — a job discovery tool that monitors the web for new PM roles posted in the last 24 hours based on custom criteria. Adding Utori's daily results directly into the morning brief would mean the brief becomes the single starting point for the day: here are the new roles worth looking at, here are the follow-ups due, here is what needs action. Everything in one place before anything else starts.
+              The system started as a Gmail and Notion connection. It grew because each new interview round revealed a new gap — a missed follow-up, a debrief note that never got written, a calendar event that needed prep the morning of. Each gap became a new component.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              The next improvement is integrating job discovery directly into the brief. A tool like Utori monitors new PM roles posted in the last 24 hours. Adding that feed means the morning brief becomes the single starting point: here are the new roles worth looking at, here are the follow-ups due, here is what needs attention. One place before anything else starts.
             </p>
           </div>
+
         </Section>
 
         {/* FOOTER CTA */}
