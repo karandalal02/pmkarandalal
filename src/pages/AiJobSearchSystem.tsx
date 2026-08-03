@@ -164,7 +164,7 @@ const AiJobSearchSystem = () => {
                 The Observation
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                A job search generates data across multiple channels simultaneously. Gmail receives recruiter responses, application confirmations, and status updates. LinkedIn tracks connection requests, accepted connections, and message threads. Notion holds warm contact history and follow-up dates. Each part of the job search is handled by a specialised tool — and as a job seeker there is manual overhead to keep track of everything across them.
+                A job search generates data across more channels than any one tool handles. Gmail receives recruiter responses, application confirmations, LinkedIn notification emails, and rejection updates. Google Calendar holds interview schedules and follow-up reminders. Notion is the source of truth for pipeline status, company notes, and contact history. Granola captures interview transcripts automatically. Each is specialised. None talks to the others.
               </p>
             </div>
             <div className="bg-card border border-border rounded-3xl p-8">
