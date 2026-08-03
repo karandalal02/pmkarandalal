@@ -2,15 +2,36 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Sparkles } from "lucide-react";
 import Footer from "@/components/Footer";
-import morningBriefImg from "@/assets/ai-job-search-morning-brief.png";
-import contactsImg from "@/assets/ai-job-search-contacts.png";
+import shot1 from "@/assets/screenshot_1_clean.png.asset.json";
+import shot2 from "@/assets/screenshot_2_redacted.png.asset.json";
+import shot3 from "@/assets/screenshot_3_clean.png.asset.json";
 
 const tags = ["AI", "Automation", "Claude API", "Product Thinking"];
 
 const stats = [
-  { value: "30 min", label: "Saved every morning on context reconstruction" },
-  { value: "0", label: "Missed follow-ups since system launched" },
-  { value: "< 2 min", label: "Daily manual input required" },
+  { value: "30 min", label: "Saved every morning" },
+  { value: "0", label: "Missed follow-ups since launch" },
+  { value: "5", label: "Integrations running simultaneously" },
+  { value: "4", label: "Data sources synthesised into one brief" },
+];
+
+const screenshots = [
+  {
+    src: shot1.url,
+    alt: "Tool calls running across Gmail, Calendar, and Notion",
+    caption: "Tool calls running across Gmail, Calendar, and Notion",
+  },
+  {
+    src: shot2.url,
+    alt: "New activity flagged since yesterday including rejections and inbound recruiter outreach",
+    caption:
+      "New activity flagged since yesterday including rejections and inbound recruiter outreach",
+  },
+  {
+    src: shot3.url,
+    alt: "Missing debrief notes flagged with specific interviews named",
+    caption: "Missing debrief notes flagged with specific interviews named",
+  },
 ];
 
 const components = [
@@ -19,12 +40,20 @@ const components = [
     body: "Claude connects to Gmail via MCP and scans the inbox for job-search related activity. It reads LinkedIn notification emails to track connection requests, accepted connections, and messages — no manual LinkedIn input needed. It also identifies recruiter responses, application status updates, calendar invites, and anything else requiring action. Each item is tagged with a suggested action and urgency level.",
   },
   {
-    title: "Notion Contact Tracker",
-    body: "A lightweight Notion page updated in under 2 minutes at the end of each day. Tracks warm contacts — people reached out to directly via cold email or referral — with last contact date and current status. Claude reads this every morning and flags anyone overdue for follow-up.",
+    title: "Google Calendar Check",
+    body: "Scans today and the next 48 hours for any scheduled interviews or important events. Flags anything that needs prep or confirmation before the day starts.",
+  },
+  {
+    title: "Notion Pipeline Tracker",
+    body: "Tracks all active leads, their current stage, and last contact date. Flags anyone overdue for follow-up based on time elapsed.",
+  },
+  {
+    title: "Granola Interview Notes",
+    body: "When an interview happens, Granola captures the transcript automatically. The morning after, the system surfaces key takeaways, open action items, and any follow-ups due from that conversation — so nothing falls through the cracks after a busy interview day.",
   },
   {
     title: "Morning Brief Output",
-    body: "Claude synthesises both inputs and outputs a prioritised action list for today only. Structured as: Urgent (do now) and Do Today. Each item includes what needs to happen and why it is prioritised today specifically.",
+    body: "Claude synthesises all four inputs and outputs a prioritised action list. Format: URGENT, DO TODAY, FOLLOW-UPS DUE, ACTIVE PIPELINE STATUS, WEEKLY PACE.",
   },
 ];
 
@@ -38,10 +67,11 @@ const designDecisions = [
     body: "Adding another interface to check every morning defeats the purpose. The output is a plain text brief — readable in 60 seconds, actionable immediately. No login, no navigation, no charts.",
   },
   {
-    title: "Minimum Viable Input",
-    body: "The constraint: if maintaining the system costs more time than it saves, it is not worth building. LinkedIn state is inferred from Gmail notifications. The only manual input is cold email tracking — under 2 minutes a day.",
+    title: "Granola Over Manual Notes",
+    body: "Interview transcripts used to be the hardest part to capture consistently. Integrating Granola meant the notes happen automatically — no manual entry, no forgotten follow-ups after a long day of back-to-back interviews.",
   },
 ];
+
 
 const AiJobSearchSystem = () => {
   const [showSticky, setShowSticky] = useState(false);
@@ -97,7 +127,7 @@ const AiJobSearchSystem = () => {
             AI Job Search System
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed mb-8 max-w-3xl">
-            A personal automation system built to eliminate daily overhead and surface what actually needs attention during a job search
+            An automated daily standup system built during an active job search — connecting Gmail, Google Calendar, Notion, and Granola to surface what needs attention before the day starts.
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             {tags.map((t) => (
@@ -117,12 +147,12 @@ const AiJobSearchSystem = () => {
         {/* CONTEXT */}
         <Section title="The Setup" eyebrow="Context">
           <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
-            I built this during an active job search, starting from scratch and iterating as the search evolved. The system is ongoing — each week of searching reveals new friction points and new ways to improve it.
+            I built this during an active job search, starting from scratch and iterating as the search evolved. It has grown significantly since the initial version — what began as a Gmail and Notion connection now spans five integrations, with each new component added in response to a real gap in the search.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <MetaCard label="My Role" value="Designer and Builder" />
-            <MetaCard label="Tools" value="Claude API, Gmail MCP, Notion MCP, Python" />
-            <MetaCard label="Timeline" value="Built and iterating — ongoing" />
+            <MetaCard label="Tools" value="Claude API, Gmail MCP, Google Calendar MCP, Notion MCP, Granola, Python" />
+            <MetaCard label="Timeline" value="Built and expanded continuously — grown from 2 to 5 integrations and still ongoing" />
           </div>
         </Section>
 
@@ -134,7 +164,7 @@ const AiJobSearchSystem = () => {
                 The Observation
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                A job search generates data across multiple channels simultaneously. Gmail receives recruiter responses, application confirmations, and status updates. LinkedIn tracks connection requests, accepted connections, and message threads. Notion holds warm contact history and follow-up dates. Each part of the job search is handled by a specialised tool — and as a job seeker there is manual overhead to keep track of everything across them.
+                A job search generates data across more channels than any one tool handles. Gmail receives recruiter responses, application confirmations, LinkedIn notification emails, and rejection updates. Google Calendar holds interview schedules and follow-up reminders. Notion is the source of truth for pipeline status, company notes, and contact history. Granola captures interview transcripts automatically. Each is specialised. None talks to the others.
               </p>
             </div>
             <div className="bg-card border border-border rounded-3xl p-8">
@@ -166,7 +196,7 @@ const AiJobSearchSystem = () => {
         {/* WHAT I BUILT */}
         <Section title="A Morning Brief, Not Another Dashboard" eyebrow="What I Built">
           <p className="text-muted-foreground leading-relaxed mb-6 max-w-3xl">
-            The system has three components working together:
+            The system has five components working together:
           </p>
           <ol className="relative border-l-2 border-border pl-8 space-y-10">
             {components.map((step, i) => (
@@ -187,33 +217,19 @@ const AiJobSearchSystem = () => {
         <Section title="What It Looks Like" eyebrow="Example Output">
           <div className="bg-muted/50 border border-border rounded-3xl p-6 md:p-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <figure>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                  <img
-                    src={morningBriefImg}
-                    alt="Morning Brief view of the AI Job Search System showing the Run Brief action"
-                    className="w-full h-auto"
-                  />
-                </div>
-                <figcaption className="text-sm text-muted-foreground mt-3 text-center">
-                  Morning Brief — one-click scan of Gmail and Notion to load the day's action list.
-                </figcaption>
-              </figure>
-              <figure>
-                <div className="bg-card border border-border rounded-2xl overflow-hidden">
-                  <img
-                    src={contactsImg}
-                    alt="Contacts view of the AI Job Search System showing manual contact entry"
-                    className="w-full h-auto"
-                  />
-                </div>
-                <figcaption className="text-sm text-muted-foreground mt-3 text-center">
-                  Contacts — outreach list auto-populated via the Morning Brief, with minimal manual add.
-                </figcaption>
-              </figure>
+              {screenshots.map((s) => (
+                <figure key={s.caption}>
+                  <div className="bg-card border border-border rounded-2xl overflow-hidden">
+                    <img src={s.src} alt={s.alt} className="w-full h-auto" />
+                  </div>
+                  <figcaption className="text-sm text-muted-foreground mt-3 text-center">
+                    {s.caption}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
             <p className="text-xs text-muted-foreground italic mt-6 text-center">
-              Names, email addresses, and company details have been anonymised.
+              Names, email addresses, and company details have been anonymised in some sections.
             </p>
           </div>
         </Section>
@@ -239,7 +255,7 @@ const AiJobSearchSystem = () => {
 
         {/* RESULTS */}
         <Section title="What Changed" eyebrow="Results">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {stats.map((s, i) => (
               <div
                 key={i}
@@ -263,11 +279,15 @@ const AiJobSearchSystem = () => {
 
         {/* REFLECTION */}
         <Section title="What Is Next" eyebrow="Reflection">
-          <div className="bg-card border border-border rounded-3xl p-8 max-w-3xl">
+          <div className="bg-card border border-border rounded-3xl p-8 max-w-3xl space-y-5">
             <p className="text-muted-foreground leading-relaxed">
-              The immediate next improvement is integrating Utori — a job discovery tool that monitors the web for new PM roles posted in the last 24 hours based on custom criteria. Adding Utori's daily results directly into the morning brief would mean the brief becomes the single starting point for the day: here are the new roles worth looking at, here are the follow-ups due, here is what needs action. Everything in one place before anything else starts.
+              The system started as a Gmail and Notion connection. It grew because each new interview round revealed a new gap — a missed follow-up, a debrief note that never got written, a calendar event that needed prep the morning of. Each gap became a new component.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              The next improvement is integrating job discovery directly into the brief. A tool like Utori monitors new PM roles posted in the last 24 hours. Adding that feed means the morning brief becomes the single starting point: here are the new roles worth looking at, here are the follow-ups due, here is what needs attention. One place before anything else starts.
             </p>
           </div>
+
         </Section>
 
         {/* FOOTER CTA */}
