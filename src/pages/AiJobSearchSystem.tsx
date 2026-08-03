@@ -127,7 +127,7 @@ const AiJobSearchSystem = () => {
             AI Job Search System
           </h1>
           <p className="text-xl lg:text-2xl text-muted-foreground font-light leading-relaxed mb-8 max-w-3xl">
-            A personal automation system built to eliminate daily overhead and surface what actually needs attention during a job search
+            An automated daily standup system built during an active job search — connecting Gmail, Google Calendar, Notion, and Granola to surface what needs attention before the day starts.
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             {tags.map((t) => (
