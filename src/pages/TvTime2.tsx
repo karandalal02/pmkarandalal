@@ -6,11 +6,13 @@ import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
 import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
 import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
 import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
+import shot4 from "@/assets/tvtime-IMG_4403.jpg.asset.json";
 
 const screenshots = [
-  { src: shot1.url, caption: "Watch Next — up next episodes and shows yet to start" },
-  { src: shot2.url, caption: "Movies — a simple to-watch list with runtime and year" },
-  { src: shot3.url, caption: "Stats — episodes, hours watched, and shows tracked" },
+  { src: shot1.url, caption: "Watch Next — up next episodes, shows yet to start, shows yet to release, and shows you are all caught up with" },
+  { src: shot4.url, caption: "Future Releases — all new episodes from shows you follow in a calendar timeline, so you know exactly when the next one drops" },
+  { src: shot2.url, caption: "Movies — everything in your watchlist that is available to watch, plus movies yet to release" },
+  { src: shot3.url, caption: "Stats — episodes, hours watched, and shows and movies tracked" },
 ];
 
 const tags = [
