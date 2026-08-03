@@ -12,7 +12,7 @@ const Experience = () => {
           period: "Aug 2025 - Present",
           description: "Driving retention, monetization, and LiveOps innovation on Bingo Showdown by partnering with analytics, design, and engineering to ship data-backed features.",
           achievements: [
-            "Partnered with analytics to identify new user pain points and drive an experimentation roadmap for new install cohorts, improving D7 retention by 2% and average revenue per install (ARPI) by 1.5%",
+            "Partnered with analytics to identify onboarding friction and game economy gaps, driving an experimentation roadmap for new install cohorts that improved D7 retention by 2% and average revenue per install (ARPI) by 1.5%",
             "Designed and launched Task Train, a meta feature focused on strengthening the game's core loop, driving a 4% increase in overall engagement",
             "Built a dynamic theming system for LiveOps events, enabling in-game visual refreshes using existing art assets and increasing time on app by 2% on event days"
           ]
@@ -23,8 +23,9 @@ const Experience = () => {
           description: "Drove player engagement and monetization for Goldfish Casino, building engaging live ops features and data-backed monetization strategies with design, analytics, and engineering teams.",
           achievements: [
             "Designed and launched Goldies Grand Match, a meta feature for highly engaged players, driving a 5% lift in core engagement KPIs and a 3% increase in revenue",
-            "Launched Shockwave, a live ops event that incentivized high-value rewards for players, resulting in a 7% increase in hourly engagement KPIs",
+            "Launched Shockwave, a live ops event built on reusable bet-up reward loops that incentivized high-value rewards for players, resulting in a 7% increase in hourly engagement KPIs",
             "Partnered with the analytics team to lead A/B testing and tuning experiments on the battlepass system across 10 seasons; average engagement with the new design finished 8% higher than the pre-experiment baseline",
+            "Leveraged ML-based spend-behavior modeling to target offers to the right player segments, lifting daily revenue by 4%",
             "Collaborated with the design team to implement an in-game DTC marketing strategy, increasing revenue share by 1.5%"
           ]
         }
@@ -32,12 +33,12 @@ const Experience = () => {
     },
     {
       company: "Kayak",
-      role: "Product Manager, Kayak for business",
+      role: "Product Manager Co-op, Kayak for Business",
       period: "Jun 2022 - Dec 2022",
       location: "Boston, MA",
       description: "Led redesign of the onboarding flow using Agile, UI/UX collaboration, and customer feedback. Worked across UX, engineering, and analytics to identify key drop-off points and redesign the onboarding flow.",
       achievements: [
-        "Led redesign of onboarding flow resulting in increase in weekly user engagement",
+        "Led redesign of the onboarding flow, driving a 25% lift in Day-7 user engagement",
         "Analyzed user behavior via FullStory and Snowflake to identify root causes of churn, directly informing onboarding and product improvements",
         "Conducted UX research and MVP testing (95% survey engagement) to validate onboarding updates and prioritize key features like dynamic home and centralized payments"
       ],
@@ -62,7 +63,7 @@ const Experience = () => {
           period: "July 2017 - July 2019",
           description: "Developed web services and utilities to enhance critical process flows across banking automation products.",
           achievements: [
-            "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency",
+            "Enhanced critical process flows by developing web services and utilities for data verification, bulk account opening, bulk document upload, and B2B document sharing, improving operational efficiency and expanding platform adoption across multiple enterprise clients",
             "Partnered with the Product team to conduct qualitative and quantitative user behavior research to identify key user actions and facilitate effective data collection for informed decision-making"
           ]
         }
