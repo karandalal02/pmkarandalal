@@ -151,7 +151,26 @@ const TvTime2 = () => {
           </div>
         </Section>
 
+        <Section title="Inside the App" eyebrow="Screenshots">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {screenshots.map((s) => (
+              <figure key={s.src} className="bg-card border border-border rounded-3xl p-4">
+                <img
+                  src={s.src}
+                  alt={s.caption}
+                  loading="lazy"
+                  className="w-full rounded-2xl border border-border object-cover"
+                />
+                <figcaption className="text-sm text-muted-foreground mt-4 leading-relaxed">
+                  {s.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Section>
+
         <Section title="Tech Stack" eyebrow="How It Is Built">
+
           <div className="flex flex-wrap gap-2 mb-8">
             {stack.map((t) => (
               <span
