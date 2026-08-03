@@ -154,7 +154,7 @@ const TvTime2 = () => {
         </Section>
 
         <Section title="Inside the App" eyebrow="Screenshots">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {screenshots.map((s) => (
               <figure key={s.src} className="bg-card border border-border rounded-3xl p-4">
                 <img
