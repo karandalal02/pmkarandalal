@@ -7,6 +7,7 @@ import JourneyMap from "./JourneyMap";
 const AVATAR_URL = "/lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png";
 
 const SiteExplorer = () => {
+  const location = useLocation();
   const {
     gameMode,
     visitedSections,
