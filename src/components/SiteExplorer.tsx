@@ -34,13 +34,13 @@ const SiteExplorer = () => {
 
     if (sectionElements.size === 0) return;
 
-    let bestId: SectionId | null = null;
+    let bestId: typeof SECTIONS[number]["id"] | null = null;
     let bestRatio = 0;
 
     const observer = new IntersectionObserver(
       (entries) => {
         let maxRatio = 0;
-        let maxId: SectionId | null = null;
+        let maxId: typeof SECTIONS[number]["id"] | null = null;
 
         entries.forEach((entry) => {
           const id = entry.target.id as typeof SECTIONS[number]["id"];
