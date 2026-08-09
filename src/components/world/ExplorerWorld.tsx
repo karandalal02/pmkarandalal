@@ -205,6 +205,20 @@ const ExplorerWorld = () => {
     setOpenDoorKey(null);
   }, []);
 
+  const openCaseStudyById = useCallback(
+    (id: string) => {
+      const spot = spots.find((s) => s.caseStudyId === id);
+      if (!spot) return;
+      visitCaseStudy(id as never);
+      setOpenDoorKey(spot.key);
+      setActiveSpot(spot);
+      xRef.current = spot.x;
+      setX(spot.x);
+    },
+    [spots, visitCaseStudy]
+  );
+
+
   if (!worldOpen) return null;
 
   const camera = Math.max(0, Math.min(worldWidth - viewportW, x - viewportW / 2));
