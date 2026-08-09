@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Users, Layers, Target, Sparkles } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
 import Footer from "@/components/Footer";
 
 const tags = [
@@ -49,13 +50,15 @@ const timeline = [
 
 const GoldiesGrandMatch = () => {
   const [showSticky, setShowSticky] = useState(false);
+  const { visitCaseStudy } = useExplorer();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    visitCaseStudy("goldies");
     const onScroll = () => setShowSticky(window.scrollY > 400);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [visitCaseStudy]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

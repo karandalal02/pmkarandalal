@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Linkedin, Sparkles } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
 import Footer from "@/components/Footer";
 import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
 import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
@@ -51,13 +52,15 @@ const APP_URL = "https://tv-time-2-0.vercel.app/";
 
 const TvTime2 = () => {
   const [showSticky, setShowSticky] = useState(false);
+  const { visitCaseStudy } = useExplorer();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    visitCaseStudy("tv-time");
     const onScroll = () => setShowSticky(window.scrollY > 400);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [visitCaseStudy]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

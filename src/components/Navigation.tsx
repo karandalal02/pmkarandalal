@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Calendar, Sparkles, ArrowRight } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
+import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { gameMode, toggleGameMode } = useExplorer();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -56,13 +58,38 @@ const Navigation = () => {
             {navItems.map(item => <button key={item.label} onClick={() => scrollToSection(item.href)} className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 {item.label}
               </button>)}
+            <button
+              onClick={toggleGameMode}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                gameMode
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+              }`}
+              aria-label={gameMode ? "Exit game mode" : "Enter game mode"}
+            >
+              <Gamepad2 className="h-4 w-4" />
+              {gameMode ? "Game On" : "Game Mode"}
+            </button>
           </div>
 
 
           {/* Modern mobile menu button */}
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-3 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/30 hover:bg-card/70 transition-all duration-300">
-            {isMobileMenuOpen ? <X className="h-5 w-5 text-foreground" /> : <Menu className="h-5 w-5 text-foreground" />}
-          </button>
+          <div className="flex items-center gap-2 md:hidden">
+            <button
+              onClick={toggleGameMode}
+              className={`p-3 rounded-2xl backdrop-blur-sm border transition-all duration-300 ${
+                gameMode
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-card/50 border-border/30 text-foreground hover:bg-card/70"
+              }`}
+              aria-label={gameMode ? "Exit game mode" : "Enter game mode"}
+            >
+              <Gamepad2 className="h-5 w-5" />
+            </button>
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-3 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/30 hover:bg-card/70 transition-all duration-300">
+              {isMobileMenuOpen ? <X className="h-5 w-5 text-foreground" /> : <Menu className="h-5 w-5 text-foreground" />}
+            </button>
+          </div>
         </div>
 
         {/* Modern mobile menu */}
@@ -71,7 +98,21 @@ const Navigation = () => {
               {navItems.map(item => <button key={item.label} onClick={() => scrollToSection(item.href)} className="block w-full text-left text-foreground/80 hover:text-foreground transition-colors py-3 font-medium text-lg">
                   {item.label}
                 </button>)}
-              <div className="pt-6 border-t border-border/30">
+              <div className="pt-6 border-t border-border/30 space-y-4">
+                <button
+                  onClick={() => {
+                    toggleGameMode();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium transition-colors ${
+                    gameMode
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground"
+                  }`}
+                >
+                  <Gamepad2 className="h-4 w-4" />
+                  {gameMode ? "Exit Game Mode" : "Enter Game Mode"}
+                </button>
                 <Button 
                   variant="premium" 
                   size="sm" 

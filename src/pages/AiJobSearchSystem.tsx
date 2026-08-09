@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Sparkles } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
 import Footer from "@/components/Footer";
 import shot1 from "@/assets/screenshot_1_clean.png.asset.json";
 import shot2 from "@/assets/screenshot_2_redacted.png.asset.json";
@@ -75,13 +76,15 @@ const designDecisions = [
 
 const AiJobSearchSystem = () => {
   const [showSticky, setShowSticky] = useState(false);
+  const { visitCaseStudy } = useExplorer();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    visitCaseStudy("ai-job-search");
     const onScroll = () => setShowSticky(window.scrollY > 400);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [visitCaseStudy]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
