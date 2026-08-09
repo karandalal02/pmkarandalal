@@ -70,7 +70,6 @@ const usePrefersReducedMotion = () => {
 };
 
 const ExplorerWorld = () => {
-  const navigate = useNavigate();
   const {
     worldOpen,
     closeWorld,
