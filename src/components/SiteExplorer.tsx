@@ -79,7 +79,10 @@ const SiteExplorer = () => {
 
   if (!gameMode) return null;
 
-  const activeSectionLabel = SECTIONS.find((s) => s.id === activeSection)?.label ?? "Explore";
+  const activeCaseStudy = CASE_STUDIES.find((s) => s.path === location.pathname);
+  const activeSectionLabel = activeCaseStudy
+    ? activeCaseStudy.label
+    : (SECTIONS.find((s) => s.id === activeSection)?.label ?? "Explore");
 
   return (
     <>
