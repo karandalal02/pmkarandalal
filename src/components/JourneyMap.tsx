@@ -16,6 +16,9 @@ const JourneyMap = () => {
   } = useExplorer();
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const currentCaseStudy = CASE_STUDIES.find((s) => s.path === location.pathname);
 
   if (!showMap) return null;
 
