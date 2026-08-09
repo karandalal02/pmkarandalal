@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Users, Layers, Target, Sparkles } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
 import Footer from "@/components/Footer";
 
 const tags = [
