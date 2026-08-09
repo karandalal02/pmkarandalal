@@ -52,7 +52,7 @@ const SiteExplorer = () => {
 
     sectionElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [visitSection, setActiveSection]);
+  }, [location.pathname, visitSection, setActiveSection]);
 
   // Detect active section change for avatar hop animation
   const isChanging = activeSection !== previousActive.current;
