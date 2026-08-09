@@ -125,6 +125,11 @@ export default {
 					'60%': { transform: 'translateY(4px) scale(0.95)' },
 					'100%': { transform: 'translateY(0) scale(1)' },
 				},
+				'walk-bob': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-3px)' },
+				},
+
 				'bounce-in': {
 					'0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
 					'60%': { opacity: '1', transform: 'scale(1.05) translateY(-4px)' },
