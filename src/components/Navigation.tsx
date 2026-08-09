@@ -73,6 +73,8 @@ const Navigation = () => {
             {gameMode && (
               <button
                 onClick={openWorld}
+                aria-label="Enter Explorer World"
+                title="Enter Explorer World"
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
               >
                 <Footprints className="h-4 w-4" />
