@@ -52,13 +52,15 @@ const APP_URL = "https://tv-time-2-0.vercel.app/";
 
 const TvTime2 = () => {
   const [showSticky, setShowSticky] = useState(false);
+  const { visitCaseStudy } = useExplorer();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    visitCaseStudy("tv-time");
     const onScroll = () => setShowSticky(window.scrollY > 400);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [visitCaseStudy]);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
