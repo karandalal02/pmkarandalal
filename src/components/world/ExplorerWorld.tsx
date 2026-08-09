@@ -342,7 +342,7 @@ const ExplorerWorld = () => {
       </div>
 
       {activeSpot && (
-        <SectionOverlay label={activeSpot.label} onClose={closeSection}>
+        <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
           <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
             {activeSpot.sectionId
               ? sectionContent[activeSpot.sectionId]
