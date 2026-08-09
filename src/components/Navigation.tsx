@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useExplorer } from "@/context/ExplorerContext";
-import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
+import { Menu, X, Calendar, Sparkles, Gamepad2, Footprints } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { gameMode, toggleGameMode } = useExplorer();
+  const { gameMode, toggleGameMode, openWorld } = useExplorer();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -70,6 +70,15 @@ const Navigation = () => {
               <Gamepad2 className="h-4 w-4" />
               {gameMode ? "Game On" : "Game Mode"}
             </button>
+            {gameMode && (
+              <button
+                onClick={openWorld}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
+              >
+                <Footprints className="h-4 w-4" />
+                Explorer World
+              </button>
+            )}
           </div>
 
 
@@ -113,6 +122,18 @@ const Navigation = () => {
                   <Gamepad2 className="h-4 w-4" />
                   {gameMode ? "Exit Game Mode" : "Enter Game Mode"}
                 </button>
+                {gameMode && (
+                  <button
+                    onClick={() => {
+                      openWorld();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium bg-foreground text-background"
+                  >
+                    <Footprints className="h-4 w-4" />
+                    Enter Explorer World
+                  </button>
+                )}
                 <Button 
                   variant="premium" 
                   size="sm" 
