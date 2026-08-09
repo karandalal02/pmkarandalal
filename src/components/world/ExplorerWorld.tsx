@@ -234,9 +234,21 @@ const ExplorerWorld = () => {
         ))}
       </div>
 
+      {/* Sidewalk / ground */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 border-t-2 border-border bg-muted">
+        <div
+          className="absolute top-3 left-0 h-1 opacity-40"
+          style={{ width: worldWidth, transform: `translateX(${-camera}px)` }}
+        >
+          {Array.from({ length: Math.ceil(worldWidth / 80) }).map((_, i) => (
+            <span key={i} className="absolute h-1 w-10 rounded-full bg-foreground/30" style={{ left: i * 80 }} />
+          ))}
+        </div>
+      </div>
+
       {/* Street layer */}
       <div
-        className="absolute bottom-24 left-0"
+        className="absolute bottom-24 left-0 z-10"
         style={{ width: worldWidth, height: "60%", transform: `translateX(${-camera}px)` }}
       >
         {spots.map((s) => (
@@ -260,18 +272,6 @@ const ExplorerWorld = () => {
         {/* Character */}
         <div className="absolute bottom-0" style={{ left: x, transform: "translateX(-50%)" }}>
           <WorldCharacter walking={walking} facing={facing} reducedMotion={reducedMotion} />
-        </div>
-      </div>
-
-      {/* Sidewalk / ground */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 border-t-2 border-border bg-muted">
-        <div
-          className="absolute top-3 left-0 h-1 opacity-40"
-          style={{ width: worldWidth, transform: `translateX(${-camera}px)` }}
-        >
-          {Array.from({ length: Math.ceil(worldWidth / 80) }).map((_, i) => (
-            <span key={i} className="absolute h-1 w-10 rounded-full bg-foreground/30" style={{ left: i * 80 }} />
-          ))}
         </div>
       </div>
 
