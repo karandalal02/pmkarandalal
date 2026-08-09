@@ -105,7 +105,7 @@ const SiteExplorer = () => {
           </div>
 
           <div className="p-2 rounded-full bg-secondary/80 text-secondary-foreground">
-            {showMap ? <X className="h-4 w-4" /> : <Map className="h-4 w-4" />}
+            {showMap ? <X className="h-4 w-4" /> : <MapIcon className="h-4 w-4" />}
           </div>
         </button>
       </div>
