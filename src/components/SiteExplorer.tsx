@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { useExplorer, SECTIONS } from "@/context/ExplorerContext";
+import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { Map as MapIcon, X, Trophy } from "lucide-react";
 import JourneyMap from "./JourneyMap";
 
