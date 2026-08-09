@@ -22,10 +22,8 @@ const SiteExplorer = () => {
 
   const previousActive = useRef<typeof activeSection>(null);
 
-  // Observe main page sections on the home page
+  // Track main page sections whenever they exist (even when the explorer UI is hidden).
   useEffect(() => {
-    if (!gameMode) return;
-
     const sectionElements = new Map<string, HTMLElement>();
     SECTIONS.forEach(({ id }) => {
       const el = document.getElementById(id);
@@ -52,7 +50,7 @@ const SiteExplorer = () => {
 
     sectionElements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [gameMode, visitSection, setActiveSection]);
+  }, [visitSection, setActiveSection]);
 
   // Detect active section change for avatar hop animation
   const isChanging = activeSection !== previousActive.current;
