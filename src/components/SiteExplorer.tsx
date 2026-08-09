@@ -34,19 +34,34 @@ const SiteExplorer = () => {
 
     if (sectionElements.size === 0) return;
 
+    let bestId: SectionId | null = null;
+    let bestRatio = 0;
+
     const observer = new IntersectionObserver(
       (entries) => {
+        let maxRatio = 0;
+        let maxId: SectionId | null = null;
+
         entries.forEach((entry) => {
           const id = entry.target.id as typeof SECTIONS[number]["id"];
           if (entry.isIntersecting) {
             visitSection(id);
-            setActiveSection(id);
+          }
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            maxId = id;
           }
         });
+
+        if (maxId && maxRatio > 0) {
+          bestId = maxId;
+          bestRatio = maxRatio;
+          setActiveSection(maxId);
+        }
       },
       {
-        threshold: 0.4,
-        rootMargin: "-10% 0px -40% 0px",
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: "-10% 0px -35% 0px",
       }
     );
 
