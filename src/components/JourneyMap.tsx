@@ -121,26 +121,34 @@ const JourneyMap = () => {
         <div className="grid grid-cols-1 gap-2">
           {CASE_STUDIES.map((study) => {
             const visited = visitedCaseStudies.has(study.id);
+            const active = currentCaseStudy?.id === study.id;
             return (
               <button
                 key={study.id}
                 onClick={() => handleCaseStudyClick(study.path)}
                 className={`group flex items-center gap-3 w-full text-left p-3 rounded-xl border transition-all duration-300 hover:bg-secondary/50 ${
-                  visited
+                  active
+                    ? "border-primary bg-primary/10"
+                    : visited
                     ? "border-primary/30 bg-primary/5"
                     : "border-border/50 bg-card/50"
                 }`}
               >
                 <div
                   className={`p-1.5 rounded-lg ${
-                    visited ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"
+                    visited ? "bg-primary text-primary-foreground" : active ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"
                   }`}
                 >
-                  {visited ? <Check className="h-3.5 w-3.5" /> : <FileText className="h-3.5 w-3.5" />}
+                  {visited || active ? <Check className="h-3.5 w-3.5" /> : <FileText className="h-3.5 w-3.5" />}
                 </div>
-                <span className={`text-sm font-medium ${visited ? "text-foreground" : "text-muted-foreground"}`}>
+                <span className={`text-sm font-medium ${active ? "text-primary" : visited ? "text-foreground" : "text-muted-foreground"}`}>
                   {study.label}
                 </span>
+                {active && (
+                  <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                    here
+                  </span>
+                )}
               </button>
             );
           })}
