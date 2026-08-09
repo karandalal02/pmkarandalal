@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { useWorldControls } from "@/hooks/useWorldControls";
 import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
+import WorldLinkInterceptor from "./WorldLinkInterceptor";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -15,6 +15,11 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Mentorship from "@/components/Mentorship";
 import Contact from "@/components/Contact";
+
+import GoldiesGrandMatch from "@/pages/GoldiesGrandMatch";
+import Shockwave from "@/pages/Shockwave";
+import AiJobSearchSystem from "@/pages/AiJobSearchSystem";
+import TvTime2 from "@/pages/TvTime2";
 
 const SPACING = 340;
 const START_X = 300;
@@ -44,6 +49,14 @@ const sectionContent: Record<string, JSX.Element> = {
   contact: <Contact />,
 };
 
+const caseStudyContent: Record<string, JSX.Element> = {
+  goldies: <GoldiesGrandMatch />,
+  shockwave: <Shockwave />,
+  "ai-job-search": <AiJobSearchSystem />,
+  "tv-time": <TvTime2 />,
+};
+
+
 const usePrefersReducedMotion = () => {
   const [reduced, setReduced] = useState(false);
   useEffect(() => {
@@ -57,7 +70,6 @@ const usePrefersReducedMotion = () => {
 };
 
 const ExplorerWorld = () => {
-  const navigate = useNavigate();
   const {
     worldOpen,
     closeWorld,
@@ -128,17 +140,12 @@ const ExplorerWorld = () => {
     if (!spot || activeSpot) return;
     setOpenDoorKey(spot.key);
     window.setTimeout(() => {
-      if (spot.path && spot.caseStudyId) {
-        visitCaseStudy(spot.caseStudyId as never);
-        closeWorld();
-        setOpenDoorKey(null);
-        navigate(spot.path);
-        return;
-      }
+      if (spot.caseStudyId) visitCaseStudy(spot.caseStudyId as never);
       if (spot.sectionId) visitSection(spot.sectionId as never);
       setActiveSpot(spot);
     }, 480);
-  }, [activeSpot, closeWorld, navigate, visitCaseStudy, visitSection]);
+  }, [activeSpot, visitCaseStudy, visitSection]);
+
 
   const handleExit = useCallback(() => {
     if (activeSpot) return;
@@ -197,6 +204,20 @@ const ExplorerWorld = () => {
     setActiveSpot(null);
     setOpenDoorKey(null);
   }, []);
+
+  const openCaseStudyById = useCallback(
+    (id: string) => {
+      const spot = spots.find((s) => s.caseStudyId === id);
+      if (!spot) return;
+      visitCaseStudy(id as never);
+      setOpenDoorKey(spot.key);
+      setActiveSpot(spot);
+      xRef.current = spot.x;
+      setX(spot.x);
+    },
+    [spots, visitCaseStudy]
+  );
+
 
   if (!worldOpen) return null;
 
@@ -321,8 +342,14 @@ const ExplorerWorld = () => {
       </div>
 
       {activeSpot && (
-        <SectionOverlay label={activeSpot.label} onClose={closeSection}>
-          {activeSpot.sectionId ? sectionContent[activeSpot.sectionId] : null}
+        <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
+          <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
+            {activeSpot.sectionId
+              ? sectionContent[activeSpot.sectionId]
+              : activeSpot.caseStudyId
+                ? caseStudyContent[activeSpot.caseStudyId]
+                : null}
+          </WorldLinkInterceptor>
         </SectionOverlay>
       )}
     </div>
