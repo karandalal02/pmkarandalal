@@ -54,7 +54,7 @@ const Navigation = () => {
           <div className="font-display font-bold text-xl text-foreground">KaranDalal</div>
 
           {/* Clean desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-7">
             {navItems.map(item => <button key={item.label} onClick={() => scrollToSection(item.href)} className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 {item.label}
               </button>)}
@@ -68,7 +68,7 @@ const Navigation = () => {
               aria-label={gameMode ? "Exit game mode" : "Enter game mode"}
             >
               <Gamepad2 className="h-4 w-4" />
-              {gameMode ? "Game On" : "Game Mode"}
+              <span className="hidden lg:inline">{gameMode ? "Game On" : "Game Mode"}</span>
             </button>
             {gameMode && (
               <button
@@ -76,7 +76,7 @@ const Navigation = () => {
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
               >
                 <Footprints className="h-4 w-4" />
-                Explorer World
+                <span className="hidden lg:inline">Explorer World</span>
               </button>
             )}
           </div>
