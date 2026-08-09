@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Linkedin, TrendingUp, Sparkles } from "lucide-react";
+import { useExplorer } from "@/context/ExplorerContext";
 import Footer from "@/components/Footer";
 import shot1 from "@/assets/screenshot_1_clean.png.asset.json";
 import shot2 from "@/assets/screenshot_2_redacted.png.asset.json";
