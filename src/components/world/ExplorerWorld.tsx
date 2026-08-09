@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { useWorldControls } from "@/hooks/useWorldControls";
 import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
+import WorldLinkInterceptor from "./WorldLinkInterceptor";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -15,6 +15,11 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Mentorship from "@/components/Mentorship";
 import Contact from "@/components/Contact";
+
+import GoldiesGrandMatch from "@/pages/GoldiesGrandMatch";
+import Shockwave from "@/pages/Shockwave";
+import AiJobSearchSystem from "@/pages/AiJobSearchSystem";
+import TvTime2 from "@/pages/TvTime2";
 
 const SPACING = 340;
 const START_X = 300;
@@ -43,6 +48,14 @@ const sectionContent: Record<string, JSX.Element> = {
   mentorship: <Mentorship />,
   contact: <Contact />,
 };
+
+const caseStudyContent: Record<string, JSX.Element> = {
+  goldies: <GoldiesGrandMatch />,
+  shockwave: <Shockwave />,
+  "ai-job-search": <AiJobSearchSystem />,
+  "tv-time": <TvTime2 />,
+};
+
 
 const usePrefersReducedMotion = () => {
   const [reduced, setReduced] = useState(false);
