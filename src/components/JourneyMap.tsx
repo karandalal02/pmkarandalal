@@ -79,7 +79,7 @@ const JourneyMap = () => {
           <div className="absolute left-[15px] top-2 bottom-2 w-0.5 bg-border" />
           {SECTIONS.map((section) => {
             const visited = visitedSections.has(section.id);
-            const active = activeSection === section.id;
+            const active = !currentCaseStudy && activeSection === section.id;
             return (
               <button
                 key={section.id}
