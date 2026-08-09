@@ -184,25 +184,31 @@ const ExplorerTrail = () => {
           className="relative block"
         >
           <span
-            key={hopKey}
-            className={`relative block w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/30 bg-card shadow-glow ${
-              reducedMotion ? "" : "animate-bobble"
-            }`}
+            className="block"
             style={{
               transform: reducedMotion ? undefined : `rotate(${lean * 8}deg)`,
               transition: "transform 0.2s ease-out",
             }}
           >
-            <img src={AVATAR_URL} alt="Explorer" className="w-full h-full object-cover object-top" />
-            {isComplete && <span className="absolute inset-0 bg-primary/20 animate-pulse" />}
+            <span
+              className={`block ${!reducedMotion && walking ? "animate-walk-bob" : ""}`}
+            >
+              <span
+                key={hopKey}
+                className={`relative block w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-primary/30 bg-card shadow-glow ${
+                  reducedMotion ? "" : "animate-bobble"
+                }`}
+              >
+                <img src={AVATAR_URL} alt="Explorer" className="w-full h-full object-cover object-top" />
+                {isComplete && <span className="absolute inset-0 bg-primary/20 animate-pulse" />}
+              </span>
+            </span>
           </span>
-          {!reducedMotion && walking && (
-            <span className="absolute inset-0 rounded-full animate-walk-bob" />
-          )}
           <span className="absolute -bottom-1 -right-1 p-1 rounded-full bg-secondary text-secondary-foreground border border-border/50">
             {showMap ? <X className="h-3 w-3" /> : <MapIcon className="h-3 w-3" />}
           </span>
         </button>
+
 
         {/* Station name flash */}
         {(flashLabel || onCaseStudy) && (
