@@ -53,6 +53,9 @@ interface ExplorerContextValue {
   showMap: boolean;
   toggleMap: () => void;
   closeMap: () => void;
+  worldOpen: boolean;
+  openWorld: () => void;
+  closeWorld: () => void;
   progress: number;
   totalLocations: number;
   completedLocations: number;
@@ -79,6 +82,7 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const [visitedCaseStudies, setVisitedCaseStudies] = useState<Set<CaseStudyId>>(new Set());
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
   const [showMap, setShowMap] = useState(false);
+  const [worldOpen, setWorldOpen] = useState(false);
 
   const toggleGameMode = useCallback(() => {
     setGameMode((prev) => !prev);
@@ -99,6 +103,16 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const closeMap = useCallback(() => {
     setShowMap(false);
   }, []);
+
+  const openWorld = useCallback(() => {
+    setShowMap(false);
+    setWorldOpen(true);
+  }, []);
+
+  const closeWorld = useCallback(() => {
+    setWorldOpen(false);
+  }, []);
+
 
   const totalLocations = SECTIONS.length + CASE_STUDIES.length;
   const completedLocations = visitedSections.size + visitedCaseStudies.size;
