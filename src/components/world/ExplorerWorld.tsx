@@ -140,17 +140,12 @@ const ExplorerWorld = () => {
     if (!spot || activeSpot) return;
     setOpenDoorKey(spot.key);
     window.setTimeout(() => {
-      if (spot.path && spot.caseStudyId) {
-        visitCaseStudy(spot.caseStudyId as never);
-        closeWorld();
-        setOpenDoorKey(null);
-        navigate(spot.path);
-        return;
-      }
+      if (spot.caseStudyId) visitCaseStudy(spot.caseStudyId as never);
       if (spot.sectionId) visitSection(spot.sectionId as never);
       setActiveSpot(spot);
     }, 480);
-  }, [activeSpot, closeWorld, navigate, visitCaseStudy, visitSection]);
+  }, [activeSpot, visitCaseStudy, visitSection]);
+
 
   const handleExit = useCallback(() => {
     if (activeSpot) return;
