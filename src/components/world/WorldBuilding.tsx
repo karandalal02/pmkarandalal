@@ -22,19 +22,32 @@ const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, varia
         }`}
         style={{ height }}
       >
+        {/* Shop awning */}
+        {variant === "shop" && (
+          <div className="absolute -top-2 -left-1 -right-1 h-3 rounded-t-md overflow-hidden flex">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <span key={i} className={`flex-1 ${i % 2 === 0 ? "bg-primary" : "bg-secondary"}`} />
+            ))}
+          </div>
+        )}
+
         {/* Signboard */}
         <div
           className={`absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 rounded-full border text-xs font-semibold transition-all duration-300 ${
             near
               ? "bg-primary text-primary-foreground border-primary scale-105"
-              : "bg-secondary text-secondary-foreground border-border"
+              : variant === "shop"
+                ? "bg-card text-primary border-primary/50"
+                : "bg-secondary text-secondary-foreground border-border"
           }`}
         >
           <span className="inline-flex items-center gap-1">
             {visited && <Check className="h-3 w-3" />}
+            {variant === "shop" && <span className="font-mono opacity-70">CASE</span>}
             {label}
           </span>
         </div>
+
 
         {/* Windows */}
         <div className="absolute inset-x-4 top-5 grid grid-cols-2 gap-3">
