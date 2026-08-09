@@ -93,6 +93,9 @@ export default {
 				'scale-in': 'scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
 				'bobble': 'bobble 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
 				'walk-bob': 'walk-bob 0.45s ease-in-out infinite',
+				'head-bob': 'head-bob 0.5s ease-in-out infinite',
+				'limb-swing': 'limb-swing 0.5s ease-in-out infinite',
+				'limb-swing-alt': 'limb-swing 0.5s ease-in-out infinite -0.25s',
 				'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
 
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -128,6 +131,14 @@ export default {
 				'walk-bob': {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-3px)' },
+				},
+				'head-bob': {
+					'0%, 100%': { transform: 'translateY(0) rotate(-3deg)' },
+					'50%': { transform: 'translateY(-4px) rotate(3deg)' },
+				},
+				'limb-swing': {
+					'0%, 100%': { transform: 'rotate(22deg)' },
+					'50%': { transform: 'rotate(-22deg)' },
 				},
 
 				'bounce-in': {

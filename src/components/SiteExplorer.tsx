@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useExplorer, SECTIONS } from "@/context/ExplorerContext";
 import JourneyMap from "./JourneyMap";
 import ExplorerTrail from "./ExplorerTrail";
+import ExplorerWorld from "./world/ExplorerWorld";
 
 const SiteExplorer = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const SiteExplorer = () => {
     <>
       <ExplorerTrail />
       <JourneyMap />
+      <ExplorerWorld />
     </>
   );
 };
