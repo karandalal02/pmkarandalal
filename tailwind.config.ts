@@ -92,7 +92,9 @@ export default {
 				'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
 				'scale-in': 'scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
 				'bobble': 'bobble 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+				'walk-bob': 'walk-bob 0.45s ease-in-out infinite',
 				'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
@@ -123,6 +125,11 @@ export default {
 					'60%': { transform: 'translateY(4px) scale(0.95)' },
 					'100%': { transform: 'translateY(0) scale(1)' },
 				},
+				'walk-bob': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-3px)' },
+				},
+
 				'bounce-in': {
 					'0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
 					'60%': { opacity: '1', transform: 'scale(1.05) translateY(-4px)' },
