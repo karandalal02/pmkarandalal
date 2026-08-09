@@ -98,7 +98,21 @@ const Navigation = () => {
               {navItems.map(item => <button key={item.label} onClick={() => scrollToSection(item.href)} className="block w-full text-left text-foreground/80 hover:text-foreground transition-colors py-3 font-medium text-lg">
                   {item.label}
                 </button>)}
-              <div className="pt-6 border-t border-border/30">
+              <div className="pt-6 border-t border-border/30 space-y-4">
+                <button
+                  onClick={() => {
+                    toggleGameMode();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium transition-colors ${
+                    gameMode
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground"
+                  }`}
+                >
+                  <Gamepad2 className="h-4 w-4" />
+                  {gameMode ? "Exit Game Mode" : "Enter Game Mode"}
+                </button>
                 <Button 
                   variant="premium" 
                   size="sm" 
