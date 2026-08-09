@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { Check, Circle, X, MapPin, FileText } from "lucide-react";
 
