@@ -99,9 +99,10 @@ const JourneyMap = () => {
                 >
                   {visited && <Check className="h-2 w-2 text-primary-foreground" />}
                 </div>
-                <span className={`text-sm font-medium ${visited ? "line-through opacity-60" : ""}`}>
+                <span className={`text-sm font-medium ${visited ? "opacity-70" : ""}`}>
                   {section.label}
                 </span>
+
                 {active && (
                   <span className="ml-auto text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">
                     here
