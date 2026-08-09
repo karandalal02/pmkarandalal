@@ -117,6 +117,17 @@ export default {
 					'0%': { opacity: '0', transform: 'scale(0.95)' },
 					'100%': { opacity: '1', transform: 'scale(1)' },
 				},
+				'bobble': {
+					'0%': { transform: 'translateY(0) scale(1)' },
+					'40%': { transform: 'translateY(-12px) scale(1.1)' },
+					'60%': { transform: 'translateY(4px) scale(0.95)' },
+					'100%': { transform: 'translateY(0) scale(1)' },
+				},
+				'bounce-in': {
+					'0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
+					'60%': { opacity: '1', transform: 'scale(1.05) translateY(-4px)' },
+					'100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+				},
 				'accordion-down': {
 					from: {
 						height: '0'
