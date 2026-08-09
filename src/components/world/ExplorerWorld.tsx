@@ -19,7 +19,7 @@ import Contact from "@/components/Contact";
 const SPACING = 340;
 const START_X = 300;
 const SPEED = 340; // px per second
-const NEAR_DISTANCE = 90;
+const NEAR_DISTANCE = 150;
 
 type Spot = {
   key: string;
