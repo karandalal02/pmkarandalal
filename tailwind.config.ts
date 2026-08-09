@@ -91,6 +91,8 @@ export default {
 				'slide-up': 'slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
 				'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
 				'scale-in': 'scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+				'bobble': 'bobble 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+				'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
