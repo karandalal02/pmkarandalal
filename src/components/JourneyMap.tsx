@@ -36,7 +36,7 @@ const JourneyMap = () => {
   };
 
   return (
-    <div className="fixed bottom-8 left-16 md:left-20 z-50 w-80 md:w-96 max-h-[70vh] overflow-y-auto rounded-3xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-premium p-6 animate-scale-in">
+    <div className="fixed bottom-8 left-16 md:left-20 z-[70] w-80 md:w-96 max-h-[70vh] overflow-y-auto rounded-3xl bg-card/95 backdrop-blur-xl border border-border/50 shadow-premium p-6 animate-scale-in">
       <div className="flex items-start justify-between mb-6">
         <div>
           <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
