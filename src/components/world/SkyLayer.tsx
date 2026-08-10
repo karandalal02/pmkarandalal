@@ -21,7 +21,10 @@ const rand = (seed: number) => {
 };
 
 const Cloud = ({ scale = 1 }: { scale?: number }) => (
-  <div className="relative" style={{ transform: `scale(${scale})` }}>
+  <div
+    className="relative"
+    style={{ transform: `scale(${scale})`, filter: "drop-shadow(0 6px 10px hsl(215 40% 40% / 0.18))" }}
+  >
     <div className="absolute w-24 h-10 rounded-full bg-[hsl(var(--sky-cloud))]" />
     <div className="absolute left-8 -top-5 w-16 h-14 rounded-full bg-[hsl(var(--sky-cloud))]" />
     <div className="absolute left-20 -top-1 w-14 h-9 rounded-full bg-[hsl(var(--sky-cloud))]" />
