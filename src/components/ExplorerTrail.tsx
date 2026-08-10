@@ -136,13 +136,16 @@ const ExplorerTrail = () => {
 
   return (
     <div className="fixed left-2 md:left-4 top-24 bottom-8 z-40 w-10 md:w-12 pointer-events-none select-none">
-      {/* Trail track */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 rounded-full bg-border/70" />
-      {/* Trail behind the walker */}
-      <div
-        className="absolute left-1/2 -translate-x-1/2 top-0 w-0.5 rounded-full bg-primary"
-        style={{ height: `${characterTop * 100}%`, transition: travelTransition.replace("top", "height") }}
-      />
+      {/* Trail track (only on the main portfolio page) */}
+      {!onCaseStudy && (
+        <>
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 rounded-full bg-border/70" />
+          <div
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-0.5 rounded-full bg-primary"
+            style={{ height: `${characterTop * 100}%`, transition: travelTransition.replace("top", "height") }}
+          />
+        </>
+      )}
 
       {/* Stations */}
       {!onCaseStudy &&
