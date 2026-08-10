@@ -5,9 +5,10 @@ interface SectionOverlayProps {
   label: string;
   children: ReactNode;
   onClose: () => void;
+  backLabel?: string;
 }
 
-const SectionOverlay = ({ label, children, onClose }: SectionOverlayProps) => {
+const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street" }: SectionOverlayProps) => {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
