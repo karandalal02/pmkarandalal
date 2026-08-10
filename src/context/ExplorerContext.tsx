@@ -85,7 +85,13 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const [worldOpen, setWorldOpen] = useState(false);
 
   const toggleGameMode = useCallback(() => {
-    setGameMode((prev) => !prev);
+    setGameMode((prev) => {
+      const next = !prev;
+      // Entering game mode goes straight to Explorer World with the map/progress visible
+      setWorldOpen(next);
+      setShowMap(next);
+      return next;
+    });
   }, []);
 
   const visitSection = useCallback((id: SectionId) => {
