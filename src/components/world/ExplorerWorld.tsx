@@ -100,30 +100,38 @@ const ExplorerWorld = () => {
   const rafRef = useRef<number | null>(null);
   const lastTs = useRef(0);
 
-  const spots = useMemo<Spot[]>(() => {
-    const list: Spot[] = SECTIONS.map((s, i) => ({
-      key: `s-${s.id}`,
-      label: s.label,
-      x: START_X + i * SPACING,
-      width: 200,
-      height: 200 + ((i * 37) % 90),
-      variant: "section" as const,
-      sectionId: s.id,
-    }));
-    CASE_STUDIES.forEach((c, i) => {
-      list.push({
+  // The street only holds the main section buildings.
+  // Case studies live behind the doors inside the Projects building.
+  const spots = useMemo<Spot[]>(
+    () =>
+      SECTIONS.map((s, i) => ({
+        key: `s-${s.id}`,
+        label: s.label,
+        x: START_X + i * SPACING,
+        width: 200,
+        height: 200 + ((i * 37) % 90),
+        variant: "section" as const,
+        sectionId: s.id,
+      })),
+    []
+  );
+
+  const caseStudySpots = useMemo<Spot[]>(
+    () =>
+      CASE_STUDIES.map((c) => ({
         key: `c-${c.id}`,
         label: c.label,
-        x: START_X + (SECTIONS.length + i) * SPACING,
+        x: START_X,
         width: 160,
-        height: 150 + ((i * 29) % 50),
-        variant: "shop",
+        height: 160,
+        variant: "shop" as const,
         caseStudyId: c.id,
         path: c.path,
-      });
-    });
-    return list;
-  }, []);
+      })),
+    []
+  );
+
+  const worldWidth = spots[spots.length - 1].x + 400;
 
   const worldWidth = spots[spots.length - 1].x + 400;
 
