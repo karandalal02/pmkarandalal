@@ -8,6 +8,7 @@ import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
 import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
 import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
 import shot4 from "@/assets/tvtime-IMG_4403.jpg.asset.json";
+import architecture from "@/assets/architecture.png.asset.json";
 
 const screenshots = [
   { src: shot1.url, caption: "Watch Next — up next episodes, shows yet to start, shows yet to release, and shows you are all caught up with" },
@@ -189,6 +190,23 @@ const TvTime2 = () => {
           <p className="text-muted-foreground leading-relaxed max-w-3xl">
             Built entirely with Claude Code over a weekend. TMDB powers the content database — the same source used by most tracking apps. Google Drive handles storage so there is no backend to maintain and no cost that scales with users. Deployed on Vercel. The whole thing cost nothing to build and costs nothing to run.
           </p>
+        </Section>
+
+        <Section title="Architecture" eyebrow="System Overview">
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
+            A no-build, vanilla-JS PWA with a thin serverless backend. The static app is hosted on Vercel, with data stored in the user's Google Drive and cached offline via IndexedDB and a service worker.
+          </p>
+          <figure className="bg-card border border-border rounded-3xl p-6 md:p-8">
+            <img
+              src={architecture.url}
+              alt="TV Time 2.0 system architecture diagram showing GitHub, Vercel, static app, serverless API, IndexedDB, service worker, TMDB, Google OAuth, and Upstash Redis"
+              loading="lazy"
+              className="w-full rounded-2xl border border-border object-cover"
+            />
+            <figcaption className="text-sm text-muted-foreground mt-4 text-center">
+              TV Time 2.0 — technical architecture
+            </figcaption>
+          </figure>
         </Section>
 
         <Section title="User feedback collection" eyebrow="What Is Next">
