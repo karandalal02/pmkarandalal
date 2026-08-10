@@ -47,9 +47,9 @@ const SkyLayer = ({ phase, camera, worldWidth, reducedMotion }: SkyLayerProps) =
 
   const clouds = useMemo(
     () =>
-      Array.from({ length: 7 }).map((_, i) => ({
-        left: 120 + rand(i + 11) * (worldWidth - 200),
-        top: 20 + rand(i + 71) * 130,
+      Array.from({ length: Math.max(6, Math.ceil(worldWidth / 420)) }).map((_, i) => ({
+        left: 80 + i * 420 + rand(i + 11) * 180,
+        top: 20 + rand(i + 71) * 120,
         scale: 0.6 + rand(i + 131) * 0.9,
         depth: i % 2 === 0 ? 0.15 : 0.35,
         duration: 60 + rand(i + 191) * 50,
@@ -126,7 +126,7 @@ const SkyLayer = ({ phase, camera, worldWidth, reducedMotion }: SkyLayerProps) =
         {clouds.map((c, i) => (
           <div
             key={i}
-            className={`absolute opacity-80 ${reducedMotion ? "" : "animate-cloud-drift"}`}
+            className={`absolute ${reducedMotion ? "" : "animate-cloud-drift"}`}
             style={{
               left: c.left,
               top: c.top,
