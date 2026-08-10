@@ -316,7 +316,9 @@ const ExplorerWorld = () => {
             }
             near={nearest?.key === s.key}
             doorOpen={openDoorKey === s.key}
+            Icon={s.sectionId ? SECTION_ICONS[s.sectionId] : CASE_STUDY_ICONS[s.caseStudyId as string]}
           />
+
         ))}
 
         {/* Character */}
@@ -373,15 +375,20 @@ const ExplorerWorld = () => {
 
       {activeSpot && (
         <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
-          <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
-            {activeSpot.sectionId
-              ? sectionContent[activeSpot.sectionId]
-              : activeSpot.caseStudyId
-                ? caseStudyContent[activeSpot.caseStudyId]
-                : null}
-          </WorldLinkInterceptor>
+          {activeSpot.sectionId === "projects" ? (
+            <ProjectsHall onEnterCaseStudy={openCaseStudyById} reducedMotion={reducedMotion} />
+          ) : (
+            <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
+              {activeSpot.sectionId
+                ? sectionContent[activeSpot.sectionId]
+                : activeSpot.caseStudyId
+                  ? caseStudyContent[activeSpot.caseStudyId]
+                  : null}
+            </WorldLinkInterceptor>
+          )}
         </SectionOverlay>
       )}
+
     </div>
   );
 };
