@@ -6,6 +6,9 @@ import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
 import WorldLinkInterceptor from "./WorldLinkInterceptor";
+import SkyLayer from "./SkyLayer";
+import { useTimeOfDay } from "@/context/TimeOfDayContext";
+import TimeOfDayToggle from "@/components/TimeOfDayToggle";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -80,6 +83,7 @@ const ExplorerWorld = () => {
     progress,
   } = useExplorer();
 
+  const { phase } = useTimeOfDay();
   const reducedMotion = usePrefersReducedMotion();
   const [x, setX] = useState(START_X);
   const [facing, setFacing] = useState(1);
@@ -323,6 +327,7 @@ const ExplorerWorld = () => {
         <div className="px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-xs font-mono font-bold text-foreground">
           {progress}% explored
         </div>
+        <TimeOfDayToggle className="border border-border backdrop-blur" />
         <div className="hidden md:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
           ← → to walk · ↑ to enter · Esc to leave
         </div>
