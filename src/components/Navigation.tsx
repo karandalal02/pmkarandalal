@@ -112,20 +112,8 @@ const Navigation = () => {
                   }`}
                 >
                   <Gamepad2 className="h-4 w-4" />
-                  {gameMode ? "Exit Game Mode" : "Enter Game Mode"}
+                  {gameMode ? "Exit 2.5D World" : "Enter 2.5D World"}
                 </button>
-                {gameMode && (
-                  <button
-                    onClick={() => {
-                      openWorld();
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium bg-foreground text-background"
-                  >
-                    <Footprints className="h-4 w-4" />
-                    Enter Explorer World
-                  </button>
-                )}
                 <Button 
                   variant="premium" 
                   size="sm" 
