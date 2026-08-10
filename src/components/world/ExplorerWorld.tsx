@@ -216,10 +216,8 @@ const ExplorerWorld = () => {
     });
   }, []);
 
-  const closeAllSections = useCallback(() => {
-    setSpotStack([]);
-    setOpenDoorKey(null);
-  }, []);
+
+
 
   const openCaseStudyById = useCallback(
     (id: string) => {
