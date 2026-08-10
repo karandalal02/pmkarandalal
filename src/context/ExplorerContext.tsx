@@ -110,12 +110,13 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   }, []);
 
   const openWorld = useCallback(() => {
-    setShowMap(true);
+    setGameMode(true);
     setWorldOpen(true);
   }, []);
 
   const closeWorld = useCallback(() => {
     setWorldOpen(false);
+    setGameMode(false);
   }, []);
 
 
