@@ -150,7 +150,7 @@ const ExplorerWorld = () => {
     window.setTimeout(() => {
       if (spot.caseStudyId) visitCaseStudy(spot.caseStudyId as never);
       if (spot.sectionId) visitSection(spot.sectionId as never);
-      setActiveSpot(spot);
+      setSpotStack([spot]);
     }, 480);
   }, [activeSpot, visitCaseStudy, visitSection]);
 
