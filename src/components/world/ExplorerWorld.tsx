@@ -227,14 +227,12 @@ const ExplorerWorld = () => {
 
   const openCaseStudyById = useCallback(
     (id: string) => {
-      const spot = spots.find((s) => s.caseStudyId === id);
+      const spot = caseStudySpots.find((s) => s.caseStudyId === id);
       if (!spot) return;
       visitCaseStudy(id as never);
       setSpotStack((prev) => [...prev, spot]);
-      xRef.current = spot.x;
-      setX(spot.x);
     },
-    [spots, visitCaseStudy]
+    [caseStudySpots, visitCaseStudy]
   );
 
 
