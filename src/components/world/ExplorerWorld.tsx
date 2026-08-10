@@ -92,7 +92,8 @@ const ExplorerWorld = () => {
   const [facing, setFacing] = useState(1);
   const [walking, setWalking] = useState(false);
   const [openDoorKey, setOpenDoorKey] = useState<string | null>(null);
-  const [activeSpot, setActiveSpot] = useState<Spot | null>(null);
+  const [spotStack, setSpotStack] = useState<Spot[]>([]);
+  const activeSpot = spotStack.length ? spotStack[spotStack.length - 1] : null;
   const [viewportW, setViewportW] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   const xRef = useRef(START_X);
