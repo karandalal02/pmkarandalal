@@ -49,11 +49,9 @@ const SiteExplorer = () => {
     return () => observer.disconnect();
   }, [location.pathname, visitSection, setActiveSection]);
 
-  if (!gameMode) return null;
-
   return (
     <>
-      <ExplorerTrail />
+      {!gameMode && <ExplorerTrail />}
       <JourneyMap />
       <ExplorerWorld />
     </>

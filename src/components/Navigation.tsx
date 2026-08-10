@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useExplorer } from "@/context/ExplorerContext";
-import { Menu, X, Calendar, Sparkles, Gamepad2, Footprints } from "lucide-react";
+import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { gameMode, toggleGameMode, openWorld } = useExplorer();
+  const { gameMode, toggleGameMode } = useExplorer();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -65,22 +65,12 @@ const Navigation = () => {
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
-              aria-label={gameMode ? "Exit game mode" : "Enter game mode"}
+              aria-label={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
+              title={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
             >
               <Gamepad2 className="h-4 w-4" />
-              <span className="hidden lg:inline">{gameMode ? "Game On" : "Game Mode"}</span>
+              <span className="hidden lg:inline">{gameMode ? "Exit World" : "Game Mode"}</span>
             </button>
-            {gameMode && (
-              <button
-                onClick={openWorld}
-                aria-label="Enter Explorer World"
-                title="Enter Explorer World"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
-              >
-                <Footprints className="h-4 w-4" />
-                <span className="hidden lg:inline">Explorer World</span>
-              </button>
-            )}
           </div>
 
 
@@ -122,20 +112,8 @@ const Navigation = () => {
                   }`}
                 >
                   <Gamepad2 className="h-4 w-4" />
-                  {gameMode ? "Exit Game Mode" : "Enter Game Mode"}
+                  {gameMode ? "Exit 2.5D World" : "Enter 2.5D World"}
                 </button>
-                {gameMode && (
-                  <button
-                    onClick={() => {
-                      openWorld();
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium bg-foreground text-background"
-                  >
-                    <Footprints className="h-4 w-4" />
-                    Enter Explorer World
-                  </button>
-                )}
                 <Button 
                   variant="premium" 
                   size="sm" 
