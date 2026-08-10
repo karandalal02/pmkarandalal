@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Check, type LucideIcon } from "lucide-react";
 
 interface WorldBuildingProps {
   label: string;
@@ -9,9 +9,10 @@ interface WorldBuildingProps {
   near: boolean;
   doorOpen: boolean;
   variant: "section" | "shop";
+  Icon?: LucideIcon;
 }
 
-const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, variant }: WorldBuildingProps) => {
+const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, variant, Icon }: WorldBuildingProps) => {
   const windows = Math.max(2, Math.round(height / 90));
 
   return (
@@ -30,6 +31,19 @@ const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, varia
             ))}
           </div>
         )}
+
+        {/* Rooftop icon */}
+        {Icon && (
+          <div
+            className={`absolute left-1/2 -translate-x-1/2 rounded-xl border-2 p-2 transition-all duration-300 ${
+              near ? "border-primary bg-primary text-primary-foreground scale-110" : "border-border bg-card text-primary"
+            }`}
+            style={{ top: -76 }}
+          >
+            <Icon className="h-6 w-6" />
+          </div>
+        )}
+
 
         {/* Signboard */}
         <div
@@ -79,7 +93,7 @@ const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, varia
 
         {/* Enter prompt */}
         {near && (
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 animate-scale-in">
+          <div className="absolute left-1/2 -translate-x-1/2 animate-scale-in" style={{ top: -124 }}>
             <span className="whitespace-nowrap text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-foreground text-background">
               Enter ↑
             </span>

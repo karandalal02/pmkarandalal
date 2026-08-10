@@ -6,9 +6,12 @@ import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
 import WorldLinkInterceptor from "./WorldLinkInterceptor";
+import ProjectsHall from "./ProjectsHall";
+import { SECTION_ICONS, CASE_STUDY_ICONS } from "./worldIcons";
 import SkyLayer from "./SkyLayer";
 import { useTimeOfDay } from "@/context/TimeOfDayContext";
 import TimeOfDayToggle from "@/components/TimeOfDayToggle";
+
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -313,7 +316,9 @@ const ExplorerWorld = () => {
             }
             near={nearest?.key === s.key}
             doorOpen={openDoorKey === s.key}
+            Icon={s.sectionId ? SECTION_ICONS[s.sectionId] : CASE_STUDY_ICONS[s.caseStudyId as string]}
           />
+
         ))}
 
         {/* Character */}
@@ -370,15 +375,20 @@ const ExplorerWorld = () => {
 
       {activeSpot && (
         <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
-          <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
-            {activeSpot.sectionId
-              ? sectionContent[activeSpot.sectionId]
-              : activeSpot.caseStudyId
-                ? caseStudyContent[activeSpot.caseStudyId]
-                : null}
-          </WorldLinkInterceptor>
+          {activeSpot.sectionId === "projects" ? (
+            <ProjectsHall onEnterCaseStudy={openCaseStudyById} reducedMotion={reducedMotion} />
+          ) : (
+            <WorldLinkInterceptor onOpenCaseStudy={openCaseStudyById} onBackToStreet={closeSection}>
+              {activeSpot.sectionId
+                ? sectionContent[activeSpot.sectionId]
+                : activeSpot.caseStudyId
+                  ? caseStudyContent[activeSpot.caseStudyId]
+                  : null}
+            </WorldLinkInterceptor>
+          )}
         </SectionOverlay>
       )}
+
     </div>
   );
 };
