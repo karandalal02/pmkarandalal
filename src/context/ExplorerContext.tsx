@@ -81,7 +81,7 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const [visitedSections, setVisitedSections] = useState<Set<SectionId>>(new Set());
   const [visitedCaseStudies, setVisitedCaseStudies] = useState<Set<CaseStudyId>>(new Set());
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
-  const [showMap, setShowMap] = useState(true);
+  const [showMap, setShowMap] = useState(false);
   const [worldOpen, setWorldOpen] = useState(false);
 
   const toggleGameMode = useCallback(() => {
