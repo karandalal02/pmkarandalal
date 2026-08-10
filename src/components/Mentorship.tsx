@@ -72,7 +72,7 @@ const Mentorship = () => {
               >
                 <div className="flex items-start gap-6">
                   <div className="p-4 rounded-xl bg-gradient-primary">
-                    <IconComponent className="h-8 w-8 text-white" />
+                    <IconComponent className="h-8 w-8 text-background" />
                   </div>
                   
                   <div className="flex-1">
@@ -140,7 +140,7 @@ const Mentorship = () => {
                 
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-gradient-accent rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold">
+                    <span className="text-background font-semibold">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
