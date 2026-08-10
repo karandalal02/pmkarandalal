@@ -76,7 +76,7 @@ const JourneyMap = () => {
           Main Portfolio
         </h4>
         <div className="relative pl-4">
-          <div className="absolute left-[15px] top-2 bottom-2 w-0.5 bg-border" />
+          <div className="absolute left-[21px] top-4 bottom-4 w-px bg-border -z-0" />
           {SECTIONS.map((section) => {
             const visited = visitedSections.has(section.id);
             const active = !currentCaseStudy && activeSection === section.id;

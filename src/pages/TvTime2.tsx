@@ -193,9 +193,9 @@ const TvTime2 = () => {
 
         <Section title="User feedback collection" eyebrow="What Is Next">
           <ul className="text-muted-foreground leading-relaxed max-w-3xl space-y-3 list-disc pl-5">
-            <li>Gather user feedback</li>
-            <li>Understand user problems and make improvements</li>
-            <li>Minor tweaks to make it more intuitive</li>
+            <li>Sharable list</li>
+            <li>Where to watch</li>
+            <li>Adapt based on user feedback</li>
           </ul>
         </Section>
 
