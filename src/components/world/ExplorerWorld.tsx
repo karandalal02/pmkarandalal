@@ -133,8 +133,6 @@ const ExplorerWorld = () => {
 
   const worldWidth = spots[spots.length - 1].x + 400;
 
-  const worldWidth = spots[spots.length - 1].x + 400;
-
   const nearest = useMemo(() => {
     let best: Spot | null = null;
     let bestD = Infinity;
