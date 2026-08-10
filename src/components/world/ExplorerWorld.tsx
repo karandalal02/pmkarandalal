@@ -382,7 +382,12 @@ const ExplorerWorld = () => {
       </div>
 
       {activeSpot && (
-        <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
+        <SectionOverlay
+          key={`${spotStack.length}-${activeSpot.key}`}
+          label={activeSpot.label}
+          backLabel={spotStack.length > 1 ? `Back to ${spotStack[spotStack.length - 2].label}` : "Back to street"}
+          onClose={closeSection}
+        >
           {activeSpot.sectionId === "projects" ? (
             <ProjectsHall onEnterCaseStudy={openCaseStudyById} reducedMotion={reducedMotion} />
           ) : (
