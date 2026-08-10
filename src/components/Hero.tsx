@@ -4,6 +4,15 @@ import { ArrowRight, BookOpen, Sparkles } from "lucide-react";
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+      {/* Time-of-day sky wash */}
+      <div
+        className="absolute inset-x-0 top-0 h-[55vh] pointer-events-none opacity-60 transition-[background] duration-1000"
+        style={{
+          background:
+            "linear-gradient(to bottom, hsl(var(--sky-top) / 0.55) 0%, hsl(var(--sky-bottom) / 0.25) 45%, transparent 100%)",
+        }}
+        aria-hidden="true"
+      />
       <div className="container mx-auto px-6 py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Clean Profile Section */}
