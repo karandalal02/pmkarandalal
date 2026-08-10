@@ -209,7 +209,15 @@ const ExplorerWorld = () => {
   }, []);
 
   const closeSection = useCallback(() => {
-    setActiveSpot(null);
+    setSpotStack((prev) => {
+      const next = prev.slice(0, -1);
+      if (next.length === 0) setOpenDoorKey(null);
+      return next;
+    });
+  }, []);
+
+  const closeAllSections = useCallback(() => {
+    setSpotStack([]);
     setOpenDoorKey(null);
   }, []);
 
@@ -218,8 +226,7 @@ const ExplorerWorld = () => {
       const spot = spots.find((s) => s.caseStudyId === id);
       if (!spot) return;
       visitCaseStudy(id as never);
-      setOpenDoorKey(spot.key);
-      setActiveSpot(spot);
+      setSpotStack((prev) => [...prev, spot]);
       xRef.current = spot.x;
       setX(spot.x);
     },
