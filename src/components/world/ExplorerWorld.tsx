@@ -92,7 +92,8 @@ const ExplorerWorld = () => {
   const [facing, setFacing] = useState(1);
   const [walking, setWalking] = useState(false);
   const [openDoorKey, setOpenDoorKey] = useState<string | null>(null);
-  const [activeSpot, setActiveSpot] = useState<Spot | null>(null);
+  const [spotStack, setSpotStack] = useState<Spot[]>([]);
+  const activeSpot = spotStack.length ? spotStack[spotStack.length - 1] : null;
   const [viewportW, setViewportW] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
 
   const xRef = useRef(START_X);
@@ -149,7 +150,7 @@ const ExplorerWorld = () => {
     window.setTimeout(() => {
       if (spot.caseStudyId) visitCaseStudy(spot.caseStudyId as never);
       if (spot.sectionId) visitSection(spot.sectionId as never);
-      setActiveSpot(spot);
+      setSpotStack([spot]);
     }, 480);
   }, [activeSpot, visitCaseStudy, visitSection]);
 
@@ -208,17 +209,22 @@ const ExplorerWorld = () => {
   }, []);
 
   const closeSection = useCallback(() => {
-    setActiveSpot(null);
-    setOpenDoorKey(null);
+    setSpotStack((prev) => {
+      const next = prev.slice(0, -1);
+      if (next.length === 0) setOpenDoorKey(null);
+      return next;
+    });
   }, []);
+
+
+
 
   const openCaseStudyById = useCallback(
     (id: string) => {
       const spot = spots.find((s) => s.caseStudyId === id);
       if (!spot) return;
       visitCaseStudy(id as never);
-      setOpenDoorKey(spot.key);
-      setActiveSpot(spot);
+      setSpotStack((prev) => [...prev, spot]);
       xRef.current = spot.x;
       setX(spot.x);
     },
@@ -374,7 +380,12 @@ const ExplorerWorld = () => {
       </div>
 
       {activeSpot && (
-        <SectionOverlay key={activeSpot.key} label={activeSpot.label} onClose={closeSection}>
+        <SectionOverlay
+          key={`${spotStack.length}-${activeSpot.key}`}
+          label={activeSpot.label}
+          backLabel={spotStack.length > 1 ? `Back to ${spotStack[spotStack.length - 2].label}` : "Back to street"}
+          onClose={closeSection}
+        >
           {activeSpot.sectionId === "projects" ? (
             <ProjectsHall onEnterCaseStudy={openCaseStudyById} reducedMotion={reducedMotion} />
           ) : (
