@@ -192,6 +192,23 @@ const TvTime2 = () => {
           </p>
         </Section>
 
+        <Section title="Architecture" eyebrow="System Overview">
+          <p className="text-muted-foreground leading-relaxed mb-8 max-w-3xl">
+            A no-build, vanilla-JS PWA with a thin serverless backend. The static app is hosted on Vercel, with data stored in the user's Google Drive and cached offline via IndexedDB and a service worker.
+          </p>
+          <figure className="bg-card border border-border rounded-3xl p-6 md:p-8">
+            <img
+              src={architecture.url}
+              alt="TV Time 2.0 system architecture diagram showing GitHub, Vercel, static app, serverless API, IndexedDB, service worker, TMDB, Google OAuth, and Upstash Redis"
+              loading="lazy"
+              className="w-full rounded-2xl border border-border object-cover"
+            />
+            <figcaption className="text-sm text-muted-foreground mt-4 text-center">
+              TV Time 2.0 — technical architecture
+            </figcaption>
+          </figure>
+        </Section>
+
         <Section title="User feedback collection" eyebrow="What Is Next">
           <ul className="text-muted-foreground leading-relaxed max-w-3xl space-y-3 list-disc pl-5">
             <li>Sharable list</li>
