@@ -176,6 +176,9 @@ All colors MUST be HSL.
     --border: 22 22% 28%;
     --input: 22 22% 28%;
     --ring: 25 90% 62%;
+    --shadow-glow: 0 10px 40px hsl(0 0% 0% / 0.45);
+    --shadow-accent: 0 20px 60px hsl(0 0% 0% / 0.55);
+    --shadow-premium: 0 25px 50px -12px hsl(0 0% 0% / 0.6);
   }
 
   .tod-night {
@@ -184,6 +187,10 @@ All colors MUST be HSL.
     --sky-body: 210 40% 92%;
     --sky-cloud: 228 25% 32%;
     --sky-bird: 228 25% 40%;
+
+    --shadow-glow: 0 10px 40px hsl(0 0% 0% / 0.45);
+    --shadow-accent: 0 20px 60px hsl(0 0% 0% / 0.55);
+    --shadow-premium: 0 25px 50px -12px hsl(0 0% 0% / 0.6);
   }
 
   html {
