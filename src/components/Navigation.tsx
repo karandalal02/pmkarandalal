@@ -65,22 +65,12 @@ const Navigation = () => {
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
-              aria-label={gameMode ? "Exit game mode" : "Enter game mode"}
+              aria-label={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
+              title={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
             >
               <Gamepad2 className="h-4 w-4" />
-              <span className="hidden lg:inline">{gameMode ? "Game On" : "Game Mode"}</span>
+              <span className="hidden lg:inline">{gameMode ? "Exit World" : "Game Mode"}</span>
             </button>
-            {gameMode && (
-              <button
-                onClick={openWorld}
-                aria-label="Enter Explorer World"
-                title="Enter Explorer World"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-foreground text-background hover:opacity-90 transition-opacity"
-              >
-                <Footprints className="h-4 w-4" />
-                <span className="hidden lg:inline">Explorer World</span>
-              </button>
-            )}
           </div>
 
 
