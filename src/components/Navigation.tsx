@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useExplorer } from "@/context/ExplorerContext";
+import TimeOfDayToggle from "@/components/TimeOfDayToggle";
 import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,6 +59,7 @@ const Navigation = () => {
             {navItems.map(item => <button key={item.label} onClick={() => scrollToSection(item.href)} className="text-muted-foreground hover:text-foreground transition-colors font-medium">
                 {item.label}
               </button>)}
+            <TimeOfDayToggle />
             <button
               onClick={toggleGameMode}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${

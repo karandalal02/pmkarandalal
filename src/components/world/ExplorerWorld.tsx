@@ -6,6 +6,9 @@ import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
 import WorldLinkInterceptor from "./WorldLinkInterceptor";
+import SkyLayer from "./SkyLayer";
+import { useTimeOfDay } from "@/context/TimeOfDayContext";
+import TimeOfDayToggle from "@/components/TimeOfDayToggle";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -80,6 +83,7 @@ const ExplorerWorld = () => {
     progress,
   } = useExplorer();
 
+  const { phase } = useTimeOfDay();
   const reducedMotion = usePrefersReducedMotion();
   const [x, setX] = useState(START_X);
   const [facing, setFacing] = useState(1);
@@ -226,19 +230,41 @@ const ExplorerWorld = () => {
   return (
     <div className="fixed inset-0 z-[60] bg-background overflow-hidden">
       {/* Sky */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary to-background" />
+      <div
+        className="absolute inset-0 transition-[background] duration-1000"
+        style={{
+          background:
+            "linear-gradient(to bottom, hsl(var(--sky-top)) 0%, hsl(var(--sky-bottom)) 65%, hsl(var(--background)) 100%)",
+        }}
+      />
+
+      <SkyLayer phase={phase} camera={camera} worldWidth={worldWidth} reducedMotion={reducedMotion} />
 
       {/* Far skyline (parallax) */}
       <div
-        className="absolute bottom-24 left-0 h-64 opacity-30"
+        className={`absolute bottom-24 left-0 h-64 ${phase === "night" ? "opacity-70" : "opacity-30"}`}
         style={{ width: worldWidth, transform: `translateX(${-camera * 0.25}px)` }}
       >
         {Array.from({ length: Math.ceil(worldWidth / 120) }).map((_, i) => (
           <div
             key={i}
-            className="absolute bottom-0 rounded-t bg-foreground/40"
+            className="absolute bottom-0 rounded-t bg-foreground/40 overflow-hidden"
             style={{ left: i * 120, width: 84, height: 90 + ((i * 53) % 130) }}
-          />
+          >
+            {phase === "night" && (
+              <div className="absolute inset-x-2 top-3 grid grid-cols-3 gap-1.5">
+                {Array.from({ length: 9 }).map((_, w) => (
+                  <span
+                    key={w}
+                    className="h-2 rounded-[1px]"
+                    style={{
+                      background: (i * 7 + w * 3) % 4 === 0 ? "hsl(45 100% 70% / 0.85)" : "transparent",
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         ))}
       </div>
 
@@ -301,6 +327,7 @@ const ExplorerWorld = () => {
         <div className="px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-xs font-mono font-bold text-foreground">
           {progress}% explored
         </div>
+        <TimeOfDayToggle className="border border-border backdrop-blur" />
         <div className="hidden md:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
           ← → to walk · ↑ to enter · Esc to leave
         </div>

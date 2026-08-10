@@ -118,3 +118,79 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  /* Time-of-day sky + palette phases */
+  :root {
+    --sky-top: 205 90% 72%;
+    --sky-bottom: 200 60% 92%;
+    --sky-body: 45 100% 62%;
+    --sky-crater: 220 15% 78%;
+    --sky-cloud: 0 0% 100%;
+    --sky-star: 210 100% 96%;
+    --sky-bird: 0 0% 25%;
+  }
+
+  .tod-dawn {
+    --sky-top: 25 90% 78%;
+    --sky-bottom: 200 70% 90%;
+    --sky-body: 30 100% 68%;
+    --sky-cloud: 25 60% 96%;
+    --sky-bird: 20 30% 30%;
+
+    --background: 30 40% 97%;
+    --foreground: 25 25% 12%;
+    --card: 30 50% 99%;
+    --card-foreground: 25 25% 12%;
+    --popover: 30 50% 99%;
+    --popover-foreground: 25 25% 12%;
+    --secondary: 28 35% 93%;
+    --secondary-foreground: 25 25% 12%;
+    --muted: 28 35% 93%;
+    --muted-foreground: 25 12% 42%;
+    --border: 28 25% 88%;
+    --input: 28 30% 93%;
+  }
+
+  .tod-sunset {
+    --sky-top: 275 45% 42%;
+    --sky-bottom: 22 90% 66%;
+    --sky-body: 15 95% 60%;
+    --sky-cloud: 18 70% 78%;
+    --sky-bird: 275 30% 20%;
+
+    --background: 25 35% 14%;
+    --foreground: 30 45% 96%;
+    --card: 22 30% 18%;
+    --card-foreground: 30 45% 96%;
+    --popover: 22 30% 18%;
+    --popover-foreground: 30 45% 96%;
+    --primary: 25 90% 62%;
+    --primary-foreground: 25 40% 12%;
+    --secondary: 22 25% 24%;
+    --secondary-foreground: 30 45% 96%;
+    --muted: 22 25% 24%;
+    --muted-foreground: 28 20% 72%;
+    --accent: 25 90% 62%;
+    --accent-foreground: 25 40% 12%;
+    --border: 22 22% 28%;
+    --input: 22 22% 28%;
+    --ring: 25 90% 62%;
+  }
+
+  .tod-night {
+    --sky-top: 232 60% 10%;
+    --sky-bottom: 225 45% 22%;
+    --sky-body: 210 40% 92%;
+    --sky-cloud: 228 25% 32%;
+    --sky-bird: 228 25% 40%;
+  }
+
+  html {
+    transition: background-color 0.8s ease;
+  }
+
+  body {
+    transition: background-color 0.8s ease, color 0.8s ease;
+  }
+}
