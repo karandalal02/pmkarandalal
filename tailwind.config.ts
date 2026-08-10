@@ -97,6 +97,10 @@ export default {
 				'limb-swing': 'limb-swing 0.5s ease-in-out infinite',
 				'limb-swing-alt': 'limb-swing 0.5s ease-in-out infinite -0.25s',
 				'bounce-in': 'bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+				'twinkle': 'twinkle 3.5s ease-in-out infinite',
+				'cloud-drift': 'cloud-drift 80s linear infinite',
+				'bird-glide': 'bird-glide 30s linear infinite',
+				'shooting-star': 'shooting-star 9s ease-in infinite',
 
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out'
@@ -141,6 +145,25 @@ export default {
 					'50%': { transform: 'rotate(-22deg)' },
 				},
 
+				'twinkle': {
+					'0%, 100%': { opacity: '0.25', transform: 'scale(0.85)' },
+					'50%': { opacity: '1', transform: 'scale(1)' },
+				},
+				'cloud-drift': {
+					'0%': { marginLeft: '0px' },
+					'100%': { marginLeft: '-320px' },
+				},
+				'bird-glide': {
+					'0%': { left: '-8%', opacity: '0' },
+					'10%': { opacity: '0.9' },
+					'90%': { opacity: '0.9' },
+					'100%': { left: '108%', opacity: '0' },
+				},
+				'shooting-star': {
+					'0%, 82%': { opacity: '0', transform: 'translate(0,0) rotate(18deg)' },
+					'86%': { opacity: '1' },
+					'94%, 100%': { opacity: '0', transform: 'translate(340px, 160px) rotate(18deg)' },
+				},
 				'bounce-in': {
 					'0%': { opacity: '0', transform: 'scale(0.5) translateY(20px)' },
 					'60%': { opacity: '1', transform: 'scale(1.05) translateY(-4px)' },
