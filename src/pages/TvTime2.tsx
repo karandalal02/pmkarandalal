@@ -8,6 +8,7 @@ import shot1 from "@/assets/tvtime-IMG_4399.jpg.asset.json";
 import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
 import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
 import shot4 from "@/assets/tvtime-IMG_4403.jpg.asset.json";
+import architecture from "@/assets/architecture.png.asset.json";
 
 const screenshots = [
   { src: shot1.url, caption: "Watch Next — up next episodes, shows yet to start, shows yet to release, and shows you are all caught up with" },
