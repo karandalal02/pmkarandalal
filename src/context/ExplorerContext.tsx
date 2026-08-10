@@ -81,15 +81,14 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const [visitedSections, setVisitedSections] = useState<Set<SectionId>>(new Set());
   const [visitedCaseStudies, setVisitedCaseStudies] = useState<Set<CaseStudyId>>(new Set());
   const [activeSection, setActiveSection] = useState<SectionId | null>(null);
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
   const [worldOpen, setWorldOpen] = useState(false);
 
   const toggleGameMode = useCallback(() => {
     setGameMode((prev) => {
       const next = !prev;
-      // Entering game mode goes straight to Explorer World with the map/progress visible
+      // Game mode = the 2.5D Explorer World; exploring the normal page stays available always
       setWorldOpen(next);
-      setShowMap(next);
       return next;
     });
   }, []);
