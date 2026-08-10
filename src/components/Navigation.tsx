@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useExplorer } from "@/context/ExplorerContext";
-import { Menu, X, Calendar, Sparkles, Gamepad2, Footprints } from "lucide-react";
+import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { gameMode, toggleGameMode, openWorld } = useExplorer();
+  const { gameMode, toggleGameMode } = useExplorer();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
