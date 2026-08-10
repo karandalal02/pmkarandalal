@@ -111,7 +111,7 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   }, []);
 
   const openWorld = useCallback(() => {
-    setShowMap(false);
+    setShowMap(true);
     setWorldOpen(true);
   }, []);
 
