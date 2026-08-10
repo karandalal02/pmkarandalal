@@ -6,9 +6,12 @@ import WorldCharacter from "./WorldCharacter";
 import WorldBuilding from "./WorldBuilding";
 import SectionOverlay from "./SectionOverlay";
 import WorldLinkInterceptor from "./WorldLinkInterceptor";
+import ProjectsHall from "./ProjectsHall";
+import { SECTION_ICONS, CASE_STUDY_ICONS } from "./worldIcons";
 import SkyLayer from "./SkyLayer";
 import { useTimeOfDay } from "@/context/TimeOfDayContext";
 import TimeOfDayToggle from "@/components/TimeOfDayToggle";
+
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";

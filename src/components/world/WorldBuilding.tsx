@@ -93,7 +93,7 @@ const WorldBuilding = ({ label, x, width, height, visited, near, doorOpen, varia
 
         {/* Enter prompt */}
         {near && (
-          <div className="absolute -top-20 left-1/2 -translate-x-1/2 animate-scale-in">
+          <div className="absolute left-1/2 -translate-x-1/2 animate-scale-in" style={{ top: -124 }}>
             <span className="whitespace-nowrap text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-foreground text-background">
               Enter ↑
             </span>
