@@ -390,10 +390,37 @@ const ExplorerWorld = () => {
       </div>
 
 
-      {/* Exploration dock */}
+      {/* Exploration panel (modal, so it never sits on top of the world by accident) */}
       {checklistOpen && (
-        <div className="absolute inset-x-0 bottom-24 z-40 px-3 pb-3 animate-fade-in motion-reduce:animate-none">
-          <div className="mx-auto w-full max-w-5xl rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3">
+        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 animate-fade-in motion-reduce:animate-none">
+          <button
+            aria-label="Close exploration list"
+            onClick={() => setChecklistOpen(false)}
+            className="absolute inset-0 bg-background/70 backdrop-blur-sm cursor-default"
+          />
+          <div className="relative w-full max-w-2xl rounded-2xl border border-border bg-card shadow-2xl p-4">
+            <div className="flex items-center justify-between gap-3 mb-2">
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="text-xs font-semibold text-foreground whitespace-nowrap">
+                  {completedLocations} of {totalLocations} explored
+                </span>
+                <div className="hidden sm:block h-1 w-32 rounded-full bg-border overflow-hidden">
+                  <div className="h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
+                </div>
+                {missingCount > 0 && (
+                  <span className="text-[10px] font-mono text-muted-foreground whitespace-nowrap">Missing: {missingCount}</span>
+                )}
+              </div>
+              <button
+                onClick={() => setChecklistOpen(false)}
+                aria-label="Close exploration list"
+                className="p-1 rounded-full text-muted-foreground hover:bg-secondary transition-colors shrink-0"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+
             <div className="flex items-center justify-between gap-3 mb-2">
               <div className="flex items-center gap-3 min-w-0">
                 <span className="text-xs font-semibold text-foreground whitespace-nowrap">
