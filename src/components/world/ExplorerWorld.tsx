@@ -368,6 +368,12 @@ const ExplorerWorld = () => {
           </button>
 
           {checklistOpen && (
+            <>
+              <button
+                aria-label="Close checklist"
+                onClick={() => setChecklistOpen(false)}
+                className="fixed inset-0 -z-10 cursor-default"
+              />
             <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3 animate-fade-in">
               <div className="flex items-baseline justify-between mb-2">
                 <span className="text-xs font-semibold text-foreground">
