@@ -6,9 +6,10 @@ interface SectionOverlayProps {
   children: ReactNode;
   onClose: () => void;
   backLabel?: string;
+  onExitWorld?: () => void;
 }
 
-const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street" }: SectionOverlayProps) => {
+const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street", onExitWorld }: SectionOverlayProps) => {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === "ArrowDown") {
@@ -26,13 +27,14 @@ const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street"
       <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-card/80 backdrop-blur">
         <span className="font-display font-bold text-foreground">{label}</span>
         <button
-          onClick={onClose}
+          onClick={onExitWorld}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
         >
           <X className="h-4 w-4" />
-          {backLabel}
+          Exit game mode
         </button>
       </div>
+
       <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
 
       <button
