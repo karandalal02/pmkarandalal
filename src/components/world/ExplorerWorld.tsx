@@ -511,6 +511,8 @@ const ExplorerWorld = () => {
           label={activeSpot.label}
           backLabel={spotStack.length > 1 ? `Back to ${spotStack[spotStack.length - 2].label}` : "Back to street"}
           onClose={closeSection}
+          onExitWorld={closeWorld}
+
         >
           {activeSpot.sectionId === "projects" ? (
             <ProjectsHall onEnterCaseStudy={openCaseStudyById} reducedMotion={reducedMotion} />
