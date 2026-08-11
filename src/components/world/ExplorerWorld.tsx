@@ -97,6 +97,7 @@ const ExplorerWorld = () => {
   const [spotStack, setSpotStack] = useState<Spot[]>([]);
   const activeSpot = spotStack.length ? spotStack[spotStack.length - 1] : null;
   const [viewportW, setViewportW] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   const xRef = useRef(START_X);
   const rafRef = useRef<number | null>(null);
@@ -236,6 +237,21 @@ const ExplorerWorld = () => {
     },
     [caseStudySpots, visitCaseStudy]
   );
+
+
+  const goToSection = useCallback(
+    (spot: Spot) => {
+      setChecklistOpen(false);
+      xRef.current = spot.x;
+      setX(spot.x);
+      setOpenDoorKey(spot.key);
+      if (spot.sectionId) visitSection(spot.sectionId as never);
+      setSpotStack([spot]);
+    },
+    [visitSection]
+  );
+
+  const missingCount = totalLocations - completedLocations;
 
 
   if (!worldOpen) return null;
