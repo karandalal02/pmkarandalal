@@ -446,9 +446,8 @@ const ExplorerWorld = () => {
                 );
               })}
 
-              <span className="shrink-0 h-5 w-px bg-border mx-1" />
+              <span className="w-full mt-2 text-[10px] uppercase tracking-wider text-muted-foreground">Case studies</span>
 
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground shrink-0 pr-1">Case studies</span>
               {caseStudySpots.map((c) => {
                 const visited = visitedCaseStudies.has(c.caseStudyId as never);
                 const Icon = CASE_STUDY_ICONS[c.caseStudyId as string];
