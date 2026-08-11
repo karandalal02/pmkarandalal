@@ -251,6 +251,15 @@ const ExplorerWorld = () => {
     [visitSection]
   );
 
+  useEffect(() => {
+    if (!checklistOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setChecklistOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [checklistOpen]);
+
   const missingCount = totalLocations - completedLocations;
 
 
@@ -366,79 +375,6 @@ const ExplorerWorld = () => {
             {progress}% explored
             <ChevronDown className={`h-3.5 w-3.5 transition-transform ${checklistOpen ? "rotate-180" : ""}`} />
           </button>
-
-          {checklistOpen && (
-            <>
-              <button
-                aria-label="Close checklist"
-                onClick={() => setChecklistOpen(false)}
-                className="fixed inset-0 -z-10 cursor-default"
-              />
-            <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3 animate-fade-in">
-              <div className="flex items-baseline justify-between mb-2">
-                <span className="text-xs font-semibold text-foreground">
-                  {completedLocations} of {totalLocations} explored
-                </span>
-                {missingCount > 0 && (
-                  <span className="text-[10px] font-mono text-muted-foreground">Missing: {missingCount}</span>
-                )}
-              </div>
-
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Sections</p>
-              <div className="space-y-0.5 mb-2">
-                {spots.map((s) => {
-                  const visited = visitedSections.has(s.sectionId as never);
-                  const Icon = SECTION_ICONS[s.sectionId as string];
-                  return (
-                    <button
-                      key={s.key}
-                      onClick={() => goToSection(s)}
-                      className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-left text-xs hover:bg-secondary transition-colors"
-                    >
-                      {visited ? (
-                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-                      ) : (
-                        <Circle className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
-                      )}
-                      {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />}
-                      <span className={visited ? "text-muted-foreground" : "text-foreground font-medium"}>
-                        {s.label}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Case studies</p>
-              <div className="space-y-0.5">
-                {caseStudySpots.map((c) => {
-                  const visited = visitedCaseStudies.has(c.caseStudyId as never);
-                  const Icon = CASE_STUDY_ICONS[c.caseStudyId as string];
-                  return (
-                    <button
-                      key={c.key}
-                      onClick={() => {
-                        setChecklistOpen(false);
-                        openCaseStudyById(c.caseStudyId as string);
-                      }}
-                      className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-left text-xs hover:bg-secondary transition-colors"
-                    >
-                      {visited ? (
-                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-                      ) : (
-                        <Circle className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
-                      )}
-                      {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />}
-                      <span className={visited ? "text-muted-foreground" : "text-foreground font-medium"}>
-                        {c.label}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-            </>
-          )}
         </div>
         <TimeOfDayToggle className="border border-border backdrop-blur" />
         <div className="hidden lg:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
@@ -454,47 +390,91 @@ const ExplorerWorld = () => {
       </div>
 
 
-      {/* Horizontal explore trail */}
-      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[min(92vw,44rem)] px-4 py-3 rounded-2xl bg-card/85 backdrop-blur border border-border/60">
-        <div className="relative h-6">
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full bg-border" />
-          <div
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full bg-primary transition-[width] duration-300"
-            style={{ width: `${Math.min(100, Math.max(0, ((x - START_X) / (spots[spots.length - 1].x - START_X)) * 100))}%` }}
-          />
-          {spots.map((s, i) => {
-            const visited = visitedSections.has(s.sectionId as never);
-            const active = nearest?.key === s.key;
-            const left = (i / (spots.length - 1)) * 100;
-            return (
-              <button
-                key={s.key}
-                onClick={() => {
-                  xRef.current = s.x;
-                  setX(s.x);
-                }}
-                title={s.label}
-                aria-label={`Walk to ${s.label}`}
-                className="group absolute top-1/2 -translate-y-1/2 -translate-x-1/2"
-                style={{ left: `${left}%` }}
-              >
-                <span
-                  className={`block rounded-full border-2 transition-all duration-300 ${
-                    active
-                      ? "w-3.5 h-3.5 border-primary bg-primary scale-110"
-                      : visited
-                        ? "w-2.5 h-2.5 border-primary bg-primary"
-                        : "w-2.5 h-2.5 border-border bg-background"
-                  }`}
-                />
-                <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-5 whitespace-nowrap text-[10px] font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-                  {s.label}
+      {/* Exploration dock */}
+      {checklistOpen && (
+        <div className="absolute inset-x-0 bottom-24 z-40 px-3 pb-3 animate-fade-in motion-reduce:animate-none">
+          <div className="mx-auto w-full max-w-5xl rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3">
+            <div className="flex items-center justify-between gap-3 mb-2">
+              <div className="flex items-center gap-3 min-w-0">
+                <span className="text-xs font-semibold text-foreground whitespace-nowrap">
+                  {completedLocations} of {totalLocations} explored
                 </span>
+                <div className="hidden sm:block h-1 w-32 rounded-full bg-border overflow-hidden">
+                  <div className="h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
+                </div>
+                {missingCount > 0 && (
+                  <span className="text-[10px] font-mono text-muted-foreground whitespace-nowrap">Missing: {missingCount}</span>
+                )}
+              </div>
+              <button
+                onClick={() => setChecklistOpen(false)}
+                aria-label="Close exploration list"
+                className="p-1 rounded-full text-muted-foreground hover:bg-secondary transition-colors shrink-0"
+              >
+                <X className="h-4 w-4" />
               </button>
-            );
-          })}
+            </div>
+
+            <div className="flex items-center gap-2 overflow-x-auto pb-1">
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground shrink-0 pr-1">Sections</span>
+              {spots.map((s) => {
+                const visited = visitedSections.has(s.sectionId as never);
+                const Icon = SECTION_ICONS[s.sectionId as string];
+                return (
+                  <button
+                    key={s.key}
+                    onClick={() => goToSection(s)}
+                    className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-xs transition-colors ${
+                      visited
+                        ? "border-border bg-secondary/60 text-muted-foreground"
+                        : "border-primary/40 bg-background text-foreground font-medium hover:bg-secondary"
+                    }`}
+                  >
+                    {visited ? (
+                      <Check className="h-3.5 w-3.5 text-primary" />
+                    ) : (
+                      <Circle className="h-3.5 w-3.5 text-muted-foreground/50" />
+                    )}
+                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    {s.label}
+                  </button>
+                );
+              })}
+
+              <span className="shrink-0 h-5 w-px bg-border mx-1" />
+
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground shrink-0 pr-1">Case studies</span>
+              {caseStudySpots.map((c) => {
+                const visited = visitedCaseStudies.has(c.caseStudyId as never);
+                const Icon = CASE_STUDY_ICONS[c.caseStudyId as string];
+                return (
+                  <button
+                    key={c.key}
+                    onClick={() => {
+                      setChecklistOpen(false);
+                      openCaseStudyById(c.caseStudyId as string);
+                    }}
+                    className={`shrink-0 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border text-xs transition-colors ${
+                      visited
+                        ? "border-border bg-secondary/60 text-muted-foreground"
+                        : "border-primary/40 bg-background text-foreground font-medium hover:bg-secondary"
+                    }`}
+                  >
+                    {visited ? (
+                      <Check className="h-3.5 w-3.5 text-primary" />
+                    ) : (
+                      <Circle className="h-3.5 w-3.5 text-muted-foreground/50" />
+                    )}
+                    {Icon && <Icon className="h-3.5 w-3.5" />}
+                    {c.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
 
 
       {/* Touch controls */}
