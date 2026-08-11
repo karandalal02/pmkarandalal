@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useExplorer, SECTIONS } from "@/context/ExplorerContext";
-import JourneyMap from "./JourneyMap";
-import ExplorerTrail from "./ExplorerTrail";
 import ExplorerWorld from "./world/ExplorerWorld";
 
 const SiteExplorer = () => {
   const location = useLocation();
-  const { gameMode, visitSection, setActiveSection } = useExplorer();
+  const { visitSection, setActiveSection } = useExplorer();
+
 
   // Track main page sections whenever they exist (even when the explorer UI is hidden).
   useEffect(() => {
@@ -51,12 +50,11 @@ const SiteExplorer = () => {
 
   return (
     <>
-      {!gameMode && <ExplorerTrail />}
-      <JourneyMap />
       <ExplorerWorld />
     </>
   );
 };
+
 
 export default SiteExplorer;
 
