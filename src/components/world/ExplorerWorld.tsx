@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Check, ChevronDown, ChevronLeft, ChevronRight, Circle, X } from "lucide-react";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { useWorldControls } from "@/hooks/useWorldControls";
 import WorldCharacter from "./WorldCharacter";
@@ -84,6 +84,8 @@ const ExplorerWorld = () => {
     visitedSections,
     visitedCaseStudies,
     progress,
+    totalLocations,
+    completedLocations,
   } = useExplorer();
 
   const { phase } = useTimeOfDay();
