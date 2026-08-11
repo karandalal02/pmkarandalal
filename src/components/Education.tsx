@@ -7,7 +7,7 @@ const Education = () => {
       degree: "MS in Engineering Management (Product management), GPA: 3.8",
       location: "Boston, MA",
       date: "Dec 2023",
-      logo: "/lovable-uploads/fa409393-d99a-48f2-8ca6-19388e2c1dcd.png",
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/fa409393-d99a-48f2-8ca6-19388e2c1dcd.png`,
       description: "I pursued a cross-disciplinary curriculum that bridged engineering, product strategy, and business innovation. Relevant Courses: Digital Product Design, Business Model Design, Engineering Project Management — all directly contributing to how I approach product leadership today.",
       achievements: [
         "Founding member of the Aspiring Product Managers Club (APMC), shaping the club's vision",
@@ -20,7 +20,7 @@ const Education = () => {
       degree: "B.Tech in Computer Engineering, GPA: 3.7",
       location: "Pune, India",
       date: "May 2017",
-      logo: "/lovable-uploads/99508ba8-47ec-4f8e-b7c9-60cce91e0199.png",
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/99508ba8-47ec-4f8e-b7c9-60cce91e0199.png`,
       description: "My undergraduate degree gave me a strong foundation in systems thinking, problem solving, and data-driven development. Relevant Courses: Data Structure, Database Management, Computer Graphics, Data Mining Techniques helped shape the technical lens I bring to product management today.",
       achievements: [
         "Product Marketing Intern at Testbook.com - Introduced 400+ new customers by organizing a focus group and conducting beta testing"

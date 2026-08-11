@@ -18,7 +18,7 @@ const Hero = () => {
           {/* Clean Profile Section */}
           <div className="mb-16">
             <img
-              src="/lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png"
+              src={`${import.meta.env.BASE_URL}lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png`}
               alt="Karan Dalal"
               className="w-32 h-32 rounded-lg object-cover object-top mx-auto mb-8 shadow-premium"
             />

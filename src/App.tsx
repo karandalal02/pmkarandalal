@@ -22,7 +22,7 @@ const App = () => (
       <ExplorerProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Toaster />
           <Sonner />
           <Routes>

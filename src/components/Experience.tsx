@@ -5,7 +5,7 @@ const Experience = () => {
     {
       company: "SciPlay",
       location: "Austin, TX",
-      logo: "/lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png",
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/6f7e20a0-2d4d-48c3-bd33-8395b7080e32.png`,
       roles: [
         {
           role: "Product Manager, Bingo Showdown (Mobile F2P)",
@@ -42,12 +42,12 @@ const Experience = () => {
         "Analyzed user behavior via FullStory and Snowflake to identify root causes of churn, directly informing onboarding and product improvements",
         "Conducted UX research and MVP testing (95% survey engagement) to validate onboarding updates and prioritize key features like dynamic home and centralized payments"
       ],
-      logo: "/lovable-uploads/d59ff3d4-175f-4eb4-b241-236769939845.png"
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/d59ff3d4-175f-4eb4-b241-236769939845.png`
     },
     {
       company: "Newgen Software",
       location: "Mumbai, India",
-      logo: "/lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png",
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/03b95f23-8c52-4e01-be98-561c38a71780.png`,
       roles: [
         {
           role: "Technical Product Manager, Intelligent Process Automation",
@@ -80,7 +80,7 @@ const Experience = () => {
         "Successfully onboarded 400+ users during beta phase",
         "Contributed to early product-market fit validation efforts"
       ],
-      logo: "/lovable-uploads/7e826c7d-06b7-4ebd-8c0e-fc55a1c5f23c.png"
+      logo: `${import.meta.env.BASE_URL}lovable-uploads/7e826c7d-06b7-4ebd-8c0e-fc55a1c5f23c.png`
     }
   ];
 

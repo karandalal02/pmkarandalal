@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { Map as MapIcon, X, Trophy } from "lucide-react";
 
-const AVATAR_URL = "/lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png";
+const AVATAR_URL = `${import.meta.env.BASE_URL}lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png`;
 
 type Station = { id: string; label: string; fraction: number };
 

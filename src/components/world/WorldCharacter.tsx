@@ -1,4 +1,4 @@
-const AVATAR_URL = "/lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png";
+const AVATAR_URL = `${import.meta.env.BASE_URL}lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png`;
 
 interface WorldCharacterProps {
   walking: boolean;
