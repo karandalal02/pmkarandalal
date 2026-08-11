@@ -251,6 +251,15 @@ const ExplorerWorld = () => {
     [visitSection]
   );
 
+  useEffect(() => {
+    if (!checklistOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setChecklistOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [checklistOpen]);
+
   const missingCount = totalLocations - completedLocations;
 
 
@@ -383,7 +392,7 @@ const ExplorerWorld = () => {
 
       {/* Exploration dock */}
       {checklistOpen && (
-        <div className="absolute inset-x-0 bottom-24 z-40 px-3 pb-3 animate-slide-in-bottom motion-reduce:animate-none">
+        <div className="absolute inset-x-0 bottom-24 z-40 px-3 pb-3 animate-fade-in motion-reduce:animate-none">
           <div className="mx-auto w-full max-w-5xl rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3">
             <div className="flex items-center justify-between gap-3 mb-2">
               <div className="flex items-center gap-3 min-w-0">
