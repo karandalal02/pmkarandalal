@@ -51,12 +51,11 @@ const SiteExplorer = () => {
 
   return (
     <>
-      {!gameMode && <ExplorerTrail />}
-      <JourneyMap />
       <ExplorerWorld />
     </>
   );
 };
+
 
 export default SiteExplorer;
 
