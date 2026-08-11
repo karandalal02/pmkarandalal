@@ -343,7 +343,7 @@ const ExplorerWorld = () => {
           {progress}% explored
         </div>
         <TimeOfDayToggle className="border border-border backdrop-blur" />
-        <div className="hidden md:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
+        <div className="hidden lg:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
           ← → to walk · ↑ to enter · Esc to leave
         </div>
         <button
@@ -354,6 +354,49 @@ const ExplorerWorld = () => {
           Exit world
         </button>
       </div>
+
+      {/* Horizontal explore trail */}
+      <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[min(92vw,44rem)] px-4 py-3 rounded-2xl bg-card/85 backdrop-blur border border-border/60">
+        <div className="relative h-6">
+          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full bg-border" />
+          <div
+            className="absolute left-0 top-1/2 -translate-y-1/2 h-0.5 rounded-full bg-primary transition-[width] duration-300"
+            style={{ width: `${Math.min(100, Math.max(0, ((x - START_X) / (spots[spots.length - 1].x - START_X)) * 100))}%` }}
+          />
+          {spots.map((s, i) => {
+            const visited = visitedSections.has(s.sectionId as never);
+            const active = nearest?.key === s.key;
+            const left = (i / (spots.length - 1)) * 100;
+            return (
+              <button
+                key={s.key}
+                onClick={() => {
+                  xRef.current = s.x;
+                  setX(s.x);
+                }}
+                title={s.label}
+                aria-label={`Walk to ${s.label}`}
+                className="group absolute top-1/2 -translate-y-1/2 -translate-x-1/2"
+                style={{ left: `${left}%` }}
+              >
+                <span
+                  className={`block rounded-full border-2 transition-all duration-300 ${
+                    active
+                      ? "w-3.5 h-3.5 border-primary bg-primary scale-110"
+                      : visited
+                        ? "w-2.5 h-2.5 border-primary bg-primary"
+                        : "w-2.5 h-2.5 border-border bg-background"
+                  }`}
+                />
+                <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-5 whitespace-nowrap text-[10px] font-medium text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+                  {s.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
 
       {/* Touch controls */}
       <div className="absolute bottom-4 left-0 right-0 flex items-center justify-between px-6 md:hidden">
