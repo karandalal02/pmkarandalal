@@ -2,6 +2,7 @@ import { ArrowUpRight, Target, TrendingUp, Users, Zap, Sparkles, ExternalLink } 
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import tvtimeIcon from "@/assets/tvtime-icon.png.asset.json";
+import { lovableAssetUrl } from "@/lib/lovableAssetUrl";
 
 const Projects = () => {
   const projects = [
@@ -49,7 +50,7 @@ const Projects = () => {
       solution: "Search anything from TMDB, mark episodes watched in one click, and see a weekly release calendar. Watch history lives in your own Google Drive — no servers, no subscription.",
       result: "Live — try it",
       icon: Users,
-      image: tvtimeIcon.url,
+      image: lovableAssetUrl(tvtimeIcon),
       gradient: "from-amber-500 via-orange-500 to-rose-500",
       accent: "amber",
       href: "/tv-time-2-0"

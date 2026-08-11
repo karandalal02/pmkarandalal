@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import shot1 from "@/assets/screenshot_1_clean.png.asset.json";
 import shot2 from "@/assets/screenshot_2_redacted.png.asset.json";
 import shot3 from "@/assets/screenshot_3_clean.png.asset.json";
+import { lovableAssetUrl } from "@/lib/lovableAssetUrl";
 
 const tags = ["AI", "Automation", "Claude API", "Product Thinking"];
 
@@ -18,18 +19,18 @@ const stats = [
 
 const screenshots = [
   {
-    src: shot1.url,
+    src: lovableAssetUrl(shot1),
     alt: "Tool calls running across Gmail, Calendar, and Notion",
     caption: "Tool calls running across Gmail, Calendar, and Notion",
   },
   {
-    src: shot2.url,
+    src: lovableAssetUrl(shot2),
     alt: "New activity flagged since yesterday including rejections and inbound recruiter outreach",
     caption:
       "New activity flagged since yesterday including rejections and inbound recruiter outreach",
   },
   {
-    src: shot3.url,
+    src: lovableAssetUrl(shot3),
     alt: "Missing debrief notes flagged with specific interviews named",
     caption: "Missing debrief notes flagged with specific interviews named",
   },

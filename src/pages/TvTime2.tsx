@@ -9,12 +9,13 @@ import shot2 from "@/assets/tvtime-IMG_4400.jpg.asset.json";
 import shot3 from "@/assets/tvtime-IMG_4401.jpg.asset.json";
 import shot4 from "@/assets/tvtime-IMG_4403.jpg.asset.json";
 import architecture from "@/assets/architecture.png.asset.json";
+import { lovableAssetUrl } from "@/lib/lovableAssetUrl";
 
 const screenshots = [
-  { src: shot1.url, caption: "Watch Next — up next episodes, shows yet to start, shows yet to release, and shows you are all caught up with" },
-  { src: shot4.url, caption: "Future Releases — all new episodes from shows you follow in a calendar timeline, so you know exactly when the next one drops" },
-  { src: shot2.url, caption: "Movies — everything in your watchlist that is available to watch, plus movies yet to release" },
-  { src: shot3.url, caption: "Stats — episodes, hours watched, and shows and movies tracked" },
+  { src: lovableAssetUrl(shot1), caption: "Watch Next — up next episodes, shows yet to start, shows yet to release, and shows you are all caught up with" },
+  { src: lovableAssetUrl(shot4), caption: "Future Releases — all new episodes from shows you follow in a calendar timeline, so you know exactly when the next one drops" },
+  { src: lovableAssetUrl(shot2), caption: "Movies — everything in your watchlist that is available to watch, plus movies yet to release" },
+  { src: lovableAssetUrl(shot3), caption: "Stats — episodes, hours watched, and shows and movies tracked" },
 ];
 
 const tags = [
@@ -105,7 +106,7 @@ const TvTime2 = () => {
           </div>
           <h1 className="text-5xl lg:text-7xl font-display font-black leading-tight mb-6 flex items-center gap-4">
             <img
-              src={tvtimeIcon.url}
+              src={lovableAssetUrl(tvtimeIcon)}
               alt="TV Time 2.0 icon"
               className="w-14 h-14 lg:w-20 lg:h-20 rounded-2xl shadow-lg object-cover"
             />
@@ -198,7 +199,7 @@ const TvTime2 = () => {
           </p>
           <figure className="bg-card border border-border rounded-3xl p-6 md:p-8">
             <img
-              src={architecture.url}
+              src={lovableAssetUrl(architecture)}
               alt="TV Time 2.0 system architecture diagram showing GitHub, Vercel, static app, serverless API, IndexedDB, service worker, TMDB, Google OAuth, and Upstash Redis"
               loading="lazy"
               className="w-full rounded-2xl border border-border object-cover"
