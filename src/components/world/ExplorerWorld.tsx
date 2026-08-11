@@ -437,6 +437,7 @@ const ExplorerWorld = () => {
                 })}
               </div>
             </div>
+            </>
           )}
         </div>
         <TimeOfDayToggle className="border border-border backdrop-blur" />
