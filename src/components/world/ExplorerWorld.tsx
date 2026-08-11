@@ -390,15 +390,10 @@ const ExplorerWorld = () => {
       </div>
 
 
-      {/* Exploration panel (modal, so it never sits on top of the world by accident) */}
+      {/* Exploration panel — floats near the top, clear of buildings and the character */}
       {checklistOpen && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center p-4 animate-fade-in motion-reduce:animate-none">
-          <button
-            aria-label="Close exploration list"
-            onClick={() => setChecklistOpen(false)}
-            className="absolute inset-0 bg-background/70 backdrop-blur-sm cursor-default"
-          />
-          <div className="relative w-full max-w-2xl rounded-2xl border border-border bg-card shadow-2xl p-4">
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 z-50 w-[min(56rem,calc(100%-2rem))] animate-fade-in motion-reduce:animate-none">
+          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3">
             <div className="flex items-center justify-between gap-3 mb-2">
               <div className="flex items-center gap-3 min-w-0">
                 <span className="text-xs font-semibold text-foreground whitespace-nowrap">
@@ -446,7 +441,7 @@ const ExplorerWorld = () => {
                 );
               })}
 
-              <span className="w-full mt-2 text-[10px] uppercase tracking-wider text-muted-foreground">Case studies</span>
+              <span className="w-full mt-1 text-[10px] uppercase tracking-wider text-muted-foreground">Case studies</span>
 
               {caseStudySpots.map((c) => {
                 const visited = visitedCaseStudies.has(c.caseStudyId as never);
@@ -478,6 +473,7 @@ const ExplorerWorld = () => {
           </div>
         </div>
       )}
+
 
 
 
