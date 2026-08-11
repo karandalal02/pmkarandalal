@@ -23,8 +23,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <Toaster />
-          <Sonner />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/goldies-grand-match" element={<GoldiesGrandMatch />} />
