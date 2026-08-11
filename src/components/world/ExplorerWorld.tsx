@@ -420,30 +420,8 @@ const ExplorerWorld = () => {
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
+              <span className="w-full text-[10px] uppercase tracking-wider text-muted-foreground">Sections</span>
 
-            <div className="flex items-center justify-between gap-3 mb-2">
-              <div className="flex items-center gap-3 min-w-0">
-                <span className="text-xs font-semibold text-foreground whitespace-nowrap">
-                  {completedLocations} of {totalLocations} explored
-                </span>
-                <div className="hidden sm:block h-1 w-32 rounded-full bg-border overflow-hidden">
-                  <div className="h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
-                </div>
-                {missingCount > 0 && (
-                  <span className="text-[10px] font-mono text-muted-foreground whitespace-nowrap">Missing: {missingCount}</span>
-                )}
-              </div>
-              <button
-                onClick={() => setChecklistOpen(false)}
-                aria-label="Close exploration list"
-                className="p-1 rounded-full text-muted-foreground hover:bg-secondary transition-colors shrink-0"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              <span className="text-[10px] uppercase tracking-wider text-muted-foreground shrink-0 pr-1">Sections</span>
               {spots.map((s) => {
                 const visited = visitedSections.has(s.sectionId as never);
                 const Icon = SECTION_ICONS[s.sectionId as string];
