@@ -380,13 +380,15 @@ const ExplorerWorld = () => {
         <div className="hidden lg:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
           ← → to walk · ↑ to enter · ↓ / Esc to leave
         </div>
-        <button
-          onClick={closeWorld}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
-        >
-          <X className="h-4 w-4" />
-          Exit world
-        </button>
+        {!activeSpot && (
+          <button
+            onClick={closeWorld}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
+          >
+            <X className="h-4 w-4" />
+            Exit game mode
+          </button>
+        )}
       </div>
 
 
