@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Check, ChevronDown, ChevronLeft, ChevronRight, Circle, X } from "lucide-react";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { useWorldControls } from "@/hooks/useWorldControls";
 import WorldCharacter from "./WorldCharacter";
@@ -84,6 +84,8 @@ const ExplorerWorld = () => {
     visitedSections,
     visitedCaseStudies,
     progress,
+    totalLocations,
+    completedLocations,
   } = useExplorer();
 
   const { phase } = useTimeOfDay();
@@ -95,6 +97,7 @@ const ExplorerWorld = () => {
   const [spotStack, setSpotStack] = useState<Spot[]>([]);
   const activeSpot = spotStack.length ? spotStack[spotStack.length - 1] : null;
   const [viewportW, setViewportW] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   const xRef = useRef(START_X);
   const rafRef = useRef<number | null>(null);
@@ -236,6 +239,21 @@ const ExplorerWorld = () => {
   );
 
 
+  const goToSection = useCallback(
+    (spot: Spot) => {
+      setChecklistOpen(false);
+      xRef.current = spot.x;
+      setX(spot.x);
+      setOpenDoorKey(spot.key);
+      if (spot.sectionId) visitSection(spot.sectionId as never);
+      setSpotStack([spot]);
+    },
+    [visitSection]
+  );
+
+  const missingCount = totalLocations - completedLocations;
+
+
   if (!worldOpen) return null;
 
   const camera = Math.max(0, Math.min(worldWidth - viewportW, x - viewportW / 2));
@@ -338,13 +356,93 @@ const ExplorerWorld = () => {
       </div>
 
       {/* HUD */}
-      <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-3">
-        <div className="px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-xs font-mono font-bold text-foreground">
-          {progress}% explored
+      <div className="absolute top-4 left-4 right-4 z-40 flex items-center justify-between gap-3">
+        <div className="relative">
+          <button
+            onClick={() => setChecklistOpen((v) => !v)}
+            aria-expanded={checklistOpen}
+            className="px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-xs font-mono font-bold text-foreground hover:bg-card transition-colors inline-flex items-center gap-1.5"
+          >
+            {progress}% explored
+            <ChevronDown className={`h-3.5 w-3.5 transition-transform ${checklistOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          {checklistOpen && (
+            <>
+              <button
+                aria-label="Close checklist"
+                onClick={() => setChecklistOpen(false)}
+                className="fixed inset-0 -z-10 cursor-default"
+              />
+            <div className="absolute left-0 top-full mt-2 w-64 rounded-2xl border border-border bg-card/95 backdrop-blur shadow-xl p-3 animate-fade-in">
+              <div className="flex items-baseline justify-between mb-2">
+                <span className="text-xs font-semibold text-foreground">
+                  {completedLocations} of {totalLocations} explored
+                </span>
+                {missingCount > 0 && (
+                  <span className="text-[10px] font-mono text-muted-foreground">Missing: {missingCount}</span>
+                )}
+              </div>
+
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Sections</p>
+              <div className="space-y-0.5 mb-2">
+                {spots.map((s) => {
+                  const visited = visitedSections.has(s.sectionId as never);
+                  const Icon = SECTION_ICONS[s.sectionId as string];
+                  return (
+                    <button
+                      key={s.key}
+                      onClick={() => goToSection(s)}
+                      className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-left text-xs hover:bg-secondary transition-colors"
+                    >
+                      {visited ? (
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                      ) : (
+                        <Circle className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
+                      )}
+                      {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />}
+                      <span className={visited ? "text-muted-foreground" : "text-foreground font-medium"}>
+                        {s.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Case studies</p>
+              <div className="space-y-0.5">
+                {caseStudySpots.map((c) => {
+                  const visited = visitedCaseStudies.has(c.caseStudyId as never);
+                  const Icon = CASE_STUDY_ICONS[c.caseStudyId as string];
+                  return (
+                    <button
+                      key={c.key}
+                      onClick={() => {
+                        setChecklistOpen(false);
+                        openCaseStudyById(c.caseStudyId as string);
+                      }}
+                      className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-left text-xs hover:bg-secondary transition-colors"
+                    >
+                      {visited ? (
+                        <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                      ) : (
+                        <Circle className="h-3.5 w-3.5 text-muted-foreground/50 shrink-0" />
+                      )}
+                      {Icon && <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />}
+                      <span className={visited ? "text-muted-foreground" : "text-foreground font-medium"}>
+                        {c.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            </>
+          )}
         </div>
         <TimeOfDayToggle className="border border-border backdrop-blur" />
         <div className="hidden lg:block px-3 py-1.5 rounded-full bg-card/80 backdrop-blur border border-border text-xs text-muted-foreground">
-          ← → to walk · ↑ to enter · Esc to leave
+          ← → to walk · ↑ to enter · ↓ / Esc to leave
         </div>
         <button
           onClick={closeWorld}
@@ -354,6 +452,7 @@ const ExplorerWorld = () => {
           Exit world
         </button>
       </div>
+
 
       {/* Horizontal explore trail */}
       <div className="absolute top-16 left-1/2 -translate-x-1/2 w-[min(92vw,44rem)] px-4 py-3 rounded-2xl bg-card/85 backdrop-blur border border-border/60">

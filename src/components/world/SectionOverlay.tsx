@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 
 interface SectionOverlayProps {
   label: string;
@@ -11,7 +11,8 @@ interface SectionOverlayProps {
 const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street" }: SectionOverlayProps) => {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === "Escape" || e.key === "ArrowDown") {
+        e.preventDefault();
         e.stopPropagation();
         onClose();
       }
@@ -33,8 +34,18 @@ const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street"
         </button>
       </div>
       <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
+
+      <button
+        onClick={onClose}
+        aria-label={backLabel}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold shadow-lg hover:opacity-90 transition-opacity"
+      >
+        <ChevronDown className="h-4 w-4" />
+        Exit
+      </button>
     </div>
   );
 };
+
 
 export default SectionOverlay;
