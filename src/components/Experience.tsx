@@ -9,7 +9,7 @@ const Experience = () => {
       roles: [
         {
           role: "Product Manager, Bingo Showdown (Mobile F2P)",
-          period: "Aug 2025 - Present",
+          period: "Aug 2025 - Aug 2026",
           description: "Driving retention, monetization, and LiveOps innovation on Bingo Showdown by partnering with analytics, design, and engineering to ship data-backed features.",
           achievements: [
             "Partnered with analytics to identify onboarding friction and game economy gaps, driving an experimentation roadmap for new install cohorts that improved D7 retention by 2% and average revenue per install (ARPI) by 1.5%",
