@@ -79,7 +79,6 @@ const usePrefersReducedMotion = () => {
 const ExplorerWorld = () => {
   const {
     worldOpen,
-    closeWorld,
     visitSection,
     visitCaseStudy,
     visitedSections,
