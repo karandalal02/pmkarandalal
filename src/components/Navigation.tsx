@@ -7,7 +7,10 @@ import { Menu, X, Calendar, Sparkles, Gamepad2 } from "lucide-react";
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { gameMode, toggleGameMode } = useExplorer();
+  const { gameMode } = useExplorer();
+  const navigate = useNavigate();
+  // Route-driven so every game mode session registers as an /explore pageview
+  const toggleGameMode = () => navigate(gameMode ? "/" : "/explore");
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
