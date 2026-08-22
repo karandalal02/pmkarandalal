@@ -90,6 +90,9 @@ const ExplorerWorld = () => {
   } = useExplorer();
 
   const { phase } = useTimeOfDay();
+  const navigate = useNavigate();
+  // Exit via the URL so GameModeSync closes the world and the session is tracked
+  const exitWorld = useCallback(() => navigate("/"), [navigate]);
   const reducedMotion = usePrefersReducedMotion();
   const [x, setX] = useState(START_X);
   const [facing, setFacing] = useState(1);
