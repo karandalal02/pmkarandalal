@@ -16,6 +16,23 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Keeps the /explore URL and game mode in sync so game mode sessions
+// show up as pageviews in Lovable analytics.
+const GameModeSync = () => {
+  const { pathname } = useLocation();
+  const { worldOpen, openWorld, closeWorld } = useExplorer();
+
+  useEffect(() => {
+    if (pathname === "/explore" && !worldOpen) {
+      openWorld();
+    } else if (pathname !== "/explore" && worldOpen) {
+      closeWorld();
+    }
+  }, [pathname, worldOpen, openWorld, closeWorld]);
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
