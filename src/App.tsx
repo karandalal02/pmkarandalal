@@ -41,8 +41,10 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <GameModeSync />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/explore" element={<Index />} />
             <Route path="/goldies-grand-match" element={<GoldiesGrandMatch />} />
             <Route path="/shockwave" element={<Shockwave />} />
             <Route path="/ai-job-search-system" element={<AiJobSearchSystem />} />
