@@ -2,8 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ExplorerProvider } from "@/context/ExplorerContext";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { ExplorerProvider, useExplorer } from "@/context/ExplorerContext";
 import { TimeOfDayProvider } from "@/context/TimeOfDayContext";
 import SiteExplorer from "@/components/SiteExplorer";
 import Index from "./pages/Index";
@@ -15,6 +16,23 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Keeps the /explore URL and game mode in sync so game mode sessions
+// show up as pageviews in Lovable analytics.
+const GameModeSync = () => {
+  const { pathname } = useLocation();
+  const { worldOpen, openWorld, closeWorld } = useExplorer();
+
+  useEffect(() => {
+    if (pathname === "/explore" && !worldOpen) {
+      openWorld();
+    } else if (pathname !== "/explore" && worldOpen) {
+      closeWorld();
+    }
+  }, [pathname, worldOpen, openWorld, closeWorld]);
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -23,8 +41,10 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <GameModeSync />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/explore" element={<Index />} />
             <Route path="/goldies-grand-match" element={<GoldiesGrandMatch />} />
             <Route path="/shockwave" element={<Shockwave />} />
             <Route path="/ai-job-search-system" element={<AiJobSearchSystem />} />

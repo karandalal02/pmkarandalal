@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Check, ChevronDown, ChevronLeft, ChevronRight, Circle, X } from "lucide-react";
 import { useExplorer, SECTIONS, CASE_STUDIES } from "@/context/ExplorerContext";
 import { useWorldControls } from "@/hooks/useWorldControls";
@@ -78,7 +79,6 @@ const usePrefersReducedMotion = () => {
 const ExplorerWorld = () => {
   const {
     worldOpen,
-    closeWorld,
     visitSection,
     visitCaseStudy,
     visitedSections,
@@ -89,6 +89,9 @@ const ExplorerWorld = () => {
   } = useExplorer();
 
   const { phase } = useTimeOfDay();
+  const navigate = useNavigate();
+  // Exit via the URL so GameModeSync closes the world and the session is tracked
+  const exitWorld = useCallback(() => navigate("/"), [navigate]);
   const reducedMotion = usePrefersReducedMotion();
   const [x, setX] = useState(START_X);
   const [facing, setFacing] = useState(1);
@@ -166,8 +169,8 @@ const ExplorerWorld = () => {
 
   const handleExit = useCallback(() => {
     if (activeSpot) return;
-    closeWorld();
-  }, [activeSpot, closeWorld]);
+    exitWorld();
+  }, [activeSpot, exitWorld]);
 
   const { dirRef, setTouchDir, touchDir } = useWorldControls(worldOpen && !activeSpot, handleEnter, handleExit);
 
@@ -382,7 +385,7 @@ const ExplorerWorld = () => {
         </div>
         {!activeSpot && (
           <button
-            onClick={closeWorld}
+            onClick={exitWorld}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
           >
             <X className="h-4 w-4" />
@@ -513,7 +516,7 @@ const ExplorerWorld = () => {
           label={activeSpot.label}
           backLabel={spotStack.length > 1 ? `Back to ${spotStack[spotStack.length - 2].label}` : "Back to street"}
           onClose={closeSection}
-          onExitWorld={closeWorld}
+          onExitWorld={exitWorld}
 
         >
           {activeSpot.sectionId === "projects" ? (
