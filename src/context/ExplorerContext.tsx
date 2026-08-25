@@ -87,7 +87,7 @@ export const ExplorerProvider = ({ children }: ExplorerProviderProps) => {
   const toggleGameMode = useCallback(() => {
     setGameMode((prev) => {
       const next = !prev;
-      // Game mode = the 2.5D Explorer World; exploring the normal page stays available always
+      // Game mode = the Explorer World globe; exploring the normal page stays available always
       setWorldOpen(next);
       return next;
     });

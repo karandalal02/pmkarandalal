@@ -71,8 +71,8 @@ const Navigation = () => {
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
-              aria-label={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
-              title={gameMode ? "Exit 2.5D world" : "Enter 2.5D world"}
+              aria-label={gameMode ? "Exit the globe" : "Enter the globe"}
+              title={gameMode ? "Exit the globe" : "Enter the globe"}
             >
               <Gamepad2 className="h-4 w-4" />
               <span className="hidden lg:inline">{gameMode ? "Exit World" : "Game Mode"}</span>
@@ -118,7 +118,7 @@ const Navigation = () => {
                   }`}
                 >
                   <Gamepad2 className="h-4 w-4" />
-                  {gameMode ? "Exit 2.5D World" : "Enter 2.5D World"}
+                  {gameMode ? "Exit the Globe" : "Enter the Globe"}
                 </button>
                 <Button 
                   variant="premium" 
