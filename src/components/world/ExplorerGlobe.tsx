@@ -38,7 +38,12 @@ const ExplorerGlobe = ({ onSelectLocation, visitedLocationIds }: ExplorerGlobePr
     const controls = g.controls();
     controls.autoRotate = true;
     controls.autoRotateSpeed = 0.6;
-    controls.enableZoom = false;
+    // Zoom is on (scroll / pinch) so close-together pins — Mumbai, Pune,
+    // Nashik are all near each other in real life — can be told apart.
+    // Bounds keep the globe from being zoomed inside-out or lost entirely.
+    controls.enableZoom = true;
+    controls.minDistance = 120;
+    controls.maxDistance = 550;
     g.pointOfView({ lat: 25, lng: -40, altitude: 2.1 }, 0);
   }, []);
 

@@ -55,17 +55,18 @@ const LocationLanding = ({ title, items, visitedIds, onSelect, onBack, backLabel
       <div className="absolute top-4 left-4 right-4 z-30 flex items-center justify-between gap-3">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-sm font-medium text-foreground hover:bg-card transition-colors"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border text-sm font-medium text-foreground hover:bg-card transition-colors max-w-[40vw] sm:max-w-none"
         >
-          <ArrowLeft className="h-4 w-4" />
-          {backLabel}
+          <ArrowLeft className="h-4 w-4 shrink-0" />
+          <span className="truncate">{backLabel}</span>
         </button>
         <button
           onClick={onExit}
+          aria-label="Exit game mode"
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
         >
           <X className="h-4 w-4" />
-          Exit game mode
+          <span className="hidden sm:inline">Exit game mode</span>
         </button>
       </div>
 
@@ -74,8 +75,13 @@ const LocationLanding = ({ title, items, visitedIds, onSelect, onBack, backLabel
         <h1 className="font-display text-4xl md:text-6xl font-black text-foreground drop-shadow-sm">{title}</h1>
       </div>
 
-      {/* Buildings row */}
-      <div className="absolute bottom-24 left-0 right-0 z-10 flex items-end justify-center gap-8 md:gap-14 px-6 overflow-x-auto">
+      {/* Buildings row. Fixed height matters here: overflow-x-auto without an
+          explicit height makes the browser clip the y-axis too (a well-known
+          CSS overflow quirk), which was cropping the signboards/icons that
+          sit above a tall building via negative offsets. Giving the row a
+          height tall enough to contain those means nothing pokes outside its
+          own box, so the clip never kicks in. */}
+      <div className="absolute bottom-24 left-0 right-0 z-10 flex items-end justify-center gap-8 md:gap-14 px-6 overflow-x-auto h-[300px]">
         {items.map((place, i) => (
           <LocationBuilding
             key={place.id}

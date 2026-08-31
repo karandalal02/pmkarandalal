@@ -2,7 +2,7 @@ import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react
 import { useNavigate } from "react-router-dom";
 import { X } from "lucide-react";
 import { useExplorer } from "@/context/ExplorerContext";
-import { WORLD_LOCATIONS, findPlace, type WorldLocation, type WorldPlace, type WorldContentKey } from "@/data/explorerWorld";
+import { WORLD_LOCATIONS, TOTAL_EXPLORABLE, findPlace, type WorldLocation, type WorldPlace, type WorldContentKey } from "@/data/explorerWorld";
 import LocationLanding from "./LocationLanding";
 import PlaceholderContent from "./PlaceholderContent";
 import SectionOverlay from "./SectionOverlay";
@@ -153,8 +153,19 @@ const ExplorerWorld = () => {
 
   if (!worldOpen) return null;
 
+  const progress = Math.round((visitedIds.size / TOTAL_EXPLORABLE) * 100);
+
   return (
     <div className="fixed inset-0 z-[60] bg-background overflow-hidden">
+      {!openPlace && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border">
+          <span className="text-xs font-mono font-bold text-foreground">{progress}% explored</span>
+          <span className="h-1 w-24 rounded-full bg-border overflow-hidden">
+            <span className="block h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
+          </span>
+        </div>
+      )}
+
       {!location && (
         <>
           <Suspense
@@ -168,10 +179,11 @@ const ExplorerWorld = () => {
           </Suspense>
           <button
             onClick={exitWorld}
+            aria-label="Exit game mode"
             className="absolute top-4 right-4 z-30 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
           >
             <X className="h-4 w-4" />
-            Exit game mode
+            <span className="hidden sm:inline">Exit game mode</span>
           </button>
           <p className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 text-xs font-mono text-muted-foreground bg-card/80 backdrop-blur px-3 py-1.5 rounded-full border border-border/50">
             Drag to spin the globe · tap a pin to travel

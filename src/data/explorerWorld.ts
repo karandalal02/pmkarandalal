@@ -109,6 +109,12 @@ export const WORLD_LOCATIONS: WorldLocation[] = [
   },
 ];
 
+const countPlaces = (places: WorldPlace[]): number =>
+  places.reduce((sum, p) => sum + 1 + (p.children ? countPlaces(p.children) : 0), 0);
+
+/** Every location plus every place in its tree (nested ones included) — the denominator for the overall explore progress. */
+export const TOTAL_EXPLORABLE = WORLD_LOCATIONS.reduce((sum, loc) => sum + 1 + countPlaces(loc.places), 0);
+
 export const findLocation = (id: string) => WORLD_LOCATIONS.find((l) => l.id === id);
 
 export const findPlace = (places: WorldPlace[], id: string): WorldPlace | undefined => {
