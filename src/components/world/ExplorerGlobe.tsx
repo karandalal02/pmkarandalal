@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Globe from "react-globe.gl";
-import { WORLD_LOCATIONS, type WorldLocation } from "@/data/explorerWorld";
+import { WORLD_LOCATIONS, findLocation, type WorldLocation } from "@/data/explorerWorld";
 
 interface ExplorerGlobeProps {
   onSelectLocation: (location: WorldLocation) => void;
@@ -8,6 +8,12 @@ interface ExplorerGlobeProps {
 }
 
 const TEXTURE_URL = `${import.meta.env.BASE_URL}globe-placeholder-texture.png`;
+const AVATAR_URL = `${import.meta.env.BASE_URL}lovable-uploads/19c0388a-baf8-4196-8858-d6de2cbf18ce.png`;
+
+// Nashik (hometown) is the default starting view until real persistence
+// exists — once that lands, this should read the last-visited location
+// from storage instead and fall back to Nashik only for a first-time visit.
+const DEFAULT_START_LOCATION_ID = "nashik";
 
 /**
  * The top-level view of Game Mode: a rotating globe with a pin per location.
@@ -36,15 +42,17 @@ const ExplorerGlobe = ({ onSelectLocation, visitedLocationIds }: ExplorerGlobePr
     const g = globeRef.current;
     if (!g) return;
     const controls = g.controls();
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.6;
-    // Zoom is on (scroll / pinch) so close-together pins — Mumbai, Pune,
-    // Nashik are all near each other in real life — can be told apart.
-    // Bounds keep the globe from being zoomed inside-out or lost entirely.
+    controls.autoRotate = false;
+    // Zoom is on (scroll / pinch) — combined with starting zoomed into one
+    // location instead of a world overview, this is how close-together pins
+    // (Mumbai, Pune, Nashik are all near each other in real life) stay
+    // distinguishable: you're never forced to view them all bunched up at
+    // once. Bounds keep the globe from being zoomed inside-out or lost.
     controls.enableZoom = true;
     controls.minDistance = 120;
     controls.maxDistance = 550;
-    g.pointOfView({ lat: 25, lng: -40, altitude: 2.1 }, 0);
+    const start = findLocation(DEFAULT_START_LOCATION_ID) ?? WORLD_LOCATIONS[0];
+    g.pointOfView({ lat: start.lat, lng: start.lng, altitude: 0.35 }, 0);
   }, []);
 
   return (
@@ -64,6 +72,7 @@ const ExplorerGlobe = ({ onSelectLocation, visitedLocationIds }: ExplorerGlobePr
       htmlElement={(d) => {
         const loc = d as WorldLocation;
         const visited = visitedLocationIds.has(loc.id);
+        const ringColor = visited ? "hsl(var(--primary))" : "#e8b64c";
         const el = document.createElement("div");
         el.style.pointerEvents = "auto";
         el.style.cursor = "pointer";
@@ -71,11 +80,21 @@ const ExplorerGlobe = ({ onSelectLocation, visitedLocationIds }: ExplorerGlobePr
         el.style.flexDirection = "column";
         el.style.alignItems = "center";
         el.style.transform = "translate(-50%, -100%)";
+        // A small figure standing on the pin's spot: profile-photo head +
+        // stick body, matching the explorer character used elsewhere,
+        // instead of a plain dot.
         el.innerHTML = `
-          <div style="width:16px;height:16px;border-radius:9999px;background:${
-            visited ? "hsl(var(--primary))" : "hsl(38 75% 55%)"
-          };border:2px solid white;box-shadow:0 0 0 5px rgba(124,148,255,0.25);"></div>
-          <div style="margin-top:4px;padding:2px 9px;border-radius:9999px;background:rgba(10,14,26,0.85);color:#fff;font-size:11px;font-family:inherit;font-weight:600;white-space:nowrap;">${loc.label}</div>
+          <div style="width:26px;height:26px;border-radius:9999px;overflow:hidden;border:2.5px solid ${ringColor};box-shadow:0 0 0 4px rgba(124,148,255,0.22);">
+            <img src="${AVATAR_URL}" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
+          </div>
+          <svg width="20" height="22" viewBox="0 0 20 22" style="display:block;margin-top:-1px;">
+            <line x1="10" y1="0" x2="10" y2="13" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <line x1="10" y1="4" x2="4" y2="9" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <line x1="10" y1="4" x2="16" y2="9" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <line x1="10" y1="13" x2="5" y2="22" stroke="white" stroke-width="2" stroke-linecap="round" />
+            <line x1="10" y1="13" x2="15" y2="22" stroke="white" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <div style="margin-top:2px;padding:2px 9px;border-radius:9999px;background:rgba(10,14,26,0.85);color:#fff;font-size:11px;font-family:inherit;font-weight:600;white-space:nowrap;">${loc.label}</div>
         `;
         el.onclick = () => onSelectLocation(loc);
         return el;

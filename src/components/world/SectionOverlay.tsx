@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from "react";
-import { ChevronDown, X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 
 interface SectionOverlayProps {
   label: string;
@@ -9,7 +9,10 @@ interface SectionOverlayProps {
   onExitWorld?: () => void;
 }
 
-const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street", onExitWorld }: SectionOverlayProps) => {
+// Back control lives top-left here, same spot as every other Game Mode
+// screen (the globe, LocationLanding) — it used to float bottom-center,
+// which made "back" jump to a different corner depending on what was open.
+const SectionOverlay = ({ label, children, onClose, backLabel = "Back", onExitWorld }: SectionOverlayProps) => {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" || e.key === "ArrowDown") {
@@ -24,27 +27,26 @@ const SectionOverlay = ({ label, children, onClose, backLabel = "Back to street"
 
   return (
     <div className="absolute inset-0 z-30 bg-background animate-fade-in flex flex-col">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-card/80 backdrop-blur">
-        <span className="font-display font-bold text-foreground">{label}</span>
+      <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-border bg-card/80 backdrop-blur">
+        <button
+          onClick={onClose}
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-card/90 border border-border text-sm font-medium text-foreground hover:bg-card transition-colors max-w-[40vw] sm:max-w-none shrink-0"
+        >
+          <ArrowLeft className="h-4 w-4 shrink-0" />
+          <span className="truncate">{backLabel}</span>
+        </button>
+        <span className="hidden md:block font-display font-bold text-foreground truncate">{label}</span>
         <button
           onClick={onExitWorld}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors"
+          aria-label="Exit game mode"
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-secondary/80 transition-colors shrink-0"
         >
           <X className="h-4 w-4" />
-          Exit game mode
+          <span className="hidden sm:inline">Exit game mode</span>
         </button>
       </div>
 
       <div className="flex-1 overflow-y-auto overscroll-contain">{children}</div>
-
-      <button
-        onClick={onClose}
-        aria-label={backLabel}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold shadow-lg hover:opacity-90 transition-opacity"
-      >
-        <ChevronDown className="h-4 w-4" />
-        Exit
-      </button>
     </div>
   );
 };

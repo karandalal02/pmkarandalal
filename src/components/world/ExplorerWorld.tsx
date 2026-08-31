@@ -1,12 +1,13 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import { useExplorer } from "@/context/ExplorerContext";
 import { WORLD_LOCATIONS, TOTAL_EXPLORABLE, findPlace, type WorldLocation, type WorldPlace, type WorldContentKey } from "@/data/explorerWorld";
 import LocationLanding from "./LocationLanding";
 import PlaceholderContent from "./PlaceholderContent";
 import SectionOverlay from "./SectionOverlay";
 import WorldLinkInterceptor from "./WorldLinkInterceptor";
+import ExploreChecklist from "./ExploreChecklist";
 
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -61,6 +62,7 @@ const ExplorerWorld = () => {
   const [placeStack, setPlaceStack] = useState<WorldPlace[]>([]);
   const [openPlace, setOpenPlace] = useState<WorldPlace | null>(null);
   const [visitedIds, setVisitedIds] = useState<Set<string>>(new Set());
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   const markVisited = useCallback((id: string) => {
     setVisitedIds((prev) => (prev.has(id) ? prev : new Set(prev).add(id)));
@@ -105,6 +107,30 @@ const ExplorerWorld = () => {
       }
     },
     [markVisited, openContent]
+  );
+
+  // Checklist quick-jump: go straight to any location or place, skipping
+  // the globe/landing navigation entirely.
+  const jumpToLocation = useCallback(
+    (loc: WorldLocation) => {
+      setChecklistOpen(false);
+      handleSelectLocation(loc);
+    },
+    [handleSelectLocation]
+  );
+
+  const jumpToPlace = useCallback(
+    (loc: WorldLocation, parent: WorldPlace | null, place: WorldPlace) => {
+      setChecklistOpen(false);
+      setLocation(loc);
+      if (place.children) {
+        setPlaceStack(parent ? [parent, place] : [place]);
+      } else {
+        setPlaceStack(parent ? [parent] : []);
+        openContent(place);
+      }
+    },
+    [openContent]
   );
 
   const handleBackFromLanding = useCallback(() => {
@@ -158,11 +184,28 @@ const ExplorerWorld = () => {
   return (
     <div className="fixed inset-0 z-[60] bg-background overflow-hidden">
       {!openPlace && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border">
-          <span className="text-xs font-mono font-bold text-foreground">{progress}% explored</span>
-          <span className="h-1 w-24 rounded-full bg-border overflow-hidden">
-            <span className="block h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
-          </span>
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
+          <button
+            onClick={() => setChecklistOpen((v) => !v)}
+            aria-expanded={checklistOpen}
+            className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border hover:bg-card transition-colors"
+          >
+            <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-foreground">
+              {progress}% explored
+              <ChevronDown className={`h-3 w-3 transition-transform ${checklistOpen ? "rotate-180" : ""}`} />
+            </span>
+            <span className="h-1 w-24 rounded-full bg-border overflow-hidden">
+              <span className="block h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
+            </span>
+          </button>
+          {checklistOpen && (
+            <ExploreChecklist
+              visitedIds={visitedIds}
+              onJumpToLocation={jumpToLocation}
+              onJumpToPlace={jumpToPlace}
+              onClose={() => setChecklistOpen(false)}
+            />
+          )}
         </div>
       )}
 

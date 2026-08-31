@@ -30,11 +30,12 @@ const LocationBuilding = ({ label, width, height, visited, hasChildren, Icon, on
         className="relative rounded-t-xl border-2 border-border bg-card/70 transition-colors duration-300 group-hover:border-primary group-hover:bg-card group-focus-visible:border-primary"
         style={{ height }}
       >
-        {/* Rooftop icon */}
+        {/* Rooftop icon. top is -82 (not -60) so its ~40px box clears the
+            signboard below (-top-9, ~28px tall) instead of overlapping it. */}
         {Icon && (
           <div
             className="absolute left-1/2 -translate-x-1/2 rounded-xl border-2 border-border bg-card p-2 text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110"
-            style={{ top: -60 }}
+            style={{ top: -82 }}
           >
             <Icon className="h-5 w-5" />
           </div>

@@ -81,7 +81,7 @@ const LocationLanding = ({ title, items, visitedIds, onSelect, onBack, backLabel
           sit above a tall building via negative offsets. Giving the row a
           height tall enough to contain those means nothing pokes outside its
           own box, so the clip never kicks in. */}
-      <div className="absolute bottom-24 left-0 right-0 z-10 flex items-end justify-center gap-8 md:gap-14 px-6 overflow-x-auto h-[300px]">
+      <div className="absolute bottom-24 left-0 right-0 z-10 flex items-end justify-center gap-8 md:gap-14 px-6 overflow-x-auto h-[330px]">
         {items.map((place, i) => (
           <LocationBuilding
             key={place.id}
