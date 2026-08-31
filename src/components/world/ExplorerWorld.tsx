@@ -184,29 +184,32 @@ const ExplorerWorld = () => {
   return (
     <div className="fixed inset-0 z-[60] bg-background overflow-hidden">
       {!openPlace && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center">
-          <button
-            onClick={() => setChecklistOpen((v) => !v)}
-            aria-expanded={checklistOpen}
-            className="flex flex-col items-center gap-1 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border hover:bg-card transition-colors"
-          >
-            <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-foreground">
-              {progress}% explored
-              <ChevronDown className={`h-3 w-3 transition-transform ${checklistOpen ? "rotate-180" : ""}`} />
-            </span>
-            <span className="h-1 w-24 rounded-full bg-border overflow-hidden">
-              <span className="block h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
-            </span>
-          </button>
-          {checklistOpen && (
-            <ExploreChecklist
-              visitedIds={visitedIds}
-              onJumpToLocation={jumpToLocation}
-              onJumpToPlace={jumpToPlace}
-              onClose={() => setChecklistOpen(false)}
-            />
-          )}
-        </div>
+        <button
+          onClick={() => setChecklistOpen((v) => !v)}
+          aria-expanded={checklistOpen}
+          className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1 px-3 py-1.5 rounded-full bg-card/90 backdrop-blur border border-border hover:bg-card transition-colors"
+        >
+          <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-foreground">
+            {progress}% explored
+            <ChevronDown className={`h-3 w-3 transition-transform ${checklistOpen ? "rotate-180" : ""}`} />
+          </span>
+          <span className="h-1 w-24 rounded-full bg-border overflow-hidden">
+            <span className="block h-full rounded-full bg-primary transition-[width] duration-300" style={{ width: `${progress}%` }} />
+          </span>
+        </button>
+      )}
+
+      {/* Rendered as a direct child of the full-width screen container, not
+          nested inside the narrow badge button above — otherwise its
+          calc(100% - 2rem) width resolves against the badge's own width
+          instead of the viewport. */}
+      {!openPlace && checklistOpen && (
+        <ExploreChecklist
+          visitedIds={visitedIds}
+          onJumpToLocation={jumpToLocation}
+          onJumpToPlace={jumpToPlace}
+          onClose={() => setChecklistOpen(false)}
+        />
       )}
 
       {!location && (
